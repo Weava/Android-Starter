@@ -16,8 +16,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 
     buildTypes {
@@ -40,6 +40,7 @@ dependencies {
     def devDependencies = rootProject.ext.devDependencies
 
     /* Release */
+    apt dataDependencies.javaPoet
     apt dataDependencies.daggerCompiler
     provided dataDependencies.javaxAnnotations
     compile dataDependencies.dagger
@@ -59,7 +60,6 @@ dependencies {
     testCompile dataTestDependencies.robolectric
 
     /* Development */
-    compile devDependencies.stetho
     compile devDependencies.stethoOkhttp
     compile devDependencies.timber
 }

@@ -2,19 +2,35 @@ package com.appweava.androidstarter.base.drawer;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 
+import com.appweava.androidstarter.R;
 import com.appweava.androidstarter.base.BaseActivity;
+
+import butterknife.BindView;
 
 /**
  * BaseDrawerActivity
  * <p>
  * Extension of {@link BaseActivity} containing functions relative to an activity with a drawer.
  *
+ * @see BaseActivity
+ * @see DrawerView
+ *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/25/16
  */
-public abstract class BaseDrawerActivity extends BaseActivity {
+public abstract class BaseDrawerActivity extends BaseActivity implements DrawerView {
+
+    @BindView(R.id.drawer_layout)
+    protected DrawerLayout mDrawerLayout;
+
+    @BindView(R.id.nav_drawer)
+    protected NavigationView mNavigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,5 +40,38 @@ public abstract class BaseDrawerActivity extends BaseActivity {
             //TODO: Set icon for drawer menu
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    protected int getLayoutRes() {
+
+        /*
+         * NOTE: base_drawer_activity.xml is only to be used as your layout if you plan on having a
+         * fragment as your main view portion. Otherwise, create a custom view for your activity, and
+         * make sure to both include toolbar.xml and nav_drawer.xml.
+         */
+        return R.layout.base_drawer_activity;
+    }
+
+    @Override
+    public void drawerSetup() {
+
+    }
+
+    @Override
+    public void onDrawerItemClicked() {
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mDrawerLayout != null) {
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

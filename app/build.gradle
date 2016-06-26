@@ -41,6 +41,7 @@ dependencies {
     compile project(':data')
 
     /* Production */
+    apt appDependencies.javaPoet
     apt appDependencies.daggerCompiler
     apt appDependencies.butterKnifeCompiler
     compile appDependencies.dagger
@@ -51,7 +52,6 @@ dependencies {
     compile appDependencies.designSupportLibrary
     compile appDependencies.circleImageView
     compile appDependencies.picasso
-    compile appDependencies.leakCanaryNoOp
     provided appDependencies.javaxAnnotations
 
     /* Test */
@@ -62,7 +62,7 @@ dependencies {
     androidTestCompile appTestDependencies.testingSupportLib
 
     /* Development */
-    compile devDependencies.leakCanary
+    debugCompile devDependencies.leakCanary
     compile devDependencies.timber
     compile devDependencies.stetho
     compile devDependencies.stethoOkhttp
