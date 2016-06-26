@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.base.rx;
+package com.appweava.androidstarterdomain.interactor.rx;
 
 /**
  * RxCallback
