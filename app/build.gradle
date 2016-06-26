@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    def globalConfig = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfig.getAt("androidCompileSdkVersion")
+    buildToolsVersion globalConfig.getAt("androidBuildToolsVersion")
+
+    defaultConfig {
+        applicationId globalConfig.getAt("androidApplicationId")
+        minSdkVersion globalConfig.getAt("androidMinSdkVersion")
+        targetSdkVersion globalConfig.getAt("androidTargetSdkVersion")
+        versionCode globalConfig.getAt("androidVersionCode")
+        versionName globalConfig.getAt("androidVersionName")
+        testInstrumentationRunner globalConfig.getAt("testInstrumentationRunner")
+        testApplicationId globalConfig.getAt("testApplicationId")
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix '.debug'
+        }
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def appTestDependencies = rootProject.ext.appTestDependencies
+    def devDependencies = rootProject.ext.devDependencies
+
+    compile project(':data')
+
+    /* Production */
+    apt appDependencies.daggerCompiler
+    apt appDependencies.butterKnifeCompiler
+    compile appDependencies.dagger
+    compile appDependencies.butterKnife
+    compile appDependencies.recyclerView
+    compile appDependencies.rxJava
+    compile appDependencies.rxAndroid
+    compile appDependencies.designSupportLibrary
+    compile appDependencies.circleImageView
+    compile appDependencies.picasso
+    compile appDependencies.leakCanaryNoOp
+    provided appDependencies.javaxAnnotations
+
+    /* Test */
+    androidTestCompile appTestDependencies.mockito
+    androidTestCompile appTestDependencies.dexmaker
+    androidTestCompile appTestDependencies.dexmakerMockito
+    androidTestCompile appTestDependencies.espresso
+    androidTestCompile appTestDependencies.testingSupportLib
+
+    /* Development */
+    compile devDependencies.leakCanary
+    compile devDependencies.timber
+    compile devDependencies.stetho
+    compile devDependencies.stethoOkhttp
+}
