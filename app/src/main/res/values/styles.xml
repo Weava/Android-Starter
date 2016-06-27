@@ -11,6 +11,8 @@
         <item name="android:textColorSecondary">@color/colorSecondaryText</item>
 
         <item name="android:windowBackground">@color/colorWindowBackground</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
     </style>
     
     <style name="ToolbarDarkTheme" parent="AppTheme">

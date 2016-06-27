@@ -39,6 +39,7 @@ dependencies {
     def devDependencies = rootProject.ext.devDependencies
 
     compile project(':data')
+    compile project(':domain')
 
     /* Production */
     apt appDependencies.javaPoet

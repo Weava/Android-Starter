@@ -39,6 +39,8 @@ dependencies {
     def dataTestDependencies = rootProject.ext.dataTestDependencies
     def devDependencies = rootProject.ext.devDependencies
 
+    compile project(':domain')
+
     /* Release */
     apt dataDependencies.javaPoet
     apt dataDependencies.daggerCompiler

@@ -1,8 +1,17 @@
 package com.appweava.androidstarter.base;
 
 import android.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.appweava.androidstarter.internal.di.HasComponent;
+
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * BaseFragment
@@ -14,6 +23,30 @@ import com.appweava.androidstarter.internal.di.HasComponent;
  * @since 6/26/16
  */
 public abstract class BaseFragment extends Fragment {
+
+    protected Unbinder mUnbinder;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.setHasOptionsMenu(true);
+        setRetainInstance(true);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        View v = inflater.inflate(getLayoutRes(), container, false);
+        mUnbinder = ButterKnife.bind(this, v);
+        return v;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mUnbinder.unbind();
+    }
 
     /**
      * Gets component for dependency injection based on type.
@@ -29,4 +62,7 @@ public abstract class BaseFragment extends Fragment {
     protected <C> C getComponent(Class<C> componentType) {
         return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
     }
+
+    @LayoutRes
+    protected abstract int getLayoutRes();
 }

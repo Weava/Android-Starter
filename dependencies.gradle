@@ -58,6 +58,19 @@ ext {
         testingSupportLib:      "com.android.support.test:testing-support-lib:${testingSupportLibVersion}"
     ]
 
+    domainDependencies = [
+        javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
+        daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",
+        dagger:                 "com.google.dagger:dagger:${daggerVersion}",
+        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+        rxJava:                 "io.reactivex:rxjava:${rxJavaVersion}"
+    ]
+
+    domainTestDependencies = [
+        junit:                  "junit:junit:${jUnitVersion}",
+        mockito:                "org.mockito:mockito-core:${mockitoVersion}"
+    ]
+
     dataDependencies = [
         javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
         daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",

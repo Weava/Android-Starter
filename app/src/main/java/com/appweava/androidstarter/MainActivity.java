@@ -1,5 +1,7 @@
 package com.appweava.androidstarter;
 
+import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
+
 /**
  * MainActivity
  * <p>
@@ -9,5 +11,6 @@ package com.appweava.androidstarter;
  * @version 1.0.0
  * @since 6/26/16
  */
-public class MainActivity {
+public class MainActivity extends BaseDrawerActivity {
+
 }

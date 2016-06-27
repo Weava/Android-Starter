@@ -1,5 +1,6 @@
 package com.appweava.androidstarter.base.drawer;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -39,6 +40,10 @@ public abstract class BaseDrawerActivity extends BaseActivity implements DrawerV
         if (getSupportActionBar() != null) {
             //TODO: Set icon for drawer menu
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
+            }
         }
     }
 

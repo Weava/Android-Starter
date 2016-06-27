@@ -1,5 +1,24 @@
 apply plugin: 'java'
 
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+
+    provided domainDependencies.daggerCompiler
+    provided domainDependencies.javaxAnnotations
+    compile domainDependencies.dagger
+    compile domainDependencies.rxJava
+
+    testCompile domainTestDependencies.junit
+    testCompile domainTestDependencies.mockito
 }
