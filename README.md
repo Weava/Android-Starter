@@ -24,6 +24,21 @@ Before you get started on creating your own application from this starter projec
  `<a href="mailto:<your-email>"><your-name></a>` unless you want people to e-mail me about bugs in your app.
  (You'll also want to do a find and replace for the date)
  * Remove any files you deem unnecessary (Don't need a drawer? Delete drawer related files)
+ * Modify the Git remote to point to your repository:
+ 
+    ```
+    git remote remove origin
+    git remote add origin '<your-url-here>'
+    ```
+ * Remove Git history with the following commands:
+ 
+     ```
+     git rebase --root -i
+     git commit --amend -m "<first-commit-message>"
+     git push --force
+     git fetch --prune
+     ```
+     
  * Customize the `AppTheme` to whatever you desire, or modify the `colors.xml` file to get a new palette going.
  * Setup the `nav_header.xml` and `drawer_menu.xml` layouts to your own specs.
  * Either delete the `feature` package in the app module, or use it as a guideline for your MVP design.
