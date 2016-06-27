@@ -15,7 +15,7 @@ import timber.log.Timber;
  * <p>
  * Application class for setting up all necessary dependencies throughout application.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @date 6/25/16
  * @since 1.0.0
  */

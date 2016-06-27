@@ -21,7 +21,7 @@ import butterknife.BindView;
  * @see BaseActivity
  * @see DrawerView
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/25/16
  */

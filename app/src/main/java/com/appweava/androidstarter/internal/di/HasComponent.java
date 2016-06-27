@@ -6,7 +6,7 @@ package com.appweava.androidstarter.internal.di;
  * Interface for clients that contain a dependency injection component that requests said
  * component.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

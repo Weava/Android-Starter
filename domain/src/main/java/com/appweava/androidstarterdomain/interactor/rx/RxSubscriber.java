@@ -8,7 +8,7 @@ import rx.Subscriber;
  * Extension class for {@link Subscriber} to work with {@link RxCallback}. Makes creating
  * subscribers with callback functionality much simpler.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

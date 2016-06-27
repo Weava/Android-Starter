@@ -19,6 +19,7 @@ This starter project includes the following libraries:
 Before you get started on creating your own application from this starter project, make sure you do the following:
  * Modify the package name in both the project level build.gradle file and AndroidManifest.xml files in the data and app modules.
  You should also re-name the source set packages to match.
+ * Change the applicationId and update all build tool and dependency versions to latest. 
  * Do a find and replace for the following tag `<a href="mailto:aaron@appweava.com">Aaron Weaver</a>` with 
  `<a href="mailto:<your-email>"><your-name></a>` unless you want people to e-mail me about bugs in your app.
  (You'll also want to do a find and replace for the date)

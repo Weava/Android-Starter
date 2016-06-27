@@ -6,7 +6,7 @@ package com.appweava.androidstarter.base;
  * Presenter class from which all presenters should inherit. This contains common interface methods
  * that will likely be used by many presenters.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

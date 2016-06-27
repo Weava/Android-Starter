@@ -18,7 +18,7 @@ import butterknife.Unbinder;
  * <p>
  * Base class containing common functionality for most {@link Fragment}s
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

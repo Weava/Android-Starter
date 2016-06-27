@@ -20,7 +20,7 @@ import butterknife.Unbinder;
  * Abstract base activity class containing common functionality for most
  * {@link android.app.Activity}s
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @date 6/25/16
  * @since 1.0.0
  */

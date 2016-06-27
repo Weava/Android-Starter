@@ -10,7 +10,7 @@ import javax.inject.Scope;
  * <p>
  * Scoping annotation to conform dependencies to an activity specific lifetime.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

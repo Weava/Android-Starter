@@ -17,7 +17,7 @@ import dagger.Component;
  * Top level component for DI graph containing all application dependencies. Lifetime lasts for
  * all of application lifetime.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

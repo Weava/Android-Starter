@@ -5,7 +5,7 @@ package com.appweava.androidstarter.base.drawer;
  * <p>
  * View operations for the nav drawer.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */

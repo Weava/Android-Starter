@@ -13,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
  * <p>
  * Singleton reference to the UI thread.
  *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
+ * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/26/16
  */
