@@ -41,7 +41,7 @@ Before you get started on creating your own application from this starter projec
      
  * Customize the `AppTheme` to whatever you desire, or modify the `colors.xml` file to get a new palette going.
  * Setup the `nav_header.xml` and `drawer_menu.xml` layouts to your own specs.
- * Either delete the `feature` package in each module, or use it as a guideline for your MVP design.
+ * Either delete the `feature` package in each module, or use it as a guideline for your application flow.
  * Code away!
  
 ### What can I do with this repo?
