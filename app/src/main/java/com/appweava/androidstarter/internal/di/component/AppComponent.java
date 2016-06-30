@@ -4,8 +4,10 @@ import android.content.Context;
 
 import com.appweava.androidstarter.base.BaseActivity;
 import com.appweava.androidstarter.internal.di.module.AppModule;
+import com.appweava.androidstarter.navigation.Navigator;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 import com.appweava.androidstarterdomain.executor.ThreadExecutor;
+import com.appweava.androidstarterdomain.feature.MvpRepository;
 
 import javax.inject.Singleton;
 
@@ -30,4 +32,6 @@ public interface AppComponent {
     Context context();
     ThreadExecutor threadExecutor();
     PostExecutionThread postExecutionThread();
+    MvpRepository mvpRepository();
+    Navigator navigator();
 }

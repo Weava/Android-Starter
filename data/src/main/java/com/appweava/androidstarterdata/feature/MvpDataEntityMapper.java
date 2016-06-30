@@ -6,6 +6,9 @@ import com.appweava.androidstarterdomain.feature.MvpModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * MvpDataEntityMapper
  * <p>
@@ -15,7 +18,11 @@ import java.util.List;
  * @version 1.0.0
  * @since 6/26/16
  */
+@Singleton
 public class MvpDataEntityMapper implements EntityMapper<MvpDataEntity, MvpModel> {
+
+    @Inject
+    public MvpDataEntityMapper() {}
 
     @Override
     public MvpModel transform(MvpDataEntity entity) {

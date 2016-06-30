@@ -1,6 +1,10 @@
-package com.appweava.androidstarter.feature;
+package com.appweava.androidstarter.feature.presenter;
 
 import com.appweava.androidstarter.base.BasePresenter;
+import com.appweava.androidstarterdomain.feature.MvpModel;
+import com.appweava.androidstarterdomain.interactor.rx.RxCallback;
+
+import java.util.List;
 
 /**
  * MvpPresenter
@@ -14,4 +18,6 @@ import com.appweava.androidstarter.base.BasePresenter;
 public interface MvpPresenter extends BasePresenter {
 
     void init();
+
+    void getMvpList(RxCallback<List<MvpModel>> mvpCallback);
 }

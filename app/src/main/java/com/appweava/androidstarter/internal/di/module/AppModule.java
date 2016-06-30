@@ -5,8 +5,10 @@ import android.content.Context;
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.UiThread;
 import com.appweava.androidstarterdata.executor.JobExecutor;
+import com.appweava.androidstarterdata.feature.repository.MvpDataRepository;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 import com.appweava.androidstarterdomain.executor.ThreadExecutor;
+import com.appweava.androidstarterdomain.feature.MvpRepository;
 
 import javax.inject.Singleton;
 
@@ -46,5 +48,11 @@ public class AppModule {
     @Provides
     PostExecutionThread providePostExecutionThread(UiThread uiThread) {
         return uiThread;
+    }
+
+    @Singleton
+    @Provides
+    MvpRepository provideMvpRepository(MvpDataRepository mvpDataRepository) {
+        return mvpDataRepository;
     }
 }

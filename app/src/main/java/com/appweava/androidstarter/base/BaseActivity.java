@@ -9,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.appweava.androidstarter.R;
+import com.appweava.androidstarter.StarterApp;
+import com.appweava.androidstarter.navigation.Navigator;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +30,9 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @Inject
+    protected Navigator mNavigator;
+
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
 
@@ -36,6 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
+
+        StarterApp.getInstance().getAppComponent().inject(this);
 
         mUnbinder = ButterKnife.bind(this);
 
