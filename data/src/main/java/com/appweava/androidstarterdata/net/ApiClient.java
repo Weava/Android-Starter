@@ -17,7 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * ApiClient
  * <p>
- * Class description here
+ * Simple client for instantiating {@link Retrofit} instances. Should only call initApi().
+ *
+ * @see Retrofit
+ * @see OkHttpClient
+ * @see Cache
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -28,6 +32,15 @@ public final class ApiClient {
     private static final int CACHE_SIZE = 1024 * 1024 * 10;
     private static final String CACHE_FILE_PATH = "cache";
 
+    /**
+     * Initialize a {@link Retrofit} instance from baseUrl.
+     * Must be created by calling class.
+     *
+     * @param baseUrl
+     *      The base url for the API
+     * @return
+     *      The retrofit instance to be created
+     */
     public static Retrofit initApi(String baseUrl) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -37,6 +50,12 @@ public final class ApiClient {
                 .build();
     }
 
+    /**
+     * Create an {@link OkHttpClient} for a {@link Retrofit} instance.
+     *
+     * @return
+     *      {@link OkHttpClient} for retrofit instance
+     */
     private static OkHttpClient getClient() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .cache(getCache())
@@ -48,12 +67,24 @@ public final class ApiClient {
         return client;
     }
 
+    /**
+     * Return a cache implementation for a networking client.
+     *
+     * @return
+     *      {@link Cache} mechanism for a netowrk client
+     */
     private static Cache getCache() {
         File file = new File(CACHE_FILE_PATH);
         Cache cache = new Cache(file, CACHE_SIZE);
         return cache;
     }
 
+    /**
+     * Network interceptor for adding a cache control header. Allows for caching to occur
+     * upon making a network request, even if response did not have Cache-Control.
+     *
+     * <p>Type: {@link Interceptor}</p>
+     */
     private static final Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {

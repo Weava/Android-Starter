@@ -10,7 +10,7 @@ import dagger.Provides;
 /**
  * ActivityModule
  * <p>
- * Class description here
+ * Module containing dependencies that are core to every activity within this application.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

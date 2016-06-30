@@ -58,7 +58,7 @@ public class JobExecutor implements ThreadExecutor {
     }
 
     /**
-     * Create a new thread.
+     * Creates a new thread.
      */
     private static class JobThreadFactory implements ThreadFactory {
         private static final String THREAD_NAME = "android_";

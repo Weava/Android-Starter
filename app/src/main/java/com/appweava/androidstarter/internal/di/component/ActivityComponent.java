@@ -11,7 +11,7 @@ import dagger.Component;
 /**
  * ActivityComponent
  * <p>
- * Class description here
+ * Component containing DI graph setup for basic activity dependencies.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

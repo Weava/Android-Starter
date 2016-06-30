@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 /**
  * Navigator
  * <p>
- * Class description here
+ * Handles all intent based navigation throughout the application.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

@@ -10,7 +10,7 @@ import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
 /**
  * MainActivity
  * <p>
- * Class description here
+ * Can be whatever you want it to be. #Imagination
  *
  * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
