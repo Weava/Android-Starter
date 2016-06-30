@@ -24,9 +24,24 @@ Before you get started on creating your own application from this starter projec
  `<a href="mailto:<your-email>"><your-name></a>` unless you want people to e-mail me about bugs in your app.
  (You'll also want to do a find and replace for the date)
  * Remove any files you deem unnecessary (Don't need a drawer? Delete drawer related files)
+ * Modify the Git remote to point to your repository:
+ 
+    ```
+    git remote remove origin
+    git remote add origin '<your-url-here>'
+    ```
+ * Remove Git history with the following commands:
+ 
+     ```
+     git rebase --root -i
+     git commit --amend -m "<first-commit-message>"
+     git push --force
+     git fetch --prune
+     ```
+     
  * Customize the `AppTheme` to whatever you desire, or modify the `colors.xml` file to get a new palette going.
  * Setup the `nav_header.xml` and `drawer_menu.xml` layouts to your own specs.
- * Either delete the `feature` package in the app module, or use it as a guideline for your MVP design.
+ * Either delete the `feature` package in each module, or use it as a guideline for your application flow.
  * Code away!
  
 ### What can I do with this repo?
@@ -35,6 +50,13 @@ Fork it, modify it in any way you want, I don't care what you do.
 You don't even have to give me credit (It would be appreciated though :) )
 
 If you have any issues with this starter project, or would like to make suggestions, e-mail me at [aaron@appweava.com](mailto:aaron@appweava.com)
+
+### Future plans
+
+* The `feature` package should have a good example of how to design your application flow within each module.
+* Testing examples would be setup for each unit within the `feature` package. This would establish a small
+  guide on how to write unit tests throughout your own application.
+* Create a more descriptive readme that would have a more in-depth discussion on how this app is structured.
 
 ### Special thanks
 
