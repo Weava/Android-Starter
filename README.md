@@ -49,7 +49,8 @@ Before you get started on creating your own application from this starter projec
 Fork it, modify it in any way you want, I don't care what you do. 
 You don't even have to give me credit (It would be appreciated though :) )
 
-If you have any issues with this starter project, or would like to make suggestions, e-mail me at [aaron@appweava.com](mailto:aaron@appweava.com)
+If you have any issues with this starter project, or would like to make suggestions, start a discussion in the
+issues.
 
 ### Future plans
 
