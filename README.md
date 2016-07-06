@@ -53,10 +53,12 @@ If you have any issues with this starter project, or would like to make suggesti
 
 ### Future plans
 
-* The `feature` package should have a good example of how to design your application flow within each module.
-* Testing examples would be setup for each unit within the `feature` package. This would establish a small
+* ~~The `feature` package should have a good example of how to design your application flow within each module.~~
+* Alongside the `feature` package, I would like to implement an example of user account log-in/sign-up, as these operations are common. This would appear in a `user` package.
+* Testing examples would be setup for each unit within the `feature` and `user` packages. This would establish a small
   guide on how to write unit tests throughout your own application.
 * Create a more descriptive readme that would have a more in-depth discussion on how this app is structured.
+* Comments. Comments. Comments.
 
 ### Special thanks
 
