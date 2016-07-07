@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature;
+package com.appweava.androidstarter.feature.view;
 
 /**
  * MvpView
@@ -16,4 +16,6 @@ public interface MvpView {
     void hideProgressBar();
 
     void doSomeOtherViewStuff();
+
+
 }

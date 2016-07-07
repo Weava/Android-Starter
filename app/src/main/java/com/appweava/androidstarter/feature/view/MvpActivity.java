@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature;
+package com.appweava.androidstarter.feature.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,16 +7,12 @@ import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
+import com.appweava.androidstarter.feature.DaggerMvpComponent;
+import com.appweava.androidstarter.feature.MvpModule;
 import com.appweava.androidstarter.feature.presenter.MvpPresenterImpl;
 import com.appweava.androidstarter.internal.di.module.ActivityModule;
-import com.appweava.androidstarterdomain.feature.MvpModel;
-import com.appweava.androidstarterdomain.interactor.rx.RxCallback;
-
-import java.util.List;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 /**
  * MvpActivity
@@ -27,7 +23,7 @@ import timber.log.Timber;
  * @version 1.0.0
  * @since 6/26/16
  */
-public class MvpActivity extends BaseDrawerActivity implements MvpView, RxCallback<List<MvpModel>> {
+public class MvpActivity extends BaseDrawerActivity implements MvpView {
     
     public static Intent getCallingIntent(Context context) {
         Intent intent = new Intent(context, MvpActivity.class);
@@ -41,13 +37,17 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView, RxCallba
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        injectComponent();
+
+        mMvpPresenter.getMvpList();
+    }
+
+    private void injectComponent() {
         DaggerMvpComponent.builder()
                 .appComponent(StarterApp.getInstance().getAppComponent())
                 .activityModule(new ActivityModule(this))
                 .mvpModule(new MvpModule())
                 .build().inject(this);
-
-        mMvpPresenter.getMvpList(this);
     }
 
     @Override
@@ -63,17 +63,5 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView, RxCallba
     @Override
     public void doSomeOtherViewStuff() {
 
-    }
-
-    @Override
-    public void onDataReady(List<MvpModel> item) {
-        for (MvpModel mvpModel : item) {
-            Timber.tag("Mvp Activity").i("Model: %s", mvpModel.getSomeField());
-        }
-    }
-
-    @Override
-    public void onDataError(Throwable t) {
-        Timber.tag("Mvp Activity Error").e("%s", t.getMessage());
     }
 }

@@ -1,4 +1,4 @@
-package com.appweava.androidstarterdomain.feature;
+package com.appweava.androidstarter.feature.model;
 
 /**
  * MvpModel
@@ -7,13 +7,13 @@ package com.appweava.androidstarterdomain.feature;
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
- * @since 6/26/16
+ * @since 7/6/16
  */
-public class MvpModel {
+public class MvpDataModel {
 
     private String someField;
 
-    public MvpModel(String someField) {
+    public MvpDataModel(String someField) {
         this.someField = someField;
     }
 
