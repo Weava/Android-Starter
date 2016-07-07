@@ -1,5 +1,6 @@
 package com.appweava.androidstarter.feature;
 
+import com.appweava.androidstarter.feature.view.MvpActivity;
 import com.appweava.androidstarter.internal.di.ActivityScope;
 import com.appweava.androidstarter.internal.di.component.ActivityComponent;
 import com.appweava.androidstarter.internal.di.component.AppComponent;

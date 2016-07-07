@@ -2,9 +2,11 @@ package com.appweava.androidstarter.feature.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.appweava.androidstarter.feature.MvpView;
+import com.appweava.androidstarter.feature.model.MvpDataModel;
+import com.appweava.androidstarter.feature.model.MvpDataModelMapper;
+import com.appweava.androidstarter.feature.view.MvpView;
 import com.appweava.androidstarter.internal.di.ActivityScope;
-import com.appweava.androidstarterdomain.feature.MvpModel;
+import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.interactor.UseCase;
 import com.appweava.androidstarterdomain.interactor.rx.RxCallback;
 import com.appweava.androidstarterdomain.interactor.rx.RxSubscriber;
@@ -12,6 +14,8 @@ import com.appweava.androidstarterdomain.interactor.rx.RxSubscriber;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 /**
  * MvpPresenter
@@ -23,18 +27,21 @@ import javax.inject.Inject;
  * @since 6/26/16
  */
 @ActivityScope
-public class MvpPresenterImpl implements MvpPresenter {
+public class MvpPresenterImpl implements MvpPresenter, RxCallback<List<MvpData>> {
 
-    private MvpView mMvpView;
-    private UseCase mMvpUseCase;
+    private MvpView mvpView;
+    private UseCase mvpUseCase;
+
+    @Inject
+    MvpDataModelMapper modelMapper;
 
     @Inject
     public MvpPresenterImpl(UseCase mvpUseCase) {
-        mMvpUseCase = mvpUseCase;
+        mvpUseCase = mvpUseCase;
     }
 
     public void setView(@NonNull MvpView mvpView) {
-        mMvpView = mvpView;
+        mvpView = mvpView;
     }
 
     @Override
@@ -58,7 +65,20 @@ public class MvpPresenterImpl implements MvpPresenter {
     }
 
     @Override
-    public void getMvpList(RxCallback<List<MvpModel>> mvpCallback) {
-        mMvpUseCase.execute(new RxSubscriber<>(mvpCallback));
+    public void getMvpList() {
+        mvpUseCase.execute(new RxSubscriber<>(this));
+    }
+
+    @Override
+    public void onDataReady(List<MvpData> data) {
+        List<MvpDataModel> mvpDataModels = modelMapper.transformFromDomain(data);
+        for (MvpDataModel mvpModel : mvpDataModels) {
+            Timber.tag("Mvp Activity").i("Model: %s", mvpModel.getSomeField());
+        }
+    }
+
+    @Override
+    public void onDataError(Throwable t) {
+        Timber.tag("Mvp Activity Error").e("%s", t.getMessage());
     }
 }

@@ -11,7 +11,7 @@ package com.appweava.androidstarterdomain.interactor.rx;
  */
 public interface RxCallback<T> {
 
-    void onDataReady(T item);
+    void onDataReady(T data);
 
     void onDataError(Throwable t);
 }

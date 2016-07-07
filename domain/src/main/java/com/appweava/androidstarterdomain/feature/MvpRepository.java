@@ -15,5 +15,5 @@ import rx.Observable;
  */
 public interface MvpRepository {
 
-    Observable<List<MvpModel>> getMvpModelList();
+    Observable<List<MvpData>> getMvpModelList();
 }

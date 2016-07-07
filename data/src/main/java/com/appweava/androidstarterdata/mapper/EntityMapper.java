@@ -19,9 +19,9 @@ public interface EntityMapper<F, T> {
      * @param entity
      *      The entity to be transformed
      * @return
-     *      The entity transformed to
+     *      The model transformed to
      */
-    T transform(F entity);
+    T transformToDomain(F entity);
 
     /**
      * Convert multiple entities into another list.
@@ -29,7 +29,27 @@ public interface EntityMapper<F, T> {
      * @param entities
      *      The list of entities to be transformed
      * @return
-     *      A list of transformed entities
+     *      A list of transformed models
      */
-    List<T> transform(List<F> entities);
+    List<T> transformToDomain(List<F> entities);
+
+    /**
+     * Convert a single domain model into data entity.
+     *
+     * @param model
+     *      The model to be transformed into an entity
+     * @return
+     *      A transformed entity
+     */
+    F transformFromDomain(T entity);
+
+    /**
+     * Convert multiple domain models into data entities.
+     *
+     * @param models
+     *      The list of models to transformToDomain
+     * @return
+     *      The list of entities transformed from models
+     */
+    List<F> transformFromDomain(List<T> entities);
 }

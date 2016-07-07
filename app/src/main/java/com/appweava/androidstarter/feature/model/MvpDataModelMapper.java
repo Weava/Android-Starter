@@ -1,10 +1,13 @@
 package com.appweava.androidstarter.feature.model;
 
+import com.appweava.androidstarter.internal.di.ActivityScope;
 import com.appweava.androidstarterdata.mapper.EntityMapper;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * MvpModelMapper
@@ -15,7 +18,11 @@ import java.util.List;
  * @version 1.0.0
  * @since 7/6/16
  */
+@ActivityScope
 public class MvpDataModelMapper implements EntityMapper<MvpDataModel, MvpData> {
+
+    @Inject
+    public MvpDataModelMapper() {}
 
     @Override
     public MvpData transformToDomain(MvpDataModel entity) {

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
@@ -41,8 +42,9 @@ public abstract class BaseDrawerActivity extends BaseActivity implements DrawerV
             //TODO: Set icon for drawer menu
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+            // Setting the status bar to transparent color for a nice looking material drawer.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(getResources().getColor(android.R.color.transparent));
+                getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
             }
         }
     }
