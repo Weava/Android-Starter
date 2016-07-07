@@ -49,14 +49,17 @@ Before you get started on creating your own application from this starter projec
 Fork it, modify it in any way you want, I don't care what you do. 
 You don't even have to give me credit (It would be appreciated though :) )
 
-If you have any issues with this starter project, or would like to make suggestions, e-mail me at [aaron@appweava.com](mailto:aaron@appweava.com)
+If you have any issues with this starter project, or would like to make suggestions, start a discussion in the
+issues.
 
 ### Future plans
 
-* The `feature` package should have a good example of how to design your application flow within each module.
-* Testing examples would be setup for each unit within the `feature` package. This would establish a small
+* ~~The `feature` package should have a good example of how to design your application flow within each module.~~
+* Alongside the `feature` package, I would like to implement an example of user account log-in/sign-up, as these operations are common. This would appear in a `user` package.
+* Testing examples would be setup for each unit within the `feature` and `user` packages. This would establish a small
   guide on how to write unit tests throughout your own application.
 * Create a more descriptive readme that would have a more in-depth discussion on how this app is structured.
+* Comments. Comments. Comments.
 
 ### Special thanks
 
