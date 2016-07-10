@@ -31,13 +31,12 @@ public class MvpPresenterImpl implements MvpPresenter, RxCallback<List<MvpData>>
 
     private MvpView mvpView;
     private UseCase mvpUseCase;
+    private MvpDataModelMapper modelMapper;
 
     @Inject
-    MvpDataModelMapper modelMapper;
-
-    @Inject
-    public MvpPresenterImpl(UseCase mvpUseCase) {
-        mvpUseCase = mvpUseCase;
+    public MvpPresenterImpl(UseCase useCase, MvpDataModelMapper mapper) {
+        this.mvpUseCase = useCase;
+        modelMapper = mapper;
     }
 
     /**

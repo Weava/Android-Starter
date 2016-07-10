@@ -31,6 +31,10 @@ android {
             applicationIdSuffix '.debug'
         }
     }
+
+    configurations.all {
+        resolutionStrategy.force 'com.android.support:support-annotations:22.2.0'
+    }
 }
 
 dependencies {
@@ -60,7 +64,7 @@ dependencies {
     androidTestCompile appTestDependencies.dexmaker
     androidTestCompile appTestDependencies.dexmakerMockito
     androidTestCompile appTestDependencies.espresso
-    androidTestCompile appTestDependencies.testingSupportLib
+    //androidTestCompile appTestDependencies.testingSupportLib
 
     /* Development */
     debugCompile devDependencies.leakCanary

@@ -29,7 +29,7 @@ public class MvpDataStoreFactory {
      *      {@link MvpDataStore} implementation determined
      */
     public MvpDataStore create() {
-        return getCloudStore();
+        return createCloudStore();
     }
 
     /**
@@ -38,7 +38,7 @@ public class MvpDataStoreFactory {
      * @return
      *      {@link CloudMvpDataStore} instance
      */
-    private CloudMvpDataStore getCloudStore() {
+    public MvpDataStore createCloudStore() {
         MvpApi api = new MvpApiImpl();
 
         return new CloudMvpDataStore(api);
