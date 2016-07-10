@@ -1,7 +1,7 @@
 package com.appweava.androidstarter.test.feature;
 
-import com.appweava.androidstarter.test.feature.model.MvpDataModel;
-import com.appweava.androidstarter.test.feature.model.MvpDataModelMapper;
+import com.appweava.androidstarter.feature.model.MvpDataModel;
+import com.appweava.androidstarter.feature.model.MvpDataModelMapper;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
 import junit.framework.TestCase;

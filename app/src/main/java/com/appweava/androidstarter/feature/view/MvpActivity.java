@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
-import com.appweava.androidstarter.test.feature.DaggerMvpComponent;
+import com.appweava.androidstarter.feature.DaggerMvpComponent;
 import com.appweava.androidstarter.feature.MvpComponent;
 import com.appweava.androidstarter.feature.MvpModule;
 import com.appweava.androidstarter.feature.presenter.MvpPresenterImpl;

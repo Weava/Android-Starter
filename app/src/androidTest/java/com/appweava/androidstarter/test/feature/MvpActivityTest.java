@@ -3,7 +3,7 @@ package com.appweava.androidstarter.test.feature;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.appweava.androidstarter.test.feature.view.MvpActivity;
+import com.appweava.androidstarter.feature.view.MvpActivity;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

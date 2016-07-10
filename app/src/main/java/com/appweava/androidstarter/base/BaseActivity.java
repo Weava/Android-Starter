@@ -31,7 +31,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Inject
-    protected Navigator mNavigator;
+    protected Navigator navigator;
 
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;

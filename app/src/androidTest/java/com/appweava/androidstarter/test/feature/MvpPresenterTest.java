@@ -2,9 +2,9 @@ package com.appweava.androidstarter.test.feature;
 
 import android.test.AndroidTestCase;
 
-import com.appweava.androidstarter.test.feature.model.MvpDataModelMapper;
-import com.appweava.androidstarter.test.feature.presenter.MvpPresenterImpl;
-import com.appweava.androidstarter.test.feature.view.MvpView;
+import com.appweava.androidstarter.feature.model.MvpDataModelMapper;
+import com.appweava.androidstarter.feature.presenter.MvpPresenterImpl;
+import com.appweava.androidstarter.feature.view.MvpView;
 import com.appweava.androidstarterdomain.feature.MvpUseCase;
 
 import org.mockito.Mock;

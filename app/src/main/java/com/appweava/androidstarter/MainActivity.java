@@ -27,6 +27,6 @@ public class MainActivity extends BaseDrawerActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mNavigator.navigateToMvpActivity(this);
+        navigator.navigateToMvpActivity(this);
     }
 }
