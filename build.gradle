@@ -50,6 +50,6 @@ task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests']) {
     description 'Run unit tests for both domain and data layers.'
 }
 
-task runAcceptanceTests(dependsOn: [':presentation:connectedAndroidTest']) {
+task runAcceptanceTests(dependsOn: [':app:connectedAndroidTest']) {
     description 'Run application acceptance tests.'
 }

@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature.view;
+package com.appweava.androidstarter.test.feature.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +7,10 @@ import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
-import com.appweava.androidstarter.feature.DaggerMvpComponent;
-import com.appweava.androidstarter.feature.MvpComponent;
-import com.appweava.androidstarter.feature.MvpModule;
-import com.appweava.androidstarter.feature.presenter.MvpPresenterImpl;
+import com.appweava.androidstarter.test.feature.DaggerMvpComponent;
+import com.appweava.androidstarter.test.feature.MvpComponent;
+import com.appweava.androidstarter.test.feature.MvpModule;
+import com.appweava.androidstarter.test.feature.presenter.MvpPresenterImpl;
 import com.appweava.androidstarter.internal.di.module.ActivityModule;
 
 import javax.inject.Inject;

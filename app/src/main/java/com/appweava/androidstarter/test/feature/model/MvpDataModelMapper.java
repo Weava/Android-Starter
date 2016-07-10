@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature.model;
+package com.appweava.androidstarter.test.feature.model;
 
 import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdata.mapper.EntityMapper;

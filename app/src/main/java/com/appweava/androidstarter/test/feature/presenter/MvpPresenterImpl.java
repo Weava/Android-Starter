@@ -1,10 +1,10 @@
-package com.appweava.androidstarter.feature.presenter;
+package com.appweava.androidstarter.test.feature.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.appweava.androidstarter.feature.model.MvpDataModel;
-import com.appweava.androidstarter.feature.model.MvpDataModelMapper;
-import com.appweava.androidstarter.feature.view.MvpView;
+import com.appweava.androidstarter.test.feature.model.MvpDataModel;
+import com.appweava.androidstarter.test.feature.model.MvpDataModelMapper;
+import com.appweava.androidstarter.test.feature.view.MvpView;
 import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.interactor.UseCase;

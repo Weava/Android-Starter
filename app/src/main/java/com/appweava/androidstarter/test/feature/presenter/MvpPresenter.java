@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature.presenter;
+package com.appweava.androidstarter.test.feature.presenter;
 
 import com.appweava.androidstarter.base.BasePresenter;
 import com.appweava.androidstarterdomain.feature.MvpData;

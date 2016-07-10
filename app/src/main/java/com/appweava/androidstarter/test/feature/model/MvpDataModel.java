@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.feature.model;
+package com.appweava.androidstarter.test.feature.model;
 
 import com.appweava.androidstarterdomain.feature.MvpData;
 
