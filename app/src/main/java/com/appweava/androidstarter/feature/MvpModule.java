@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.test.feature;
+package com.appweava.androidstarter.feature;
 
 import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;

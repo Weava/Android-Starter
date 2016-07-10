@@ -1,6 +1,6 @@
-package com.appweava.androidstarter.test.feature;
+package com.appweava.androidstarter.feature;
 
-import com.appweava.androidstarter.test.feature.view.MvpActivity;
+import com.appweava.androidstarter.feature.view.MvpActivity;
 import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarter.internal.di.component.ActivityComponent;
 import com.appweava.androidstarter.internal.di.component.AppComponent;

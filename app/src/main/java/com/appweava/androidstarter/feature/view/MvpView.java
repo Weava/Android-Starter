@@ -1,4 +1,4 @@
-package com.appweava.androidstarter.test.feature.view;
+package com.appweava.androidstarter.feature.view;
 
 /**
  * MvpView
