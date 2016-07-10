@@ -18,9 +18,9 @@ import javax.inject.Inject;
 import timber.log.Timber;
 
 /**
- * MvpPresenter
+ * MvpPresenterImpl
  * <p>
- * Class description here
+ * Implementation {@link MvpPresenter}.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -40,6 +40,12 @@ public class MvpPresenterImpl implements MvpPresenter, RxCallback<List<MvpData>>
         mvpUseCase = mvpUseCase;
     }
 
+    /**
+     * Set the view this presenter will present to.
+     *
+     * @param mvpView
+     *      The view to be set
+     */
     public void setView(@NonNull MvpView mvpView) {
         mvpView = mvpView;
     }
@@ -56,11 +62,6 @@ public class MvpPresenterImpl implements MvpPresenter, RxCallback<List<MvpData>>
 
     @Override
     public void pause() {
-
-    }
-
-    @Override
-    public void init() {
 
     }
 

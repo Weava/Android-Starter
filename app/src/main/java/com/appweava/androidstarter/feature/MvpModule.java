@@ -13,7 +13,7 @@ import dagger.Provides;
 /**
  * MvpModule
  * <p>
- * Class description here
+ * Module providing dependencies to Mvp featureset.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

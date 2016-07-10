@@ -3,7 +3,7 @@ package com.appweava.androidstarterdomain.feature;
 /**
  * MvpModel
  * <p>
- * Class description here
+ * Simple POJO containing data for an MVP object.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

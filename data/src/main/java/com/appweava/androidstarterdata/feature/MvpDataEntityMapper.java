@@ -12,7 +12,8 @@ import javax.inject.Singleton;
 /**
  * MvpDataEntityMapper
  * <p>
- * Class description here
+ * Implementation of {@link EntityMapper} that maps {@link MvpDataEntity} to {@link MvpData} and
+ * vice versa.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

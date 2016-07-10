@@ -11,7 +11,7 @@ import rx.Observable;
 /**
  * MvpUseCase
  * <p>
- * Class description here
+ * {@link UseCase} implementation for getting MvpItems.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

@@ -11,7 +11,7 @@ import dagger.Component;
 /**
  * MvpComponent
  * <p>
- * Class description here
+ * {@link Component} containing dependency graph information for Mvp featureset.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

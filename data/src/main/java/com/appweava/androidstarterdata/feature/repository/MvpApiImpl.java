@@ -11,7 +11,7 @@ import rx.Observable;
 /**
  * MvpApiImpl
  * <p>
- * Class description here
+ * Mock implementation of the {@link MvpApi}. Gets data locally for debug purposes.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

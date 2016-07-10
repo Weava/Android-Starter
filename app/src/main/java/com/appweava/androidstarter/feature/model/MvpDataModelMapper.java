@@ -12,7 +12,9 @@ import javax.inject.Inject;
 /**
  * MvpModelMapper
  * <p>
- * Class description here
+ * Maps a {@link MvpData} to a {@link MvpDataModel} and vice versa.
+ *
+ * @see EntityMapper
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

@@ -9,7 +9,7 @@ import rx.Observable;
 /**
  * MvpDataStore
  * <p>
- * Class description here
+ * Interface containing functions for retrieving items from any data store.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

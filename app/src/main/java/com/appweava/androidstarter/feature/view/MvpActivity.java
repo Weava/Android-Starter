@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
 import com.appweava.androidstarter.feature.DaggerMvpComponent;
+import com.appweava.androidstarter.feature.MvpComponent;
 import com.appweava.androidstarter.feature.MvpModule;
 import com.appweava.androidstarter.feature.presenter.MvpPresenterImpl;
 import com.appweava.androidstarter.internal.di.module.ActivityModule;
@@ -17,7 +18,7 @@ import javax.inject.Inject;
 /**
  * MvpActivity
  * <p>
- * Class description here
+ * Activity pertaining to mvp feature.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -42,6 +43,9 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView {
         mvpPresenter.getMvpList();
     }
 
+    /**
+     * Using Dagger 2, inject {@link MvpComponent} dependencies into this activity.
+     */
     private void injectComponent() {
         DaggerMvpComponent.builder()
                 .appComponent(StarterApp.getInstance().getAppComponent())

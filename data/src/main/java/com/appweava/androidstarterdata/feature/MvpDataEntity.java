@@ -1,9 +1,11 @@
 package com.appweava.androidstarterdata.feature;
 
+import com.appweava.androidstarterdomain.feature.MvpData;
+
 /**
  * MvpDataEntity
  * <p>
- * Class description here
+ * Representation of {@link MvpData} for the data layer.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

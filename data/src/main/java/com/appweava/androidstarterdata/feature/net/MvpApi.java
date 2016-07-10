@@ -9,7 +9,7 @@ import rx.Observable;
 /**
  * MvpApi
  * <p>
- * Class description here
+ * API interface for getting {@link MvpDataEntity}
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

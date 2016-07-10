@@ -1,9 +1,11 @@
 package com.appweava.androidstarter.feature.model;
 
+import com.appweava.androidstarterdomain.feature.MvpData;
+
 /**
  * MvpModel
  * <p>
- * Class description here
+ * A POJO containing information for a {@link MvpData} in the presentation layer.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

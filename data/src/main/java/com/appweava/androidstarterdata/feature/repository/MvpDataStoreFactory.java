@@ -1,6 +1,7 @@
 package com.appweava.androidstarterdata.feature.repository;
 
 import com.appweava.androidstarterdata.feature.net.MvpApi;
+import com.appweava.androidstarterdomain.feature.MvpRepository;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -8,7 +9,8 @@ import javax.inject.Singleton;
 /**
  * MvpDataStoreFactory
  * <p>
- * Class description here
+ * Factory class for making the right {@link MvpDataStore} needed for any {@link MvpRepository}
+ * implementation.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -20,10 +22,22 @@ public class MvpDataStoreFactory {
     @Inject
     public MvpDataStoreFactory() {}
 
+    /**
+     * Create an instance of {@link MvpDataStore}, determining which implementation is needed.
+     *
+     * @return
+     *      {@link MvpDataStore} implementation determined
+     */
     public MvpDataStore create() {
         return getCloudStore();
     }
 
+    /**
+     * Create a {@link CloudMvpDataStore} instance.
+     *
+     * @return
+     *      {@link CloudMvpDataStore} instance
+     */
     private CloudMvpDataStore getCloudStore() {
         MvpApi api = new MvpApiImpl();
 

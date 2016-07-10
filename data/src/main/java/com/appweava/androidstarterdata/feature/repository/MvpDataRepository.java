@@ -17,7 +17,7 @@ import rx.functions.Func1;
 /**
  * MvpDataRepository
  * <p>
- * Class description here
+ * Implementation of {@link MvpRepository}.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

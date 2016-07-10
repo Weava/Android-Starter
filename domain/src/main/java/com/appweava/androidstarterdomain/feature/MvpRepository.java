@@ -7,7 +7,7 @@ import rx.Observable;
 /**
  * MvpRepository
  * <p>
- * Class description here
+ * Interface containing methods that will declare what data to retrieve.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

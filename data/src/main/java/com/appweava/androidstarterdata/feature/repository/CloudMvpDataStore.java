@@ -10,7 +10,12 @@ import rx.Observable;
 /**
  * CloudMvpDataRepository
  * <p>
- * Class description here
+ * {@link MvpDataStore} containing information on how to get {@link MvpDataEntity} from
+ * ~*~THE CLOUD~*~
+ *
+ * <p>
+ * There might be other implementations for other datasources (Sqlite, cache, etc.). For this
+ * starter app, I only have Cloud Data Store implemented.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
