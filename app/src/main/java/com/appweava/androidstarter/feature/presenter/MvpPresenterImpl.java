@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.appweava.androidstarter.feature.model.MvpDataModel;
 import com.appweava.androidstarter.feature.model.MvpDataModelMapper;
 import com.appweava.androidstarter.feature.view.MvpView;
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.interactor.UseCase;
 import com.appweava.androidstarterdomain.interactor.rx.RxCallback;
@@ -26,7 +26,7 @@ import timber.log.Timber;
  * @version 1.0.0
  * @since 6/26/16
  */
-@ActivityScope
+@PerActivity
 public class MvpPresenterImpl implements MvpPresenter, RxCallback<List<MvpData>> {
 
     private MvpView mvpView;

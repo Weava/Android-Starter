@@ -29,10 +29,10 @@ import butterknife.BindView;
 public abstract class BaseDrawerActivity extends BaseActivity implements DrawerView {
 
     @BindView(R.id.drawer_layout)
-    protected DrawerLayout mDrawerLayout;
+    protected DrawerLayout drawerLayout;
 
     @BindView(R.id.nav_drawer)
-    protected NavigationView mNavigationView;
+    protected NavigationView navigationView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,8 +74,8 @@ public abstract class BaseDrawerActivity extends BaseActivity implements DrawerV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if (mDrawerLayout != null) {
-                    mDrawerLayout.openDrawer(GravityCompat.START);
+                if (drawerLayout != null) {
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
                 return true;
         }

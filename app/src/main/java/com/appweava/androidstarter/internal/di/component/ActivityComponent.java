@@ -2,7 +2,7 @@ package com.appweava.androidstarter.internal.di.component;
 
 import android.app.Activity;
 
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarter.internal.di.module.ActivityModule;
 import com.appweava.androidstarter.internal.di.module.AppModule;
 
@@ -17,7 +17,7 @@ import dagger.Component;
  * @version 1.0.0
  * @since 6/29/16
  */
-@ActivityScope
+@PerActivity
 @Component(dependencies = AppModule.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 

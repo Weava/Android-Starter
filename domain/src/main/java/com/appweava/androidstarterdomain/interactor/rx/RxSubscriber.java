@@ -14,10 +14,10 @@ import rx.Subscriber;
  */
 public class RxSubscriber<T> extends Subscriber<T> {
 
-    private RxCallback<T> mCallback;
+    private RxCallback<T> callback;
 
     public RxSubscriber(RxCallback<T> callback) {
-        mCallback = callback;
+        this.callback = callback;
     }
 
     @Override
@@ -29,11 +29,11 @@ public class RxSubscriber<T> extends Subscriber<T> {
 
     @Override
     public void onError(Throwable e) {
-        mCallback.onDataError(e);
+        callback.onDataError(e);
     }
 
     @Override
     public void onNext(T t) {
-        mCallback.onDataReady(t);
+        callback.onDataReady(t);
     }
 }

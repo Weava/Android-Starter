@@ -21,8 +21,8 @@ import timber.log.Timber;
  */
 public class StarterApp extends Application {
 
-    private static StarterApp mInstance;
-    private AppComponent mAppComponent;
+    private static StarterApp instance;
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -34,9 +34,9 @@ public class StarterApp extends Application {
             initReleaseAnalyticsTools();
         }
 
-        mAppComponent = initAppComponent();
+        appComponent = initAppComponent();
 
-        mInstance = this;
+        instance = this;
     }
 
     /**
@@ -62,6 +62,8 @@ public class StarterApp extends Application {
 
     private void initReleaseAnalyticsTools() {
         //TODO: Add release analytics tools
+        //Leak Canary has a no-op version for release builds.
+        LeakCanary.install(this);
     }
 
     /**
@@ -71,7 +73,7 @@ public class StarterApp extends Application {
      *      Singleton instance for {@link StarterApp}
      */
     public static StarterApp getInstance() {
-        return mInstance;
+        return instance;
     }
 
     /**
@@ -81,6 +83,6 @@ public class StarterApp extends Application {
      *      {@link AppComponent} to provide for dependent components
      */
     public AppComponent getAppComponent() {
-        return this.mAppComponent;
+        return this.appComponent;
     }
 }

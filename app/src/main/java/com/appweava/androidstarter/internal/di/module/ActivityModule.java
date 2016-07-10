@@ -2,7 +2,7 @@ package com.appweava.androidstarter.internal.di.module;
 
 import android.app.Activity;
 
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
@@ -19,15 +19,15 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
-    private final Activity mActivity;
+    private final Activity activity;
 
     public ActivityModule(Activity activity) {
-        mActivity = activity;
+        this.activity = activity;
     }
 
+    @PerActivity
     @Provides
-    @ActivityScope
     Activity provideActivity() {
-        return this.mActivity;
+        return this.activity;
     }
 }

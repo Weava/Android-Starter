@@ -1,7 +1,7 @@
 package com.appweava.androidstarter.feature;
 
 import com.appweava.androidstarter.feature.view.MvpActivity;
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarter.internal.di.component.ActivityComponent;
 import com.appweava.androidstarter.internal.di.component.AppComponent;
 import com.appweava.androidstarter.internal.di.module.ActivityModule;
@@ -17,7 +17,7 @@ import dagger.Component;
  * @version 1.0.0
  * @since 6/29/16
  */
-@ActivityScope
+@PerActivity
 @Component(dependencies = AppComponent.class, modules = { ActivityModule.class, MvpModule.class })
 public interface MvpComponent extends ActivityComponent {
     void inject(MvpActivity mvpActivity);

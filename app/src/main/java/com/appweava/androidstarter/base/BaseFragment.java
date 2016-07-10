@@ -24,7 +24,7 @@ import butterknife.Unbinder;
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected Unbinder mUnbinder;
+    protected Unbinder unbinder;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,14 +38,14 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View v = inflater.inflate(getLayoutRes(), container, false);
-        mUnbinder = ButterKnife.bind(this, v);
+        unbinder = ButterKnife.bind(this, v);
         return v;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mUnbinder.unbind();
+        unbinder.unbind();
     }
 
     /**

@@ -22,14 +22,14 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder<T>> {
 
-    protected List<T> mElements;
+    protected List<T> elements;
 
     public BaseRecyclerAdapter() {
-        mElements = new ArrayList<>();
+        elements = new ArrayList<>();
     }
 
     public BaseRecyclerAdapter(List<T> elements) {
-        mElements = elements;
+        this.elements = elements;
     }
 
     /**
@@ -39,7 +39,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      *      The element to add
      */
     public void add(T element) {
-        mElements.add(element);
+        elements.add(element);
         notifyItemInserted(getItemCount() - 1);
     }
 
@@ -50,7 +50,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      *      The elements to add
      */
     public void add(List<T> elements) {
-        mElements.addAll(elements);
+        this.elements.addAll(elements);
         notifyDataSetChanged();
     }
 
@@ -61,7 +61,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      *      The position from which to remove an item
      */
     public void remove(int position) {
-        mElements.remove(position);
+        elements.remove(position);
         notifyItemRemoved(position);
     }
 
@@ -72,7 +72,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      *      The elements to swap in
      */
     public void swapData(List<T> elements) {
-        mElements.clear();
+        this.elements.clear();
         add(elements);
     }
 
@@ -80,7 +80,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      * Clear all data from the adapter.
      */
     public void clear() {
-        mElements.clear();
+        elements.clear();
         notifyDataSetChanged();
     }
 
@@ -92,12 +92,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     @Override
     public void onBindViewHolder(BaseViewHolder<T> holder, int position) {
-        holder.bind(mElements.get(position));
+        holder.bind(elements.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mElements.size();
+        return elements.size();
     }
 
     /**

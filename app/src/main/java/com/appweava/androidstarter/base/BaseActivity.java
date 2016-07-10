@@ -34,10 +34,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Navigator mNavigator;
 
     @BindView(R.id.toolbar)
-    protected Toolbar mToolbar;
+    protected Toolbar toolbar;
 
     protected boolean mIsBackNav = false;
-    private Unbinder mUnbinder;
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,10 +46,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         StarterApp.getInstance().getAppComponent().inject(this);
 
-        mUnbinder = ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
         }
     }
 
@@ -104,6 +104,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mUnbinder.unbind();
+        unbinder.unbind();
     }
 }

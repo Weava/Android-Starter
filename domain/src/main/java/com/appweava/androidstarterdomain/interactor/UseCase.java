@@ -22,14 +22,14 @@ import rx.subscriptions.Subscriptions;
  */
 public abstract class UseCase {
 
-    private final ThreadExecutor mThreadExecutor;
-    private final PostExecutionThread mPostExecutionThread;
+    private final ThreadExecutor threadExecutor;
+    private final PostExecutionThread postExecutionThread;
 
-    private Subscription mSubscription = Subscriptions.empty();
+    private Subscription subscription = Subscriptions.empty();
 
     protected UseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
-        mThreadExecutor = threadExecutor;
-        mPostExecutionThread = postExecutionThread;
+        this.threadExecutor = threadExecutor;
+        this.postExecutionThread = postExecutionThread;
     }
 
     /**
@@ -48,9 +48,9 @@ public abstract class UseCase {
      */
     @SuppressWarnings("unchecked")
     public void execute(Subscriber useCaseSubscriber) {
-        this.mSubscription = this.buildUseCaseObservable()
-                .subscribeOn(Schedulers.from(mThreadExecutor))
-                .observeOn(mPostExecutionThread.getScheduler())
+        this.subscription = this.buildUseCaseObservable()
+                .subscribeOn(Schedulers.from(threadExecutor))
+                .observeOn(postExecutionThread.getScheduler())
                 .subscribe(useCaseSubscriber);
     }
 
@@ -58,8 +58,8 @@ public abstract class UseCase {
      * Unsubscribe from {@link Subscription}
      */
     public void unsubscribe() {
-        if (!mSubscription.isUnsubscribed()) {
-            mSubscription.unsubscribe();
+        if (!subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
         }
     }
 }

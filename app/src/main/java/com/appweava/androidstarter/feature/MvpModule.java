@@ -1,6 +1,6 @@
 package com.appweava.androidstarter.feature;
 
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 import com.appweava.androidstarterdomain.executor.ThreadExecutor;
 import com.appweava.androidstarterdomain.feature.MvpRepository;
@@ -23,7 +23,7 @@ import dagger.Provides;
 public class MvpModule {
 
     @Provides
-    @ActivityScope
+    @PerActivity
     UseCase provideGetMvpModulesList(ThreadExecutor threadExecutor,
                                      PostExecutionThread postExecutionThread,
                                      MvpRepository mvpRepository) {

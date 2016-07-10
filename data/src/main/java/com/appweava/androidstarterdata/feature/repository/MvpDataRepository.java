@@ -26,24 +26,24 @@ import rx.functions.Func1;
 @Singleton
 public class MvpDataRepository implements MvpRepository {
 
-    private final MvpDataStoreFactory mMvpDataStoreFactory;
-    private final EntityMapper<MvpDataEntity, MvpData> mEntityMapper;
+    private final MvpDataStoreFactory mvpDataStoreFactory;
+    private final EntityMapper<MvpDataEntity, MvpData> entityMapper;
 
     @Inject
     public MvpDataRepository(MvpDataStoreFactory mvpDataStoreFactory,
                              MvpDataEntityMapper entityMapper) {
-        mMvpDataStoreFactory = mvpDataStoreFactory;
-        mEntityMapper = entityMapper;
+        this.mvpDataStoreFactory = mvpDataStoreFactory;
+        this.entityMapper = entityMapper;
     }
 
     @Override
     public Observable<List<MvpData>> getMvpModelList() {
-        final MvpDataStore dataStore = mMvpDataStoreFactory.create();
+        final MvpDataStore dataStore = mvpDataStoreFactory.create();
         return dataStore.getMvpEntityList().map(new Func1<List<MvpDataEntity>, List<MvpData>>() {
 
             @Override
             public List<MvpData> call(List<MvpDataEntity> mvpDataEntities) {
-                return mEntityMapper.transformToDomain(mvpDataEntities);
+                return entityMapper.transformToDomain(mvpDataEntities);
             }
         });
     }

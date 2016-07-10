@@ -18,14 +18,14 @@ import rx.Observable;
  */
 public class CloudMvpDataStore implements MvpDataStore {
 
-    private final MvpApi mMvpApi;
+    private final MvpApi mvpApi;
 
     public CloudMvpDataStore(MvpApi mvpApi) {
-        this.mMvpApi = mvpApi;
+        this.mvpApi = mvpApi;
     }
 
     @Override
     public Observable<List<MvpDataEntity>> getMvpEntityList() {
-        return this.mMvpApi.getMvpEntityList();
+        return this.mvpApi.getMvpEntityList();
     }
 }

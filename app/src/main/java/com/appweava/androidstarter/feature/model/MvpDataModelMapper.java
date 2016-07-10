@@ -1,6 +1,6 @@
 package com.appweava.androidstarter.feature.model;
 
-import com.appweava.androidstarter.internal.di.ActivityScope;
+import com.appweava.androidstarter.internal.di.PerActivity;
 import com.appweava.androidstarterdata.mapper.EntityMapper;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
@@ -18,7 +18,7 @@ import javax.inject.Inject;
  * @version 1.0.0
  * @since 7/6/16
  */
-@ActivityScope
+@PerActivity
 public class MvpDataModelMapper implements EntityMapper<MvpDataModel, MvpData> {
 
     @Inject

@@ -26,16 +26,16 @@ import dagger.Provides;
  */
 @Module
 public class AppModule {
-    private final StarterApp mApp;
+    private final StarterApp app;
 
     public AppModule(StarterApp app) {
-        mApp = app;
+        this.app = app;
     }
 
     @Singleton
     @Provides
     Context provideApplicationContext() {
-        return this.mApp;
+        return this.app;
     }
 
     @Singleton

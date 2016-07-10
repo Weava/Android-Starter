@@ -35,18 +35,18 @@ public class JobExecutor implements ThreadExecutor {
 
     private static final TimeUnit KEEP_ALIVE_TIME_UNIT = TimeUnit.SECONDS;
 
-    private final BlockingQueue<Runnable> mWorkQueue;
+    private final BlockingQueue<Runnable> workQueue;
 
-    private final ThreadPoolExecutor mThreadPoolExecutor;
+    private final ThreadPoolExecutor threadPoolExecutor;
 
-    private final ThreadFactory mThreadFactory;
+    private final ThreadFactory threadFactory;
 
     @Inject
     public JobExecutor() {
-        this.mWorkQueue = new LinkedBlockingDeque<>();
-        this.mThreadFactory = new JobThreadFactory();
-        this.mThreadPoolExecutor = new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE,
-                KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.mWorkQueue, this.mThreadFactory);
+        this.workQueue = new LinkedBlockingDeque<>();
+        this.threadFactory = new JobThreadFactory();
+        this.threadPoolExecutor = new ThreadPoolExecutor(INITIAL_POOL_SIZE, MAX_POOL_SIZE,
+                KEEP_ALIVE_TIME, KEEP_ALIVE_TIME_UNIT, this.workQueue, this.threadFactory);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class JobExecutor implements ThreadExecutor {
         if (command == null) {
             throw new IllegalArgumentException("Runnable to execute cannot be null");
         }
-        this.mThreadPoolExecutor.execute(command);
+        this.threadPoolExecutor.execute(command);
     }
 
     /**

@@ -19,17 +19,17 @@ import rx.Observable;
  */
 public class MvpUseCase extends UseCase {
 
-    private final MvpRepository mMvpRepository;
+    private final MvpRepository mvpRepository;
 
     @Inject
     public MvpUseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread,
                       MvpRepository mvpRepository) {
         super(threadExecutor, postExecutionThread);
-        this.mMvpRepository = mvpRepository;
+        this.mvpRepository = mvpRepository;
     }
 
     @Override
     protected Observable buildUseCaseObservable() {
-        return this.mMvpRepository.getMvpModelList();
+        return this.mvpRepository.getMvpModelList();
     }
 }

@@ -31,7 +31,7 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView {
     }
 
     @Inject
-    MvpPresenterImpl mMvpPresenter;
+    MvpPresenterImpl mvpPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView {
 
         injectComponent();
 
-        mMvpPresenter.getMvpList();
+        mvpPresenter.getMvpList();
     }
 
     private void injectComponent() {
