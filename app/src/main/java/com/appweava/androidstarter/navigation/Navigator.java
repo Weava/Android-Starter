@@ -3,7 +3,7 @@ package com.appweava.androidstarter.navigation;
 import android.content.Context;
 import android.content.Intent;
 
-import com.appweava.androidstarter.feature.view.MvpActivity;
+import com.appweava.androidstarter.feature.MvpActivity;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

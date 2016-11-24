@@ -5,7 +5,7 @@ allprojects {
 }
 
 ext {
-    androidBuildToolsVersion = "24.0.0"
+    androidBuildToolsVersion = "25.0.0"
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 23
     androidCompileSdkVersion = 23
@@ -28,7 +28,8 @@ ext {
     String assertJVersion = "1.7.1"
     String mockitoVersion = "1.9.5"
     String dexmakerVersion = "1.0"
-    String espressoVersion = "2.2.1"
+    String espressoVersion = "2.2.2"
+    String runnerVersion = "0.5"
     String testingSupportLibVersion = "0.1"
 
     String leakCanaryVersion = "1.4-beta2"
@@ -55,6 +56,7 @@ ext {
         dexmaker:               "com.google.dexmaker:dexmaker:${dexmakerVersion}",
         dexmakerMockito:        "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
         espresso:               "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+        runner:                 "com.android.support.test:runner:${runnerVersion}",
         testingSupportLib:      "com.android.support.test:testing-support-lib:${testingSupportLibVersion}"
     ]
 

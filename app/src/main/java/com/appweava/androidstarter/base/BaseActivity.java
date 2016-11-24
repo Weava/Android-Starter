@@ -10,9 +10,9 @@ import android.view.MenuItem;
 
 import com.appweava.androidstarter.R;
 import com.appweava.androidstarter.StarterApp;
-import com.appweava.androidstarter.navigation.Navigator;
-
-import javax.inject.Inject;
+import com.appweava.androidstarter.base.mvp.BaseView;
+import com.appweava.androidstarter.base.mvp.Presenter;
+import com.appweava.androidstarter.internal.di.component.AppGraph;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,21 +30,17 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @Inject
-    protected Navigator navigator;
-
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
-    protected boolean mIsBackNav = false;
+    protected boolean isBackNav = false;
     private Unbinder unbinder;
+    private Presenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
-
-        StarterApp.getInstance().getAppComponent().inject(this);
 
         unbinder = ButterKnife.bind(this);
 
@@ -74,11 +70,31 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void enableBackNav() {
         if (getSupportActionBar() != null) {
-            mIsBackNav = true;
+            isBackNav = true;
             getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
         }
+    }
+
+    /**
+     * Get {@link StarterApp} reference.
+     *
+     * @return
+     *      {@link StarterApp}
+     */
+    public StarterApp getStarterApp() {
+        return (StarterApp) getApplication();
+    }
+
+    /**
+     * Retrieves app level dependency graph ({@link AppGraph}) for injecting.
+     *
+     * @return
+     *      {@link AppGraph}
+     */
+    protected AppGraph getInjector() {
+        return getStarterApp().getAppComponent();
     }
 
     /**
@@ -95,7 +111,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home && mIsBackNav) {
+        if(item.getItemId() == android.R.id.home && isBackNav) {
             super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
@@ -105,5 +121,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+
+        if (presenter != null) {
+            presenter.detachView();
+            presenter.releaseAllSubscriptions();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    protected void attachPresenterToLifecycle(Presenter presenter, BaseView view) {
+        this.presenter = presenter;
+        this.presenter.attachView(view);
     }
 }

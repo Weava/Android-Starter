@@ -7,8 +7,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha5'
+        classpath 'com.android.tools.build:gradle:2.3.0-alpha1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -24,7 +25,8 @@ allprojects {
         androidApplicationId = 'com.appweava.androidstarter'
         androidVersionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
         androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner = "com.appweava.androidstarter.StarterAppTestRunner"
         testApplicationId = "com.appweava.androidstarter.test"
     }
 }

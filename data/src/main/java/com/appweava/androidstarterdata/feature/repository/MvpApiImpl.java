@@ -1,7 +1,7 @@
 package com.appweava.androidstarterdata.feature.repository;
 
-import com.appweava.androidstarterdata.feature.MvpDataEntity;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
+import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +20,14 @@ import rx.Observable;
 public class MvpApiImpl implements MvpApi {
 
     @Override
-    public Observable<List<MvpDataEntity>> getMvpEntityList() {
+    public Observable<List<MvpData>> getMvpEntityList() {
 
-        List<MvpDataEntity> mvpDataEntities = new ArrayList<>();
+        List<MvpData> mvpDataEntities = new ArrayList<>();
 
-        mvpDataEntities.add(new MvpDataEntity("Number One"));
-        mvpDataEntities.add(new MvpDataEntity("Number Two"));
-        mvpDataEntities.add(new MvpDataEntity("Number Three"));
-        mvpDataEntities.add(new MvpDataEntity("Number Four"));
+        mvpDataEntities.add(new MvpData("Number One"));
+        mvpDataEntities.add(new MvpData("Number Two"));
+        mvpDataEntities.add(new MvpData("Number Three"));
+        mvpDataEntities.add(new MvpData("Number Four"));
 
         return Observable.just(mvpDataEntities);
     }

@@ -1,7 +1,7 @@
 package com.appweava.androidstarterdomain.feature;
 
+import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-import com.appweava.androidstarterdomain.executor.ThreadExecutor;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,14 +25,14 @@ public class MvpTest {
 
     private MvpUseCase mvpUseCase;
 
-    @Mock private ThreadExecutor mockThreadExecutor;
+    @Mock private ExecutionThread mockExecutionThread;
     @Mock private PostExecutionThread mockPostExecutionThread;
     @Mock private MvpRepository mockMvpRepository;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mvpUseCase = new MvpUseCase(mockThreadExecutor, mockPostExecutionThread, mockMvpRepository);
+        mvpUseCase = new MvpUseCase(mockExecutionThread, mockPostExecutionThread, mockMvpRepository);
     }
 
     @Test
@@ -41,7 +41,7 @@ public class MvpTest {
 
         verify(mockMvpRepository).getMvpModelList();
         verifyNoMoreInteractions(mockMvpRepository);
-        verifyZeroInteractions(mockThreadExecutor);
+        verifyZeroInteractions(mockExecutionThread);
         verifyZeroInteractions(mockPostExecutionThread);
     }
 }

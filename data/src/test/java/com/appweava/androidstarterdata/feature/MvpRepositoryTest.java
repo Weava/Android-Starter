@@ -35,9 +35,7 @@ public class MvpRepositoryTest extends ApplicationTestCase {
     private MvpDataRepository mvpDataRepository;
 
     @Mock private MvpDataStoreFactory mockDataStoreFactory;
-    @Mock private MvpDataEntityMapper mockEntityMapper;
     @Mock private MvpDataStore mockDataStore;
-    @Mock private MvpDataEntity mockMvpEntity;
     @Mock private MvpData mockMvp;
 
     @Rule
@@ -46,7 +44,7 @@ public class MvpRepositoryTest extends ApplicationTestCase {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mvpDataRepository = new MvpDataRepository(mockDataStoreFactory, mockEntityMapper);
+        mvpDataRepository = new MvpDataRepository(mockDataStoreFactory);
 
         given(mockDataStoreFactory.create()).willReturn(mockDataStore);
         given(mockDataStoreFactory.createCloudStore()).willReturn(mockDataStore);
@@ -54,13 +52,13 @@ public class MvpRepositoryTest extends ApplicationTestCase {
 
     @Test
     public void testGetMvpListDataHappyCase() {
-        List<MvpDataEntity> mvpDataEntities = new ArrayList<>();
-        mvpDataEntities.add(new MvpDataEntity(""));
+        List<MvpData> mvpDataEntities = new ArrayList<>();
+        mvpDataEntities.add(new MvpData(""));
         given(mockDataStore.getMvpEntityList()).willReturn(Observable.just(mvpDataEntities));
 
         mvpDataRepository.getMvpModelList();
 
-        verify(mockDataStoreFactory).createCloudStore();
+        verify(mockDataStoreFactory).create();
         verify(mockDataStore).getMvpEntityList();
     }
 }

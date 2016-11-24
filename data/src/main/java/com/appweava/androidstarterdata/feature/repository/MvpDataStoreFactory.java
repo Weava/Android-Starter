@@ -19,8 +19,12 @@ import javax.inject.Singleton;
 @Singleton
 public class MvpDataStoreFactory {
 
+    private MvpApi mvpApi;
+
     @Inject
-    public MvpDataStoreFactory() {}
+    public MvpDataStoreFactory(MvpApi mvpApi) {
+        this.mvpApi = mvpApi;
+    }
 
     /**
      * Create an instance of {@link MvpDataStore}, determining which implementation is needed.
@@ -39,8 +43,6 @@ public class MvpDataStoreFactory {
      *      {@link CloudMvpDataStore} instance
      */
     public MvpDataStore createCloudStore() {
-        MvpApi api = new MvpApiImpl();
-
-        return new CloudMvpDataStore(api);
+        return new CloudMvpDataStore(mvpApi);
     }
 }

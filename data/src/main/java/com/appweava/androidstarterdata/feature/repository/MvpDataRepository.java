@@ -1,8 +1,5 @@
 package com.appweava.androidstarterdata.feature.repository;
 
-import com.appweava.androidstarterdata.feature.MvpDataEntity;
-import com.appweava.androidstarterdata.feature.MvpDataEntityMapper;
-import com.appweava.androidstarterdata.mapper.EntityMapper;
 import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.feature.MvpRepository;
 
@@ -12,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 /**
  * MvpDataRepository
@@ -27,24 +23,15 @@ import rx.functions.Func1;
 public class MvpDataRepository implements MvpRepository {
 
     private final MvpDataStoreFactory mvpDataStoreFactory;
-    private final EntityMapper<MvpDataEntity, MvpData> entityMapper;
 
     @Inject
-    public MvpDataRepository(MvpDataStoreFactory mvpDataStoreFactory,
-                             MvpDataEntityMapper entityMapper) {
+    public MvpDataRepository(MvpDataStoreFactory mvpDataStoreFactory) {
         this.mvpDataStoreFactory = mvpDataStoreFactory;
-        this.entityMapper = entityMapper;
     }
 
     @Override
     public Observable<List<MvpData>> getMvpModelList() {
         final MvpDataStore dataStore = mvpDataStoreFactory.create();
-        return dataStore.getMvpEntityList().map(new Func1<List<MvpDataEntity>, List<MvpData>>() {
-
-            @Override
-            public List<MvpData> call(List<MvpDataEntity> mvpDataEntities) {
-                return entityMapper.transformToDomain(mvpDataEntities);
-            }
-        });
+        return dataStore.getMvpEntityList();
     }
 }

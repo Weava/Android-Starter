@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
+import com.appweava.androidstarter.navigation.Navigator;
+
+import javax.inject.Inject;
 
 /**
  * MainActivity
@@ -18,6 +21,9 @@ import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
  */
 public class MainActivity extends BaseDrawerActivity {
 
+    @Inject
+    Navigator navigator;
+
     public static Intent getCallingIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;    
@@ -27,6 +33,12 @@ public class MainActivity extends BaseDrawerActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getInjector().inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         navigator.navigateToMvpActivity(this);
     }
 }

@@ -1,7 +1,7 @@
 package com.appweava.androidstarterdata.feature.repository;
 
-import com.appweava.androidstarterdata.feature.MvpDataEntity;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
+import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import rx.Observable;
 /**
  * CloudMvpDataRepository
  * <p>
- * {@link MvpDataStore} containing information on how to get {@link MvpDataEntity} from
+ * {@link MvpDataStore} containing information on how to get {@link MvpData} from
  * ~*~THE CLOUD~*~
  *
  * <p>
@@ -30,7 +30,7 @@ public class CloudMvpDataStore implements MvpDataStore {
     }
 
     @Override
-    public Observable<List<MvpDataEntity>> getMvpEntityList() {
+    public Observable<List<MvpData>> getMvpEntityList() {
         return this.mvpApi.getMvpEntityList();
     }
 }

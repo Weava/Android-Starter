@@ -1,6 +1,6 @@
 package com.appweava.androidstarterdata.feature.repository;
 
-import com.appweava.androidstarterdata.feature.MvpDataEntity;
+import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ import rx.Observable;
  */
 public interface MvpDataStore {
 
-    Observable<List<MvpDataEntity>> getMvpEntityList();
+    Observable<List<MvpData>> getMvpEntityList();
 }

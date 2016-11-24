@@ -3,12 +3,9 @@ package com.appweava.androidstarter;
 import android.app.Application;
 
 import com.appweava.androidstarter.internal.di.component.AppComponent;
-import com.appweava.androidstarter.internal.di.component.DaggerAppComponent;
-import com.appweava.androidstarter.internal.di.module.AppModule;
-import com.facebook.stetho.Stetho;
-import com.squareup.leakcanary.LeakCanary;
+import com.appweava.androidstarter.internal.di.component.AppGraph;
 
-import timber.log.Timber;
+import javax.inject.Inject;
 
 /**
  * StarterApp
@@ -21,68 +18,36 @@ import timber.log.Timber;
  */
 public class StarterApp extends Application {
 
-    private static StarterApp instance;
-    private AppComponent appComponent;
+    @Inject AppInitializer appInitializer;
+
+    protected AppGraph appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) {
-            initDevToolsSuite();
-        } else {
-            initReleaseAnalyticsTools();
-        }
-
-        appComponent = initAppComponent();
-
-        instance = this;
+        initAppComponent();
     }
 
     /**
      * Initialize application DI component.
      *
      * @return
-     *      Initialized {@link AppComponent}
+     *      Initialized {@link AppGraph}
      */
-    private AppComponent initAppComponent() {
-        return DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .build();
-    }
-
-    /**
-     * Initialize all developer tools for the application.
-     */
-    private void initDevToolsSuite() {
-        Timber.plant(new Timber.DebugTree());
-        Stetho.initializeWithDefaults(this);
-        LeakCanary.install(this);
-    }
-
-    private void initReleaseAnalyticsTools() {
-        //TODO: Add release analytics tools
-        //Leak Canary has a no-op version for release builds.
-        LeakCanary.install(this);
-    }
-
-    /**
-     * Retrieve singleton instance of the application.
-     *
-     * @return
-     *      Singleton instance for {@link StarterApp}
-     */
-    public static StarterApp getInstance() {
-        return instance;
+    protected void initAppComponent() {
+        appComponent = AppComponent.Initializer.init(this);
+        appComponent.inject(this);
+        appInitializer.initAppDependencies(this);
     }
 
     /**
      * Provide app component as a dependency to other components.
      *
      * @return
-     *      {@link AppComponent} to provide for dependent components
+     *      {@link AppGraph} to provide for dependent components
      */
-    public AppComponent getAppComponent() {
+    public AppGraph getAppComponent() {
         return this.appComponent;
     }
 }

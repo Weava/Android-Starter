@@ -1,7 +1,7 @@
 package com.appweava.androidstarterdomain.interactor;
 
+import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-import com.appweava.androidstarterdomain.executor.ThreadExecutor;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,13 +30,13 @@ public class UseCaseTest {
 
     private UseCaseTestClass useCase;
 
-    @Mock private ThreadExecutor mockThreadExecutor;
+    @Mock private ExecutionThread mockExecutionThread;
     @Mock private PostExecutionThread mockPostExecutionThread;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        this.useCase = new UseCaseTestClass(mockThreadExecutor, mockPostExecutionThread);
+        this.useCase = new UseCaseTestClass(mockExecutionThread, mockPostExecutionThread);
     }
 
     @Test
@@ -62,9 +62,9 @@ public class UseCaseTest {
 
     private static class UseCaseTestClass extends UseCase {
 
-        public UseCaseTestClass(ThreadExecutor threadExecutor,
+        public UseCaseTestClass(ExecutionThread executionThread,
                                 PostExecutionThread postExecutionThread) {
-            super(threadExecutor, postExecutionThread);
+            super(executionThread, postExecutionThread);
         }
 
         @Override

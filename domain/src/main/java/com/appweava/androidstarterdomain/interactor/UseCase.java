@@ -1,12 +1,11 @@
 package com.appweava.androidstarterdomain.interactor;
 
+import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-import com.appweava.androidstarterdomain.executor.ThreadExecutor;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.Subscriptions;
 
 /**
@@ -22,13 +21,13 @@ import rx.subscriptions.Subscriptions;
  */
 public abstract class UseCase {
 
-    private final ThreadExecutor threadExecutor;
+    private final ExecutionThread executionThread;
     private final PostExecutionThread postExecutionThread;
 
     private Subscription subscription = Subscriptions.empty();
 
-    protected UseCase(ThreadExecutor threadExecutor, PostExecutionThread postExecutionThread) {
-        this.threadExecutor = threadExecutor;
+    protected UseCase(ExecutionThread executionThread, PostExecutionThread postExecutionThread) {
+        this.executionThread = executionThread;
         this.postExecutionThread = postExecutionThread;
     }
 
@@ -49,7 +48,7 @@ public abstract class UseCase {
     @SuppressWarnings("unchecked")
     public void execute(Subscriber useCaseSubscriber) {
         this.subscription = this.buildUseCaseObservable()
-                .subscribeOn(Schedulers.from(threadExecutor))
+                .subscribeOn(executionThread.getThread())
                 .observeOn(postExecutionThread.getScheduler())
                 .subscribe(useCaseSubscriber);
     }
