@@ -27,10 +27,13 @@ public class StarterApp extends Application {
         super.onCreate();
 
         initAppComponent();
+
+        initApp();
     }
 
     /**
      * Initialize application DI component.
+     * Protected visibility level for mock application overriding.
      *
      * @return
      *      Initialized {@link AppGraph}
@@ -38,6 +41,13 @@ public class StarterApp extends Application {
     protected void initAppComponent() {
         appComponent = AppComponent.Initializer.init(this);
         appComponent.inject(this);
+    }
+
+    /**
+     * Initialize app with build type dependencies.
+     * Protected visibility level for mock application overriding.
+     */
+    protected void initApp() {
         appInitializer.initAppDependencies(this);
     }
 

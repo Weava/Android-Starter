@@ -6,6 +6,8 @@ import com.appweava.androidstarter.internal.di.module.DebugApiModule;
 import com.appweava.androidstarter.internal.di.module.DebugApplicationModule;
 import com.appweava.androidstarter.internal.di.module.RepositoryModule;
 
+import timber.log.Timber;
+
 /**
  * StarterTestApplication
  * <p>
@@ -27,6 +29,11 @@ public class StarterTestApp extends StarterApp {
                 .apiModule(new DebugApiModule())
                 .repositoryModule(new RepositoryModule())
                 .build();
+    }
+
+    @Override
+    protected void initApp() {
+        Timber.tag("Mock App").i("Initializing mock application for testing");
     }
 
     @Override

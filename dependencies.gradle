@@ -35,6 +35,7 @@ ext {
     String leakCanaryVersion = "1.4-beta2"
     String timberVersion = "4.1.2"
     String stethoVersion = "1.3.1"
+    String crashlyticsVersion = "2.6.5@aar"
 
     appDependencies = [
         javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
@@ -48,7 +49,8 @@ ext {
         rxAndroid:              "io.reactivex:rxandroid:${rxJavaVersion}",
         picasso:                "com.squareup.picasso:picasso:${picassoVersion}",
         circleImageView:        "de.hdodenhof:circleimageview:${circleImageViewVersion}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}"
+        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}"
     ]
 
     appTestDependencies = [
@@ -92,7 +94,7 @@ ext {
         junit:                  "junit:junit:${jUnitVersion}",
         assertj:                "org.assertj:assertj-core:${assertJVersion}",
         mockito:                "org.mockito:mockito-core:${mockitoVersion}",
-        robolectric:           "org.robolectric:robolectric:${robolectricVersion}"
+        robolectric:            "org.robolectric:robolectric:${robolectricVersion}"
     ]
 
     devDependencies = [
