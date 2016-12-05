@@ -9,7 +9,7 @@ import com.appweava.androidstarter.feature.MvpActivity;
  * AppComponent
  * <p>
  * Top level component for DI graph containing all application dependencies. Lifetime lasts for
- * all of application lifetime.
+ * all of application lifecycle.
  *
  * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

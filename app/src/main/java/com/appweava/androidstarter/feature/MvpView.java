@@ -14,14 +14,9 @@ import com.appweava.androidstarter.base.mvp.BaseView;
 public interface MvpView extends BaseView {
 
     /**
-     * Show progress bar in UI.
+     * Show or hide loading view based on current state.
      */
-    void showProgressBar();
-
-    /**
-     * Hide progress bar from the UI.
-     */
-    void hideProgressBar();
+    void toggleLoadingView();
 
     /**
      * In here for no reason honestly.

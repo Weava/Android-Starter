@@ -11,96 +11,104 @@ ext {
     androidCompileSdkVersion = 23
 
 
-    String androidSupportLibVersion = "23.2.1"
-    String daggerVersion = "2.2"
-    String butterKnifeVersion = "8.1.0"
-    String rxJavaVersion = "1.1.0"
-    String javaxAnnotationVersion = "1.0"
-    String picassoVersion = "2.5.2"
-    String gsonVersion = "2.6.2"
-    String okHttpVersion = "3.2.0"
-    String retrofitVersion = "2.0.2"
-    String circleImageViewVersion = "2.0.0"
-    String javaPoetVersion = "1.7.0"
+    def String SUPPORT_LIB_VERSION = "23.2.1"
+    def String DAGGER_VERSION = "2.2"
+    def String BUTTER_KNIFE_VERSION = "8.1.0"
+    def String RX_JAVA_VERSION = "1.1.0"
+    def String JAVAX_ANNOTATIONS_VERSION = "1.0"
+    def String PICASSO_VERSION = "2.5.2"
+    def String GSON_VERSION = "2.6.2"
+    def String OKHTTP_VERSION = "3.2.0"
+    def String RETROFIT_VERSION = "2.0.2"
+    def String CIRCLE_IMAGE_VIEW_VERSION = "2.0.0"
+    def String JAVA_POET_VERSION = "1.7.0"
+    def String AUTO_VALUE_VERSION = "1.2"
+    def String AUTO_VALUE_PARCEL_VERSION = "0.2.5"
+    def String MORTAR_VERSION = "0.20"
+    def String FLOW_VERSION = "1.0.0-alpha2"
 
-    String robolectricVersion = "3.0"
-    String jUnitVersion = "4.12"
-    String assertJVersion = "1.7.1"
-    String mockitoVersion = "1.9.5"
-    String dexmakerVersion = "1.0"
-    String espressoVersion = "2.2.2"
-    String runnerVersion = "0.5"
-    String testingSupportLibVersion = "0.1"
+    def String ROBOLECTRIC_VERSION = "3.0"
+    def String JUNIT_VERSION = "4.12"
+    def String ASSERT_J_VERSION = "1.7.1"
+    def String MOCKITO_VERSION = "1.9.5"
+    def String DEXMAKER_VERSION = "1.0"
+    def String ESPRESSO_VERSION = "2.2.2"
+    def String RUNNER_VERSION = "0.5"
+    def String TESTING_SUPPORT_LIB_VERSION = "0.1"
 
-    String leakCanaryVersion = "1.4-beta2"
-    String timberVersion = "4.1.2"
-    String stethoVersion = "1.3.1"
-    String crashlyticsVersion = "2.6.5@aar"
+    def String LEAK_CANARY_VERSION = "1.4-beta2"
+    def String TIMBER_VERSION = "4.1.2"
+    def String STETHO_VERSION = "1.3.1"
+    def String CRASHLYTICS_VERSION = "2.6.5@aar"
 
     appDependencies = [
-        javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
-        daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",
-        dagger:                 "com.google.dagger:dagger:${daggerVersion}",
-        butterKnife:            "com.jakewharton:butterknife:${butterKnifeVersion}",
-        butterKnifeCompiler:    "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
-        recyclerView:           "com.android.support:recyclerview-v7:${androidSupportLibVersion}",
-        designSupportLibrary:   "com.android.support:design:${androidSupportLibVersion}",
-        rxJava:                 "io.reactivex:rxjava:${rxJavaVersion}",
-        rxAndroid:              "io.reactivex:rxandroid:${rxJavaVersion}",
-        picasso:                "com.squareup.picasso:picasso:${picassoVersion}",
-        circleImageView:        "de.hdodenhof:circleimageview:${circleImageViewVersion}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}"
+        javaPoet:               "com.squareup:javapoet:${JAVA_POET_VERSION}",
+        daggerCompiler:         "com.google.dagger:dagger-compiler:${DAGGER_VERSION}",
+        dagger:                 "com.google.dagger:dagger:${DAGGER_VERSION}",
+        butterKnife:            "com.jakewharton:butterknife:${BUTTER_KNIFE_VERSION}",
+        butterKnifeCompiler:    "com.jakewharton:butterknife-compiler:${BUTTER_KNIFE_VERSION}",
+        recyclerView:           "com.android.support:recyclerview-v7:${SUPPORT_LIB_VERSION}",
+        designSupportLibrary:   "com.android.support:design:${SUPPORT_LIB_VERSION}",
+        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}",
+        rxAndroid:              "io.reactivex:rxandroid:${RX_JAVA_VERSION}",
+        picasso:                "com.squareup.picasso:picasso:${PICASSO_VERSION}",
+        circleImageView:        "de.hdodenhof:circleimageview:${CIRCLE_IMAGE_VIEW_VERSION}",
+        javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
+        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}",
+        mortar:                 "com.squareup.mortar:mortar:${MORTAR_VERSION}",
+        flow:                   "com.squareup.flow:flow:${FLOW_VERSION}",
+        autoValue:              "com.google.auto.value:auto-value:${AUTO_VALUE_VERSION}",
+        autoValueParcel:        "com.ryanharter.auto.value:auto-value-parcel:${AUTO_VALUE_PARCEL_VERSION}"
     ]
 
     appTestDependencies = [
-        mockito:                "org.mockito:mockito-core:${mockitoVersion}",
-        dexmaker:               "com.google.dexmaker:dexmaker:${dexmakerVersion}",
-        dexmakerMockito:        "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
-        espresso:               "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-        runner:                 "com.android.support.test:runner:${runnerVersion}",
-        testingSupportLib:      "com.android.support.test:testing-support-lib:${testingSupportLibVersion}"
+        mockito:                "org.mockito:mockito-core:${MOCKITO_VERSION}",
+        dexmaker:               "com.google.dexmaker:dexmaker:${DEXMAKER_VERSION}",
+        dexmakerMockito:        "com.google.dexmaker:dexmaker-mockito:${DEXMAKER_VERSION}",
+        espresso:               "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}",
+        runner:                 "com.android.support.test:runner:${RUNNER_VERSION}",
+        testingSupportLib:      "com.android.support.test:testing-support-lib:${TESTING_SUPPORT_LIB_VERSION}"
     ]
 
     domainDependencies = [
-        javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
-        daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",
-        dagger:                 "com.google.dagger:dagger:${daggerVersion}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-        rxJava:                 "io.reactivex:rxjava:${rxJavaVersion}"
+        javaPoet:               "com.squareup:javapoet:${JAVA_POET_VERSION}",
+        daggerCompiler:         "com.google.dagger:dagger-compiler:${DAGGER_VERSION}",
+        dagger:                 "com.google.dagger:dagger:${DAGGER_VERSION}",
+        javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
+        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}"
     ]
 
     domainTestDependencies = [
-        junit:                  "junit:junit:${jUnitVersion}",
-        mockito:                "org.mockito:mockito-core:${mockitoVersion}"
+        junit:                  "junit:junit:${JUNIT_VERSION}",
+        mockito:                "org.mockito:mockito-core:${MOCKITO_VERSION}"
     ]
 
     dataDependencies = [
-        javaPoet:               "com.squareup:javapoet:${javaPoetVersion}",
-        daggerCompiler:         "com.google.dagger:dagger-compiler:${daggerVersion}",
-        dagger:                 "com.google.dagger:dagger:${daggerVersion}",
-        okHttp:                 "com.squareup.okhttp3:okhttp:${okHttpVersion}",
-        gson:                   "com.google.code.gson:gson:${gsonVersion}",
-        rxJava:                 "io.reactivex:rxjava:${rxJavaVersion}",
-        rxAndroid:              "io.reactivex:rxandroid:${rxJavaVersion}",
-        retrofit:               "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-        retrofitRxAdapter:      "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
-        retrofitGson:           "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-        androidAnnotations:     "com.android.support:support-annotations:${androidSupportLibVersion}"
+        javaPoet:               "com.squareup:javapoet:${JAVA_POET_VERSION}",
+        daggerCompiler:         "com.google.dagger:dagger-compiler:${DAGGER_VERSION}",
+        dagger:                 "com.google.dagger:dagger:${DAGGER_VERSION}",
+        okHttp:                 "com.squareup.okhttp3:okhttp:${OKHTTP_VERSION}",
+        gson:                   "com.google.code.gson:gson:${GSON_VERSION}",
+        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}",
+        rxAndroid:              "io.reactivex:rxandroid:${RX_JAVA_VERSION}",
+        retrofit:               "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}",
+        retrofitRxAdapter:      "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}",
+        retrofitGson:           "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}",
+        javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
+        androidAnnotations:     "com.android.support:support-annotations:${SUPPORT_LIB_VERSION}"
     ]
 
     dataTestDependencies = [
-        junit:                  "junit:junit:${jUnitVersion}",
-        assertj:                "org.assertj:assertj-core:${assertJVersion}",
-        mockito:                "org.mockito:mockito-core:${mockitoVersion}",
-        robolectric:            "org.robolectric:robolectric:${robolectricVersion}"
+        junit:                  "junit:junit:${JUNIT_VERSION}",
+        assertj:                "org.assertj:assertj-core:${ASSERT_J_VERSION}",
+        mockito:                "org.mockito:mockito-core:${MOCKITO_VERSION}",
+        robolectric:            "org.robolectric:robolectric:${ROBOLECTRIC_VERSION}"
     ]
 
     devDependencies = [
-        leakCanary:             "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
-        timber:                 "com.jakewharton.timber:timber:${timberVersion}",
-        stetho:                 "com.facebook.stetho:stetho:${stethoVersion}",
-        stethoOkhttp:           "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
+        leakCanary:             "com.squareup.leakcanary:leakcanary-android:${LEAK_CANARY_VERSION}",
+        timber:                 "com.jakewharton.timber:timber:${TIMBER_VERSION}",
+        stetho:                 "com.facebook.stetho:stetho:${STETHO_VERSION}",
+        stethoOkhttp:           "com.facebook.stetho:stetho-okhttp3:${STETHO_VERSION}"
     ]
 }

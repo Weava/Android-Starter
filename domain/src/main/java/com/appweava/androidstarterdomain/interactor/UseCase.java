@@ -6,7 +6,6 @@ import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
-import rx.subscriptions.Subscriptions;
 
 /**
  * UseCase
@@ -23,8 +22,6 @@ public abstract class UseCase {
 
     private final ExecutionThread executionThread;
     private final PostExecutionThread postExecutionThread;
-
-    private Subscription subscription = Subscriptions.empty();
 
     protected UseCase(ExecutionThread executionThread, PostExecutionThread postExecutionThread) {
         this.executionThread = executionThread;
@@ -46,19 +43,10 @@ public abstract class UseCase {
      *      {@link Subscriber} that the use case observable will use
      */
     @SuppressWarnings("unchecked")
-    public void execute(Subscriber useCaseSubscriber) {
-        this.subscription = this.buildUseCaseObservable()
+    public Subscription execute(Subscriber useCaseSubscriber) {
+        return this.buildUseCaseObservable()
                 .subscribeOn(executionThread.getThread())
                 .observeOn(postExecutionThread.getScheduler())
                 .subscribe(useCaseSubscriber);
-    }
-
-    /**
-     * Unsubscribe from {@link Subscription}
-     */
-    public void unsubscribe() {
-        if (!subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
-        }
     }
 }

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.appweava.androidstarter.base.mvp.BaseView;
+import com.appweava.androidstarter.base.mvp.Presenter;
 import com.appweava.androidstarter.internal.di.HasComponent;
 
 import butterknife.ButterKnife;
@@ -25,12 +27,11 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
 
     protected Unbinder unbinder;
+    private Presenter presenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setHasOptionsMenu(true);
-        setRetainInstance(true);
     }
 
     @Nullable
@@ -45,6 +46,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        if (presenter != null) {
+            presenter.reset();
+        }
         unbinder.unbind();
     }
 
@@ -65,4 +70,10 @@ public abstract class BaseFragment extends Fragment {
 
     @LayoutRes
     protected abstract int getLayoutRes();
+
+    @SuppressWarnings("unchecked")
+    protected void attachPresenterToLifecycle(Presenter presenter, BaseView view) {
+        this.presenter = presenter;
+        this.presenter.attachView(view);
+    }
 }

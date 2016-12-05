@@ -39,12 +39,7 @@ public class MvpActivity extends BaseDrawerActivity implements MvpView {
     }
 
     @Override
-    public void showProgressBar() {
-
-    }
-
-    @Override
-    public void hideProgressBar() {
+    public void toggleLoadingView() {
 
     }
 

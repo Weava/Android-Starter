@@ -24,6 +24,8 @@ android {
         testApplicationId globalConfig.getAt("testApplicationId")
 
         multiDexEnabled true
+
+        resValue ("string", "FABRIC_API_KEY", FABRIC_API_KEY)
     }
 
     compileOptions {
@@ -60,6 +62,8 @@ dependencies {
     apt appDependencies.javaPoet
     apt appDependencies.daggerCompiler
     apt appDependencies.butterKnifeCompiler
+    apt appDependencies.autoValue
+    apt appDependencies.autoValueParcel
     compile appDependencies.dagger
     compile appDependencies.butterKnife
     compile appDependencies.recyclerView
@@ -68,6 +72,9 @@ dependencies {
     compile appDependencies.designSupportLibrary
     compile appDependencies.circleImageView
     compile appDependencies.picasso
+    compile appDependencies.mortar
+    compile appDependencies.flow
+    provided appDependencies.autoValue
     provided appDependencies.javaxAnnotations
 
     /* Analytics */

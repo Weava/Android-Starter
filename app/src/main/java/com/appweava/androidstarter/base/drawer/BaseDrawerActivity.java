@@ -17,16 +17,18 @@ import butterknife.BindView;
 /**
  * BaseDrawerActivity
  * <p>
- * Extension of {@link BaseActivity} containing functions relative to an activity with a drawer.
+ * Extension of {@link BaseActivity} containing functions relative to an activity with a
+ * navigation drawer.
  *
  * @see BaseActivity
- * @see DrawerView
+ * @see DrawerLayout
+ * @see NavigationView
  *
  * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 6/25/16
  */
-public abstract class BaseDrawerActivity extends BaseActivity implements DrawerView {
+public abstract class BaseDrawerActivity extends BaseActivity {
 
     @BindView(R.id.drawer_layout)
     protected DrawerLayout drawerLayout;
@@ -51,23 +53,12 @@ public abstract class BaseDrawerActivity extends BaseActivity implements DrawerV
 
     @Override
     protected int getLayoutRes() {
-
         /*
          * NOTE: base_drawer_activity.xml is only to be used as your layout if you plan on having a
          * fragment as your main view portion. Otherwise, create a custom view for your activity, and
          * make sure to both include toolbar.xml and nav_drawer.xml.
          */
         return R.layout.base_drawer_activity;
-    }
-
-    @Override
-    public void drawerSetup() {
-
-    }
-
-    @Override
-    public void onDrawerItemClicked() {
-
     }
 
     @Override

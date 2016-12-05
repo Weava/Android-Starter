@@ -123,8 +123,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         unbinder.unbind();
 
         if (presenter != null) {
-            presenter.detachView();
-            presenter.releaseAllSubscriptions();
+            presenter.reset();
         }
     }
 

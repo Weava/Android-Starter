@@ -9,7 +9,29 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * BasePresenter
  * <p>
- * Class description here
+ * Base {@link Presenter} implementation. Contains all functions that most presenters in the
+ * application may need. Uses view interfaces (interfaces extending {@link BaseView}) to interact
+ * with the view.
+ *
+ * To actually interact with the view, you will first need to call {@code attachView(BaseView view)}
+ * then use {@code getView()} to retrieve the view and all it's operations.
+ *
+ * Sample of extending BasePresenter
+ * {@code
+ *      // MyView will be the view interface implementation that you wish the presenter to
+ *      // interface with.
+ *      public MyPresenter extends BasePresenter<MyView>
+ * }
+ *
+ * Attaching a view is usually performed when a view is created. This usually means attaching occurs
+ * during onCreate (in Activitys), onViewCreated (in Fragments), or when inflating a view (in Custom View).
+ *
+ * Detaching would occur when the view is destroyed or brought out of focus. This usually means
+ * means detaching occurs during onDestroy (in Activitys), onViewDestroyed (in Fragments), or
+ * when destroying a custom view.
+ *
+ * @see Presenter
+ * @see BaseView
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -18,7 +40,7 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BasePresenter<V extends BaseView> implements Presenter<V> {
 
     private WeakReference<V> viewRef;
-    protected CompositeSubscription subscriptions;
+    private CompositeSubscription subscriptions;
 
     @Override
     public void attachView(@NonNull V view) {
@@ -39,6 +61,20 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
         }
     }
 
+    @Override
+    public void reset() {
+        releaseAllSubscriptions();
+        detachView();
+    }
+
+    /**
+     * Retrieve the {@link BaseView} extended view item to perform operations on.
+     *
+     * @throws ViewNotAttachedException
+     *
+     * @return
+     *      {@link BaseView} extended item
+     */
     protected V getView() {
         if (isViewAttached()) {
             return viewRef.get();
@@ -47,7 +83,28 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
         throw new ViewNotAttachedException();
     }
 
+    /**
+     * Retrieve the {@link CompositeSubscription} to manage lifecycle of Rx calls within
+     * presenter.
+     *
+     * @return
+     *      {@link CompositeSubscription}
+     */
+    protected CompositeSubscription getSubs() {
+        if (subscriptions == null) {
+            subscriptions = new CompositeSubscription();
+        }
+
+        return subscriptions;
+    }
+
+    /**
+     * Determines if a view has been attached to the presenter or not.
+     *
+     * @return
+     *      {@link Boolean} view attached status
+     */
     protected boolean isViewAttached() {
-        return viewRef.get() != null;
+        return viewRef != null && viewRef.get() != null;
     }
 }
