@@ -1,2 +1,3 @@
 # Make sure you copy the contents of this file (gradle.properties.dist) into gradle.properties
+# then replace the items in square brackets with their proper replacements
 FABRIC_API_KEY = [Fabric-key-here]
