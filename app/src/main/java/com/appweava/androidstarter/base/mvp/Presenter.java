@@ -3,7 +3,10 @@ package com.appweava.androidstarter.base.mvp;
 /**
  * Presenter
  * <p>
- * Class description here
+ * Interface defining common methods for all presenters. Also defines that all presenters must
+ * attach some sort of {@link BaseView}
+ *
+ * @see BaseView
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -14,8 +17,4 @@ public interface Presenter<T extends BaseView> {
     void attachView(T view);
 
     void detachView();
-
-    void releaseAllSubscriptions();
-
-    void reset();
 }

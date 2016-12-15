@@ -53,7 +53,7 @@ public class MvpRepositoryTest extends ApplicationTestCase {
     @Test
     public void testGetMvpListDataHappyCase() {
         List<MvpData> mvpDataEntities = new ArrayList<>();
-        mvpDataEntities.add(new MvpData(""));
+        mvpDataEntities.add(MvpData.builder().someField("").build());
         given(mockDataStore.getMvpEntityList()).willReturn(Observable.just(mvpDataEntities));
 
         mvpDataRepository.getMvpModelList();

@@ -10,7 +10,7 @@ import javax.inject.Inject;
 /**
  * StarterApp
  * <p>
- * Application class for setting up all necessary dependencies throughout application.
+ * Extends {@link Application} class for setting up all necessary dependencies throughout application.
  *
  * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @date 6/25/16

@@ -1,5 +1,7 @@
 package com.appweava.androidstarterdomain.feature;
 
+import com.google.auto.value.AutoValue;
+
 /**
  * MvpModel
  * <p>
@@ -9,19 +11,18 @@ package com.appweava.androidstarterdomain.feature;
  * @version 1.0.0
  * @since 6/26/16
  */
-public class MvpData {
+@AutoValue
+public abstract class MvpData {
 
-    private String someField;
-
-    public MvpData(String someField) {
-        this.someField = someField;
+    public static Builder builder() {
+        return new AutoValue_MvpData.Builder();
     }
 
-    public String getSomeField() {
-        return someField;
-    }
+    public abstract String someField();
 
-    public void setSomeField(String someField) {
-        this.someField = someField;
+    @AutoValue.Builder
+    static abstract class Builder {
+        public abstract Builder someField(String someField);
+        public abstract MvpData build();
     }
 }

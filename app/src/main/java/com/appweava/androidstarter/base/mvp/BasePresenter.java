@@ -45,26 +45,39 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
     @Override
     public void attachView(@NonNull V view) {
         viewRef = new WeakReference<>(view);
+        onViewAttached();
     }
 
     @Override
     public void detachView() {
         viewRef.clear();
         viewRef = null;
+        onViewDetached();
     }
 
-    @Override
-    public void releaseAllSubscriptions() {
+    /**
+     * Unsubscribe from all current {@link rx.Subscription}s contained within the
+     * {@link CompositeSubscription}.
+     */
+    protected void unsubCompositeSubscription() {
         if (subscriptions != null
                 && subscriptions.hasSubscriptions() && !subscriptions.isUnsubscribed()) {
             subscriptions.unsubscribe();
         }
     }
 
-    @Override
-    public void reset() {
-        releaseAllSubscriptions();
-        detachView();
+    /**
+     * Method to be called when view is detached. Make sure to override this method in implementing
+     * classes if you want to have an actual implementation.
+     */
+    protected void onViewAttached() {}
+
+    /**
+     * Method to be called when view is detached. Make sure to override this method in implementing
+     * classes if you want more than just the default implementation.
+     */
+    protected void onViewDetached() {
+        unsubCompositeSubscription();
     }
 
     /**

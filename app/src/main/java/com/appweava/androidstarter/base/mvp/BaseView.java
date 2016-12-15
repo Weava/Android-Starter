@@ -2,6 +2,7 @@ package com.appweava.androidstarter.base.mvp;
 
 /**
  * BaseView
+ *
  * <p>
  * Interface for explicitly defining what view interfaces should participate in this application's
  * MVP structure.
@@ -14,6 +15,10 @@ package com.appweava.androidstarter.base.mvp;
  *          void setListOfThings(List<Thing> things);
  *      }
  * }
+ *
+ * <p>
+ * Any common methods that will be used in most, if not, all presenter implementations should be
+ * put here.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

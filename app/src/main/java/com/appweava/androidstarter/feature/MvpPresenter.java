@@ -14,7 +14,7 @@ import timber.log.Timber;
 /**
  * MvpPresenter
  * <p>
- * Implementation {@link MvpPresenter}.
+ * Implementation {@link MvpPresenter}. Used as a simple example.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -29,6 +29,16 @@ public class MvpPresenter extends BasePresenter<MvpView> {
         this.mvpUseCase = useCase;
     }
 
+    @Override
+    protected void onViewAttached() {
+        // Perform any necessary calls when the view gets attached here.
+    }
+
+    @Override
+    protected void onViewDetached() {
+        unsubCompositeSubscription();
+    }
+
     void getMvpList() {
         getSubs().add(
             mvpUseCase.execute(SubscriptionCreator.create(this::onDataReady, null, null))
@@ -37,7 +47,7 @@ public class MvpPresenter extends BasePresenter<MvpView> {
 
     private void onDataReady(List<MvpData> data) {
         for (MvpData mvpModel : data) {
-            Timber.tag("Mvp Activity").i("Model: %s", mvpModel.getSomeField());
+            Timber.tag("Mvp Activity").i("Model: %s", mvpModel.someField());
         }
     }
 }

@@ -57,9 +57,7 @@ public class ApplicationModule {
     AppInitializer provideAppInitializer() {
         return new AppInitializer() {
             @Override
-            protected void initAppDependencies(StarterApp app) {
-
-            }
+            protected void initAppDependencies(StarterApp app) {}
         };
     }
 }

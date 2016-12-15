@@ -22,7 +22,10 @@ import butterknife.Unbinder;
  * BaseActivity
  * <p>
  * Abstract base activity class containing common functionality for most
- * {@link android.app.Activity}s
+ * {@link android.app.Activity}s.
+ *
+ * <p>
+ * Contains simple lifecycle handling for presenters and their attached views.
  *
  * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
  * @date 6/25/16
@@ -30,6 +33,7 @@ import butterknife.Unbinder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    @Nullable
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
@@ -123,10 +127,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         unbinder.unbind();
 
         if (presenter != null) {
-            presenter.reset();
+            presenter.detachView();
+            presenter = null;
         }
     }
 
+    /**
+     * Attaches presenter to lifecycle of activity.
+     *
+     * @param presenter
+     *      {@link Presenter}
+     * @param view
+     *      {@link BaseView}
+     */
     @SuppressWarnings("unchecked")
     protected void attachPresenterToLifecycle(Presenter presenter, BaseView view) {
         this.presenter = presenter;

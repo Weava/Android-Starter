@@ -11,7 +11,8 @@ import timber.log.Timber;
 /**
  * SubscriptionCreator
  * <p>
- * Class description here
+ * Creator class for instantiating {@link Subscriber}. This is useful for when you wish to create
+ * a subscription.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

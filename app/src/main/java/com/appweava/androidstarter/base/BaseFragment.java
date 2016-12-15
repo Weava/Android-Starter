@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.appweava.androidstarter.base.mvp.BaseView;
 import com.appweava.androidstarter.base.mvp.Presenter;
-import com.appweava.androidstarter.internal.di.HasComponent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -48,29 +47,30 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
 
         if (presenter != null) {
-            presenter.reset();
+            presenter.detachView();
+            presenter = null;
         }
+
         unbinder.unbind();
     }
 
     /**
-     * Gets component for dependency injection based on type.
+     * Abstract method for setting the layout resource that the fragment will use as it's view.
      *
-     * @param componentType
-     *      The type of the component
-     * @param <C>
-     *      Generic type of the component
      * @return
-     *      The component to be returned
+     *      {@link LayoutRes} layout resource id.
      */
-    @SuppressWarnings("unchecked")
-    protected <C> C getComponent(Class<C> componentType) {
-        return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
-    }
-
     @LayoutRes
     protected abstract int getLayoutRes();
 
+    /**
+     * Attaches presenter to lifecycle of activity.
+     *
+     * @param presenter
+     *      {@link Presenter}
+     * @param view
+     *      {@link BaseView}
+     */
     @SuppressWarnings("unchecked")
     protected void attachPresenterToLifecycle(Presenter presenter, BaseView view) {
         this.presenter = presenter;

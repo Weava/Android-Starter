@@ -54,11 +54,7 @@ ext {
         picasso:                "com.squareup.picasso:picasso:${PICASSO_VERSION}",
         circleImageView:        "de.hdodenhof:circleimageview:${CIRCLE_IMAGE_VIEW_VERSION}",
         javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
-        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}",
-        mortar:                 "com.squareup.mortar:mortar:${MORTAR_VERSION}",
-        flow:                   "com.squareup.flow:flow:${FLOW_VERSION}",
-        autoValue:              "com.google.auto.value:auto-value:${AUTO_VALUE_VERSION}",
-        autoValueParcel:        "com.ryanharter.auto.value:auto-value-parcel:${AUTO_VALUE_PARCEL_VERSION}"
+        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}"
     ]
 
     appTestDependencies = [
@@ -75,7 +71,8 @@ ext {
         daggerCompiler:         "com.google.dagger:dagger-compiler:${DAGGER_VERSION}",
         dagger:                 "com.google.dagger:dagger:${DAGGER_VERSION}",
         javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
-        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}"
+        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}",
+        autoValue:              "com.google.auto.value:auto-value:${AUTO_VALUE_VERSION}"
     ]
 
     domainTestDependencies = [

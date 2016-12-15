@@ -24,10 +24,10 @@ public class MvpApiImpl implements MvpApi {
 
         List<MvpData> mvpDataEntities = new ArrayList<>();
 
-        mvpDataEntities.add(new MvpData("Number One"));
-        mvpDataEntities.add(new MvpData("Number Two"));
-        mvpDataEntities.add(new MvpData("Number Three"));
-        mvpDataEntities.add(new MvpData("Number Four"));
+        mvpDataEntities.add(MvpData.builder().someField("One").build());
+        mvpDataEntities.add(MvpData.builder().someField("Two").build());
+        mvpDataEntities.add(MvpData.builder().someField("Three").build());
+        mvpDataEntities.add(MvpData.builder().someField("Four").build());
 
         return Observable.just(mvpDataEntities);
     }

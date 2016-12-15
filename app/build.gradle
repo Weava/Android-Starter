@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'io.fabric'
+apply plugin: 'idea'
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -62,8 +63,6 @@ dependencies {
     apt appDependencies.javaPoet
     apt appDependencies.daggerCompiler
     apt appDependencies.butterKnifeCompiler
-    apt appDependencies.autoValue
-    apt appDependencies.autoValueParcel
     compile appDependencies.dagger
     compile appDependencies.butterKnife
     compile appDependencies.recyclerView
@@ -72,9 +71,6 @@ dependencies {
     compile appDependencies.designSupportLibrary
     compile appDependencies.circleImageView
     compile appDependencies.picasso
-    compile appDependencies.mortar
-    compile appDependencies.flow
-    provided appDependencies.autoValue
     provided appDependencies.javaxAnnotations
 
     /* Analytics */
