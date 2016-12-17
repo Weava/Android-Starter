@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'idea'
 
 android {
     defaultPublishConfig "debug"
@@ -45,11 +44,9 @@ dependencies {
     /* Release */
     apt dataDependencies.javaPoet
     apt dataDependencies.daggerCompiler
-    provided dataDependencies.javaxAnnotations
     compile dataDependencies.dagger
     compile dataDependencies.okHttp
     compile dataDependencies.gson
-    compile dataDependencies.rxJava
     compile dataDependencies.rxAndroid
     compile dataDependencies.androidAnnotations
     compile dataDependencies.retrofit

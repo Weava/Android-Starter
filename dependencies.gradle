@@ -23,9 +23,7 @@ ext {
     def String CIRCLE_IMAGE_VIEW_VERSION = "2.0.0"
     def String JAVA_POET_VERSION = "1.7.0"
     def String AUTO_VALUE_VERSION = "1.2"
-    def String AUTO_VALUE_PARCEL_VERSION = "0.2.5"
-    def String MORTAR_VERSION = "0.20"
-    def String FLOW_VERSION = "1.0.0-alpha2"
+    def String ADAPTER_DELEGATES_VERSION = "3.0.0"
 
     def String ROBOLECTRIC_VERSION = "3.0"
     def String JUNIT_VERSION = "4.12"
@@ -49,12 +47,10 @@ ext {
         butterKnifeCompiler:    "com.jakewharton:butterknife-compiler:${BUTTER_KNIFE_VERSION}",
         recyclerView:           "com.android.support:recyclerview-v7:${SUPPORT_LIB_VERSION}",
         designSupportLibrary:   "com.android.support:design:${SUPPORT_LIB_VERSION}",
-        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}",
-        rxAndroid:              "io.reactivex:rxandroid:${RX_JAVA_VERSION}",
         picasso:                "com.squareup.picasso:picasso:${PICASSO_VERSION}",
         circleImageView:        "de.hdodenhof:circleimageview:${CIRCLE_IMAGE_VIEW_VERSION}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
-        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}"
+        crashlytics:            "com.crashlytics.sdk.android:crashlytics:${CRASHLYTICS_VERSION}",
+        adapterDelegates:       "com.hannesdorfmann:adapterdelegates3:${ADAPTER_DELEGATES_VERSION}"
     ]
 
     appTestDependencies = [
@@ -86,12 +82,10 @@ ext {
         dagger:                 "com.google.dagger:dagger:${DAGGER_VERSION}",
         okHttp:                 "com.squareup.okhttp3:okhttp:${OKHTTP_VERSION}",
         gson:                   "com.google.code.gson:gson:${GSON_VERSION}",
-        rxJava:                 "io.reactivex:rxjava:${RX_JAVA_VERSION}",
         rxAndroid:              "io.reactivex:rxandroid:${RX_JAVA_VERSION}",
         retrofit:               "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}",
         retrofitRxAdapter:      "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}",
         retrofitGson:           "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}",
-        javaxAnnotations:       "javax.annotation:jsr250-api:${JAVAX_ANNOTATIONS_VERSION}",
         androidAnnotations:     "com.android.support:support-annotations:${SUPPORT_LIB_VERSION}"
     ]
 

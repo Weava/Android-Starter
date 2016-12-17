@@ -21,7 +21,7 @@ public abstract class MvpData {
     public abstract String someField();
 
     @AutoValue.Builder
-    static abstract class Builder {
+    public static abstract class Builder {
         public abstract Builder someField(String someField);
         public abstract MvpData build();
     }

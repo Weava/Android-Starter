@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'io.fabric'
-apply plugin: 'idea'
+
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -66,12 +66,10 @@ dependencies {
     compile appDependencies.dagger
     compile appDependencies.butterKnife
     compile appDependencies.recyclerView
-    compile appDependencies.rxJava
-    compile appDependencies.rxAndroid
     compile appDependencies.designSupportLibrary
     compile appDependencies.circleImageView
     compile appDependencies.picasso
-    provided appDependencies.javaxAnnotations
+    compile appDependencies.adapterDelegates
 
     /* Analytics */
     compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {

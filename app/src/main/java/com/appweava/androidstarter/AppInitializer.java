@@ -3,7 +3,7 @@ package com.appweava.androidstarter;
 /**
  * AppInitializer
  * <p>
- * Class description here
+ * Initializes application and it's dependencies.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -11,9 +11,21 @@ package com.appweava.androidstarter;
  */
 public abstract class AppInitializer {
 
+    /**
+     * Initializes the application.
+     *
+     * @param app
+     *      {@link StarterApp}
+     */
     public void init(StarterApp app) {
         initAppDependencies(app);
     }
 
+    /**
+     * Initializes application dependencies.
+     *
+     * @param app
+     *      {@link StarterApp}
+     */
     protected abstract void initAppDependencies(StarterApp app);
 }
