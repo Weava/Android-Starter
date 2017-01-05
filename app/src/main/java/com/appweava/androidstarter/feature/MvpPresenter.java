@@ -40,7 +40,7 @@ public class MvpPresenter extends BasePresenter<MvpView> {
     }
 
     void getMvpList() {
-        getSubs().add(
+        getSubscriptions().add(
             mvpUseCase.execute(SubscriptionCreator.create(this::onDataReady, null, null))
         );
     }

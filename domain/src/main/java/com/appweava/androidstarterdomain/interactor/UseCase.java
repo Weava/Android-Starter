@@ -45,8 +45,21 @@ public abstract class UseCase {
     @SuppressWarnings("unchecked")
     public Subscription execute(Subscriber useCaseSubscriber) {
         return this.buildUseCaseObservable()
-                .subscribeOn(executionThread.getThread())
-                .observeOn(postExecutionThread.getScheduler())
+                .compose(applySchedulers())
                 .subscribe(useCaseSubscriber);
+    }
+
+    /**
+     * A {@link rx.Observable.Transformer} for applying subscribeOn and observeOn threads for
+     * Rx {@link Observable} when executing use case.
+     *
+     * @param <T>
+     *     Generic type of observable
+     * @return
+     *      {@link rx.Observable.Transformer}
+     */
+    private <T> Observable.Transformer<T, T> applySchedulers() {
+        return observable -> observable.subscribeOn(executionThread.getThread())
+                .observeOn(postExecutionThread.getScheduler());
     }
 }

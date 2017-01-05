@@ -56,17 +56,6 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
     }
 
     /**
-     * Unsubscribe from all current {@link rx.Subscription}s contained within the
-     * {@link CompositeSubscription}.
-     */
-    protected void unsubCompositeSubscription() {
-        if (subscriptions != null
-                && subscriptions.hasSubscriptions() && !subscriptions.isUnsubscribed()) {
-            subscriptions.unsubscribe();
-        }
-    }
-
-    /**
      * Method to be called when view is detached. Make sure to override this method in implementing
      * classes if you want to have an actual implementation.
      */
@@ -103,12 +92,24 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
      * @return
      *      {@link CompositeSubscription}
      */
-    protected CompositeSubscription getSubs() {
+    protected CompositeSubscription getSubscriptions() {
         if (subscriptions == null) {
             subscriptions = new CompositeSubscription();
         }
 
         return subscriptions;
+    }
+
+    /**
+     * Unsubscribe from all current {@link rx.Subscription}s contained within the
+     * {@link CompositeSubscription}.
+     */
+    protected void unsubCompositeSubscription() {
+        if (subscriptions != null
+                && subscriptions.hasSubscriptions()
+                && !subscriptions.isUnsubscribed()) {
+            subscriptions.unsubscribe();
+        }
     }
 
     /**
