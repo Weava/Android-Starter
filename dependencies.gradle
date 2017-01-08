@@ -10,7 +10,6 @@ ext {
     androidTargetSdkVersion = 23
     androidCompileSdkVersion = 23
 
-
     def String SUPPORT_LIB_VERSION = "23.2.1"
     def String DAGGER_VERSION = "2.8"
     def String BUTTER_KNIFE_VERSION = "8.1.0"
@@ -25,7 +24,7 @@ ext {
     def String AUTO_VALUE_VERSION = "1.2"
     def String ADAPTER_DELEGATES_VERSION = "3.0.0"
     def String STORE_VERSION = "1.0.1"
-    
+
     def String JUNIT_VERSION = "4.12"
     def String ASSERT_J_VERSION = "1.7.1"
     def String MOCKITO_VERSION = "1.9.5"

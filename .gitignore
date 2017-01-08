@@ -7,3 +7,8 @@
 /build
 /captures
 gradle.properties
+app/libs/
+app/src/main/res/drawable/
+data/libs/
+data/src/main/res/drawable/
+domain/libs/

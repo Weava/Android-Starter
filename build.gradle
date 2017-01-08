@@ -51,11 +51,11 @@ task runDomainUnitTests(dependsOn: [':domain:test']) {
     description 'Run unit tests for the domain layer.'
 }
 
-task runDataUnitTests(dependsOn: [':data:cleanTestDebugUnitTest', ':data:testDebugUnitTest']) {
+task runDataUnitTests(dependsOn: [':data:test']) {
     description 'Run unit tests for the data layer.'
 }
 
-task runAppUnitTests(dependsOn: [':app:cleanTestDebugUnitTest', ':app:testDebugUnitTest']) {
+task runAppUnitTests(dependsOn: [':app:test']) {
     description 'Run unit tests for the app layer.'
 }
 
