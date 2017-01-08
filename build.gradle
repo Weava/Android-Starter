@@ -55,7 +55,11 @@ task runDataUnitTests(dependsOn: [':data:cleanTestDebugUnitTest', ':data:testDeb
     description 'Run unit tests for the data layer.'
 }
 
-task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests']) {
+task runAppUnitTests(dependsOn: [':app:cleanTestDebugUnitTest', ':app:testDebugUnitTest']) {
+    description 'Run unit tests for the app layer.'
+}
+
+task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests', 'runAppUnitTests']) {
     description 'Run unit tests for both domain and data layers.'
 }
 

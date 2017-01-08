@@ -6,6 +6,8 @@ import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
+import rx.functions.Action0;
+import rx.functions.Action1;
 
 /**
  * UseCase
@@ -37,16 +39,59 @@ public abstract class UseCase {
     protected abstract Observable buildUseCaseObservable();
 
     /**
-     * Executes the use case.
+     * Subscribes to the executing use case using only an {@link rx.Subscriber#onNext(Object)}
+     * function.
      *
-     * @param useCaseSubscriber
-     *      {@link Subscriber} that the use case observable will use
+     * @param onNext
+     *      {@link rx.Subscriber#onNext(Object)}
+     * @param <T>
+     *      Type of the observable returned
+     * @return
+     *      {@link Subscription} of the observable
      */
     @SuppressWarnings("unchecked")
-    public Subscription execute(Subscriber useCaseSubscriber) {
+    public <T> Subscription execute(Action1<T> onNext) {
+        return execute(onNext, (throwable) -> {}, () -> {});
+    }
+
+    /**
+     * Subscribes to the executing use case using only an {@link rx.Subscriber#onNext(Object)}
+     * and {@link rx.Subscriber#onError(Throwable)} functions.
+     *
+     * @param onNext
+     *      {@link rx.Subscriber#onNext(Object)}
+     * @param onError
+     *      {@link rx.Subscriber#onError(Throwable)}
+     * @param <T>
+     *      Type of the observable returned
+     * @return
+     *      {@link Subscription} of the observable
+     */
+    @SuppressWarnings("unchecked")
+    public <T> Subscription execute(Action1<T> onNext, Action1<? extends Throwable> onError) {
+        return execute(onNext, onError, () -> {});
+    }
+
+    /**
+     * Subscribes to the executing use case using only an {@link rx.Subscriber#onNext(Object)},
+     * {@link rx.Subscriber#onError(Throwable)}, and {@link Subscriber#onCompleted()} functions.
+     *
+     * @param onNext
+     *      {@link rx.Subscriber#onNext(Object)}
+     * @param onError
+     *      {@link rx.Subscriber#onError(Throwable)}
+     * @param onComplete
+     *      {@link Subscriber#onCompleted()}
+     * @param <T>
+     *      Type of the observable returned
+     * @return
+     *      {@link Subscription} of the observable
+     */
+    @SuppressWarnings("unchecked")
+    public <T> Subscription execute(Action1<T> onNext, Action1<? extends Throwable> onError, Action0 onComplete) {
         return this.buildUseCaseObservable()
                 .compose(applySchedulers())
-                .subscribe(useCaseSubscriber);
+                .subscribe(onNext, onError, onComplete);
     }
 
     /**
@@ -58,8 +103,9 @@ public abstract class UseCase {
      * @return
      *      {@link rx.Observable.Transformer}
      */
-    private <T> Observable.Transformer<T, T> applySchedulers() {
-        return observable -> observable.subscribeOn(executionThread.getThread())
+    protected  <T> Observable.Transformer<T, T> applySchedulers() {
+        return observable -> observable
+                .subscribeOn(executionThread.getThread())
                 .observeOn(postExecutionThread.getScheduler());
     }
 }

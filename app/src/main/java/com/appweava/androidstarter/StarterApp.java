@@ -20,7 +20,7 @@ public class StarterApp extends Application {
 
     @Inject AppInitializer appInitializer;
 
-    protected AppGraph appComponent;
+    private AppGraph appComponent;
 
     @Override
     public void onCreate() {

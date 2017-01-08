@@ -15,16 +15,16 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * RepositoryModule
+ * DebugRepositoryModule
  * <p>
  * Class description here
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
- * @since 11/22/16
+ * @since 1/7/17
  */
 @Module
-public class RepositoryModule {
+public class DebugRepositoryModule {
 
     @Provides
     @Singleton

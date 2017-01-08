@@ -52,12 +52,14 @@ dependencies {
     compile dataDependencies.retrofit
     compile dataDependencies.retrofitRxAdapter
     compile dataDependencies.retrofitGson
+    compile dataDependencies.store
+    compile dataDependencies.storeMiddleware
+    compile dataDependencies.storeFilesystem
 
     /* Test */
     testCompile dataTestDependencies.junit
     testCompile dataTestDependencies.assertj
     testCompile dataTestDependencies.mockito
-    testCompile dataTestDependencies.robolectric
 
     /* Development */
     compile devDependencies.stethoOkhttp

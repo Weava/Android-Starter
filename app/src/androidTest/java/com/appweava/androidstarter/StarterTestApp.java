@@ -1,17 +1,13 @@
 package com.appweava.androidstarter;
 
-import com.appweava.androidstarter.internal.di.component.AppGraph;
-import com.appweava.androidstarter.internal.di.component.DaggerAppComponent;
-import com.appweava.androidstarter.internal.di.module.DebugApiModule;
-import com.appweava.androidstarter.internal.di.module.DebugApplicationModule;
-import com.appweava.androidstarter.internal.di.module.RepositoryModule;
+import com.appweava.androidstarter.internal.di.component.TestComponent;
 
 import timber.log.Timber;
 
 /**
  * StarterTestApplication
  * <p>
- * Class description here
+ * {@link StarterApp} extension class that sets up our dependencies for instrumentation tests.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
@@ -19,25 +15,21 @@ import timber.log.Timber;
  */
 public class StarterTestApp extends StarterApp {
 
+    private TestComponent testComponent;
+
     @Override
     protected void initAppComponent() {
-
-        // TODO: Figure out what to do about mock dependencies
-        appComponent = DaggerAppComponent
-                .builder()
-                .applicationModule(new DebugApplicationModule(this))
-                .apiModule(new DebugApiModule())
-                .repositoryModule(new RepositoryModule())
-                .build();
+        testComponent = TestComponent.Initializer.init(this);
     }
 
     @Override
     protected void initApp() {
         Timber.tag("Mock App").i("Initializing mock application for testing");
+        // TODO: Init test app dependencies here.
     }
 
     @Override
-    public AppGraph getAppComponent() {
-        return super.getAppComponent();
+    public TestComponent getAppComponent() {
+        return testComponent;
     }
 }

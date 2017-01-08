@@ -1,19 +1,19 @@
 package com.appweava.androidstarter.feature;
 
-import android.support.test.runner.AndroidJUnit4;
-
 import com.appweava.androidstarterdomain.feature.MvpUseCase;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import rx.Subscriber;
+import rx.Subscription;
+import rx.functions.Action1;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * MvpPresenterTest
@@ -24,7 +24,6 @@ import static org.mockito.Mockito.verify;
  * @version 1.0.0
  * @since 7/10/16
  */
-@RunWith(AndroidJUnit4.class)
 public class MvpPresenterTest {
 
     private MvpPresenter mvpPresenter;
@@ -36,14 +35,14 @@ public class MvpPresenterTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mvpPresenter = new MvpPresenter(mockMvpUseCase);
+        when(mockMvpUseCase.execute(any())).thenReturn(Mockito.mock(Subscription.class));
         mvpPresenter.attachView(mockMvpView);
     }
 
     @Test
     public void testGetMvpList() {
-
         mvpPresenter.getMvpList();
 
-        verify(mockMvpUseCase).execute(any(Subscriber.class));
+        verify(mockMvpUseCase).execute(any(Action1.class));
     }
 }

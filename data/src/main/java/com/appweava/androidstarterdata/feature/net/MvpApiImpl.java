@@ -1,6 +1,5 @@
-package com.appweava.androidstarterdata.feature.repository;
+package com.appweava.androidstarterdata.feature.net;
 
-import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.ArrayList;

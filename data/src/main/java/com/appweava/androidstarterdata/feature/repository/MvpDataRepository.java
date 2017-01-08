@@ -1,7 +1,12 @@
 package com.appweava.androidstarterdata.feature.repository;
 
+import com.appweava.androidstarterdata.base.StoreObjects;
+import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.feature.MvpRepository;
+import com.nytimes.android.external.store.base.Store;
+import com.nytimes.android.external.store.base.impl.BarCode;
+import com.nytimes.android.external.store.base.impl.StoreBuilder;
 
 import java.util.List;
 
@@ -22,16 +27,22 @@ import rx.Observable;
 @Singleton
 public class MvpDataRepository implements MvpRepository {
 
-    private final MvpDataStoreFactory mvpDataStoreFactory;
+    private final StoreObjects storeObjects;
+    private final MvpApi mvpApi;
 
     @Inject
-    public MvpDataRepository(MvpDataStoreFactory mvpDataStoreFactory) {
-        this.mvpDataStoreFactory = mvpDataStoreFactory;
+    public MvpDataRepository(StoreObjects storeObjects, MvpApi mvpApi) {
+        this.storeObjects = storeObjects;
+        this.mvpApi = mvpApi;
     }
 
     @Override
     public Observable<List<MvpData>> getMvpModelList() {
-        final MvpDataStore dataStore = mvpDataStoreFactory.create();
-        return dataStore.getMvpEntityList();
+        Store<List<MvpData>> store = StoreBuilder.<List<MvpData>>builder()
+                .fetcher((barCode) -> mvpApi.getMvpEntityList())
+                .persister(storeObjects.getDefaultPersister())
+                .open();
+
+        return store.get(new BarCode("Mvp Data List", "list"));
     }
 }

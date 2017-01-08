@@ -3,46 +3,57 @@ package com.appweava.androidstarter.internal.di.module;
 import android.content.Context;
 
 import com.appweava.androidstarter.AppInitializer;
-import com.appweava.androidstarter.StarterApp;
+import com.appweava.androidstarter.StarterTestApp;
 import com.appweava.androidstarter.UiThread;
 import com.appweava.androidstarterdata.executor.RxExecutor;
 import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
 
-import org.mockito.Mockito;
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * MockApplicationModule
  * <p>
- * Class description here
+ * Provides mock application dependencies.
+ * TODO: Properly decide what to do with dependencies
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 11/23/16
  */
-public class MockApplicationModule extends ApplicationModule {
+@Module
+public class MockApplicationModule {
 
-    public MockApplicationModule() {
-        super(Mockito.mock(StarterApp.class));
+    private StarterTestApp starterTestApp;
+
+    public MockApplicationModule(StarterTestApp starterTestApp) {
+        this.starterTestApp = starterTestApp;
     }
 
-    @Override
+    @Singleton
+    @Provides
     Context provideApplicationContext() {
-        return Mockito.mock(Context.class);
+        return starterTestApp;
     }
 
-    @Override
+    @Singleton
+    @Provides
     ExecutionThread provideThreadExecutor(RxExecutor rxExecutor) {
         return rxExecutor;
     }
 
-    @Override
+    @Singleton
+    @Provides
     PostExecutionThread providePostExecutionThread(UiThread uiThread) {
         return uiThread;
     }
 
-    @Override
+    @Singleton
+    @Provides
     AppInitializer provideAppInitializer() {
-        return Mockito.mock(AppInitializer.class);
+        return null;
     }
 }

@@ -92,7 +92,7 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
      * @return
      *      {@link CompositeSubscription}
      */
-    protected CompositeSubscription getSubscriptions() {
+    protected CompositeSubscription subscriptions() {
         if (subscriptions == null) {
             subscriptions = new CompositeSubscription();
         }

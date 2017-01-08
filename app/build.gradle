@@ -82,6 +82,12 @@ dependencies {
     androidTestCompile appTestDependencies.dexmakerMockito
     androidTestCompile appTestDependencies.espresso
     androidTestCompile appTestDependencies.testingSupportLib
+    androidTestCompile 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    androidTestApt appTestDependencies.daggerCompiler
+
+    testCompile appTestDependencies.junit
+    testCompile appTestDependencies.mockito
+    testCompile appTestDependencies.assertj
 
     /* Development */
     debugCompile devDependencies.leakCanary

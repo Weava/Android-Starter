@@ -1,7 +1,6 @@
 package com.appweava.androidstarter.feature;
 
 import com.appweava.androidstarter.base.mvp.BasePresenter;
-import com.appweava.androidstarter.base.rx.SubscriptionCreator;
 import com.appweava.androidstarterdomain.feature.MvpData;
 import com.appweava.androidstarterdomain.feature.MvpUseCase;
 
@@ -40,9 +39,7 @@ public class MvpPresenter extends BasePresenter<MvpView> {
     }
 
     void getMvpList() {
-        getSubscriptions().add(
-            mvpUseCase.execute(SubscriptionCreator.create(this::onDataReady, null, null))
-        );
+        subscriptions().add(mvpUseCase.execute(this::onDataReady));
     }
 
     private void onDataReady(List<MvpData> data) {

@@ -15,25 +15,25 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * RepositoryModule
+ * ReleaseRepositoryModule
  * <p>
  * Class description here
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
- * @since 11/22/16
+ * @since 1/7/17
  */
 @Module
-public class RepositoryModule {
+public class ReleaseRepositoryModule {
 
-    @Provides
     @Singleton
+    @Provides
     StoreObjects provideStoreObjects(Gson gson, File file) {
         return new DefaultStoreObjects(gson, file);
     }
 
-    @Provides
     @Singleton
+    @Provides
     MvpRepository provideMvpRepository(StoreObjects storeObjects, MvpApi mvpApi) {
         return new MvpDataRepository(storeObjects, mvpApi);
     }

@@ -1,12 +1,17 @@
 package com.appweava.androidstarter.internal.di.module;
 
-import com.appweava.androidstarterdata.feature.net.MvpApi;
-import com.google.gson.Gson;
+import android.content.Context;
 
-import org.mockito.Mockito;
+import com.appweava.androidstarterdata.feature.net.MvpApi;
+import com.appweava.androidstarterdata.feature.net.MvpApiImpl;
+import com.google.gson.Gson;
 
 import java.io.File;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -14,36 +19,49 @@ import retrofit2.Retrofit;
 /**
  * MockApiModule
  * <p>
- * Class description here
+ * Mock Api dependencies provider.
+ * TODO: Properly decide what to do with dependencies
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
  * @since 11/23/16
  */
-public class MockApiModule extends ApiModule {
+@Module
+public class MockApiModule {
 
-    @Override
+    @Provides
+    @Singleton
     Gson provideGson() {
         return new Gson();
     }
 
-    @Override
-    Cache provideCache() {
-        return new Cache(new File("app/cache"), 1);
+    @Provides
+    @Singleton
+    File provideFile(Context context) {
+        return context.getFilesDir();
     }
 
-    @Override
+    @Provides
+    @Singleton
+    Cache provideCache(File file) {
+        return new Cache(file, 1);
+    }
+
+    @Provides
+    @Singleton
     Retrofit.Builder provideRetrofitBuilder(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder();
     }
 
-    @Override
+    @Provides
+    @Singleton
     MvpApi provideMvpApi(Retrofit.Builder retrofit) {
-        return Mockito.mock(MvpApi.class);
+        return new MvpApiImpl();
     }
 
-    @Override
+    @Provides
+    @Singleton
     OkHttpClient provideOkHttpClient(Cache cache) {
-        return Mockito.mock(OkHttpClient.class);
+        return new OkHttpClient.Builder().build();
     }
 }

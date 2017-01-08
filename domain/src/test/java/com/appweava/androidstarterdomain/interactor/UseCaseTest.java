@@ -9,13 +9,18 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import rx.Observable;
-import rx.Subscriber;
-import rx.observers.TestSubscriber;
+import rx.Subscription;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 import rx.schedulers.TestScheduler;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * UseCaseTest
@@ -41,23 +46,20 @@ public class UseCaseTest {
 
     @Test
     public void testBuildUseCaseObservableReturnCorrectResults() {
-        TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
         TestScheduler testScheduler = new TestScheduler();
         given(mockPostExecutionThread.getScheduler()).willReturn(testScheduler);
+        Action1<Integer> onNext = mock(Action1.class);
 
-        useCase.execute(testSubscriber);
+        useCase.execute(onNext);
 
-        assertThat(testSubscriber.getOnNextEvents().size(), is(0));
+        verify(onNext, times(0)).call(any());
     }
 
     @Test
     public void testSubscriptionWhenExecutingUseCase() {
-        TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
+        Subscription subscription = useCase.execute((item) -> {});
 
-        useCase.execute(testSubscriber);
-        useCase.unsubscribe();
-
-        assertThat(testSubscriber.isUnsubscribed(), is(true));
+        assertThat(subscription.isUnsubscribed(), is(true));
     }
 
     private static class UseCaseTestClass extends UseCase {
@@ -73,8 +75,10 @@ public class UseCaseTest {
         }
 
         @Override
-        public void execute(Subscriber useCaseSubscriber) {
-            super.execute(useCaseSubscriber);
+        protected <T> Observable.Transformer<T, T> applySchedulers() {
+            return observable -> observable
+                    .observeOn(Schedulers.immediate())
+                    .subscribeOn(Schedulers.immediate());
         }
     }
 }

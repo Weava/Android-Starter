@@ -47,8 +47,6 @@ public abstract class BaseDelegateRecyclerAdapter<T> extends BaseRecyclerAdapter
         return (BaseViewHolder<T>) adapterDelegatesManager.onCreateViewHolder(parent, viewType);
     }
 
-
-
     @Override
     public void onBindViewHolder(BaseViewHolder<T> holder, int position) {
         adapterDelegatesManager.onBindViewHolder(elements, position, holder);

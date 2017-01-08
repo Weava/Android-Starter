@@ -1,5 +1,7 @@
 package com.appweava.androidstarter.internal.di.module;
 
+import android.content.Context;
+
 import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,6 +37,12 @@ public class ApiModule {
     @Singleton
     Gson provideGson() {
         return new GsonBuilder().create();
+    }
+
+    @Provides
+    @Singleton
+    File provideFile(Context context) {
+        return context.getFilesDir();
     }
 
     @Provides
