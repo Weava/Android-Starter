@@ -1,3 +1,5 @@
+/* Gradle dependencies definitions for all android modules */
+
 allprojects {
     repositories {
         jcenter()
@@ -5,37 +7,38 @@ allprojects {
 }
 
 ext {
-    androidBuildToolsVersion = "25.0.0"
+    androidBuildToolsVersion = "25.0.2"
     androidMinSdkVersion = 21
-    androidTargetSdkVersion = 23
-    androidCompileSdkVersion = 23
+    androidTargetSdkVersion = 25
+    androidCompileSdkVersion = 25
 
-    def String SUPPORT_LIB_VERSION = "23.2.1"
+    def String SUPPORT_LIB_VERSION = "25.1.0"
+    def String SUPPORT_ANNOTATIONS_VERSION = "24.2.0"
     def String DAGGER_VERSION = "2.8"
-    def String BUTTER_KNIFE_VERSION = "8.1.0"
-    def String RX_JAVA_VERSION = "1.1.0"
+    def String BUTTER_KNIFE_VERSION = "8.4.0"
+    def String RX_JAVA_VERSION = "1.2.0"
     def String JAVAX_ANNOTATIONS_VERSION = "1.0"
     def String PICASSO_VERSION = "2.5.2"
-    def String GSON_VERSION = "2.6.2"
-    def String OKHTTP_VERSION = "3.2.0"
-    def String RETROFIT_VERSION = "2.0.2"
-    def String CIRCLE_IMAGE_VIEW_VERSION = "2.0.0"
-    def String JAVA_POET_VERSION = "1.7.0"
-    def String AUTO_VALUE_VERSION = "1.2"
-    def String ADAPTER_DELEGATES_VERSION = "3.0.0"
+    def String GSON_VERSION = "2.8.0"
+    def String OKHTTP_VERSION = "3.5.0"
+    def String RETROFIT_VERSION = "2.1.0"
+    def String CIRCLE_IMAGE_VIEW_VERSION = "2.1.0"
+    def String JAVA_POET_VERSION = "1.8.0"
+    def String AUTO_VALUE_VERSION = "1.3"
+    def String ADAPTER_DELEGATES_VERSION = "3.0.1"
     def String STORE_VERSION = "1.0.1"
 
     def String JUNIT_VERSION = "4.12"
-    def String ASSERT_J_VERSION = "1.7.1"
+    def String ASSERT_J_VERSION = "3.6.1"
     def String MOCKITO_VERSION = "1.9.5"
     def String DEXMAKER_VERSION = "1.0"
     def String ESPRESSO_VERSION = "2.2.2"
     def String RUNNER_VERSION = "0.5"
     def String TESTING_SUPPORT_LIB_VERSION = "0.1"
 
-    def String LEAK_CANARY_VERSION = "1.4-beta2"
+    def String LEAK_CANARY_VERSION = "1.5"
     def String TIMBER_VERSION = "4.1.2"
-    def String STETHO_VERSION = "1.3.1"
+    def String STETHO_VERSION = "1.4.2"
     def String CRASHLYTICS_VERSION = "2.6.5@aar"
 
     appDependencies = [
@@ -88,7 +91,7 @@ ext {
         retrofit:               "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}",
         retrofitRxAdapter:      "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}",
         retrofitGson:           "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}",
-        androidAnnotations:     "com.android.support:support-annotations:${SUPPORT_LIB_VERSION}",
+        androidAnnotations:     "com.android.support:support-annotations:${SUPPORT_ANNOTATIONS_VERSION}",
         store:                  "com.nytimes.android:store:${STORE_VERSION}",
         storeMiddleware:        "com.nytimes.android:middleware:${STORE_VERSION}",
         storeFilesystem:        "com.nytimes.android:filesystem:${STORE_VERSION}"
@@ -102,6 +105,7 @@ ext {
 
     devDependencies = [
         leakCanary:             "com.squareup.leakcanary:leakcanary-android:${LEAK_CANARY_VERSION}",
+        leakCanaryNoOp:         "com.squareup.leakcanary:leakcanary-android-no-op:${LEAK_CANARY_VERSION}",
         timber:                 "com.jakewharton.timber:timber:${TIMBER_VERSION}",
         stetho:                 "com.facebook.stetho:stetho:${STETHO_VERSION}",
         stethoOkhttp:           "com.facebook.stetho:stetho-okhttp3:${STETHO_VERSION}"

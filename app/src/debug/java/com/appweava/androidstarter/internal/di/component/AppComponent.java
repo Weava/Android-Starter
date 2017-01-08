@@ -12,7 +12,7 @@ import dagger.Component;
 /**
  * AppComponent
  * <p>
- * Class description here
+ * {@link AppGraph} extension defining dependency injection setup for Debug build type.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

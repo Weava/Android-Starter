@@ -5,7 +5,7 @@ import timber.log.Timber;
 /**
  * ReleaseAppInitializer
  * <p>
- * Class description here
+ * {@link AppInitializer} extension for defining application dependencies initialization on release builds.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

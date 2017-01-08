@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * ReleaseApiModule
  * <p>
- * Class description here
+ * {@link Module} defining API and network dependencies for release builds.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

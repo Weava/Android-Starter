@@ -8,7 +8,7 @@ import timber.log.Timber;
 /**
  * DebugAppInitializer
  * <p>
- * Class description here
+ * {@link AppInitializer} extension for defining application dependencies for Debug builds.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

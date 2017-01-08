@@ -13,7 +13,7 @@ import dagger.Component;
 /**
  * TestAppComponent
  * <p>
- * {@link AppComponent} extension that provides inject targets for test classes.
+ * {@link AppGraph} extension that provides dependency configuration for test cases.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

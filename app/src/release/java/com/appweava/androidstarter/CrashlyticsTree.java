@@ -12,7 +12,8 @@ import timber.log.Timber;
 /**
  * CrashlyticsTree
  * <p>
- * Class description here
+ * {@link timber.log.Timber.Tree} for sending error and crash reports to crashlytics on release
+ * builds.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0

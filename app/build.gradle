@@ -72,7 +72,7 @@ dependencies {
     compile appDependencies.adapterDelegates
 
     /* Analytics */
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+    compile (appDependencies.crashlytics) {
         transitive = true;
     }
 

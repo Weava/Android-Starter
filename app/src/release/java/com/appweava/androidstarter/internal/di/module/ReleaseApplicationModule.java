@@ -18,7 +18,7 @@ import dagger.Provides;
 /**
  * ReleaseApplicationModule
  * <p>
- * Class description here
+ * {@link Module} that defines application level dependencies for release builds.
  *
  * @author <a href="aaron@appweava.com">Aaron Weaver</a>
  * @version 1.0.0
