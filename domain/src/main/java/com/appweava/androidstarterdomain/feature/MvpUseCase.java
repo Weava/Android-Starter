@@ -12,10 +12,6 @@ import rx.Observable;
  * MvpUseCase
  * <p>
  * {@link UseCase} implementation for getting MvpItems.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 public class MvpUseCase extends UseCase {
 
@@ -23,7 +19,7 @@ public class MvpUseCase extends UseCase {
 
     @Inject
     public MvpUseCase(ExecutionThread executionThread, PostExecutionThread postExecutionThread,
-                      MvpRepository mvpRepository) {
+            MvpRepository mvpRepository) {
         super(executionThread, postExecutionThread);
         this.mvpRepository = mvpRepository;
     }

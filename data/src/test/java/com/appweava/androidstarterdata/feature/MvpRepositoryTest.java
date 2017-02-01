@@ -16,6 +16,7 @@ import java.util.List;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.when;
@@ -24,10 +25,6 @@ import static org.mockito.Mockito.when;
  * MvpRepositoryTest
  * <p>
  * Class description here
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 7/9/16
  */
 public class MvpRepositoryTest {
 
@@ -51,9 +48,9 @@ public class MvpRepositoryTest {
         List<MvpData> mvpDataEntities = new ArrayList<>();
 
         mvpDataRepository.getMvpModelList()
-                .observeOn(Schedulers.immediate())
-                .subscribeOn(Schedulers.immediate())
-                .subscribe(mvpDataEntities::addAll);
+                         .observeOn(Schedulers.immediate())
+                         .subscribeOn(Schedulers.immediate())
+                         .subscribe(mvpDataEntities::addAll);
 
         assertThat(mvpDataEntities.size() > 0, is(true));
     }

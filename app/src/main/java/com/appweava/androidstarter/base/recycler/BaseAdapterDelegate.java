@@ -16,10 +16,6 @@ import java.util.List;
  * <p>
  * Extension of {@link AdapterDelegate} that handles viewholder binding and view instantiation
  * for an independent viewholder type.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 12/16/16
  */
 public abstract class BaseAdapterDelegate<T> extends AdapterDelegate<List<T>> {
 
@@ -37,7 +33,8 @@ public abstract class BaseAdapterDelegate<T> extends AdapterDelegate<List<T>> {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected void onBindViewHolder(@NonNull List<T> items, int position, @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
+    protected void onBindViewHolder(@NonNull List<T> items, int position,
+            @NonNull RecyclerView.ViewHolder holder, @NonNull List<Object> payloads) {
         if (holder instanceof BaseViewHolder) {
             ((BaseViewHolder) holder).bind(items.get(position));
         }
@@ -47,17 +44,18 @@ public abstract class BaseAdapterDelegate<T> extends AdapterDelegate<List<T>> {
      * Inflate the view within each view holder.
      *
      * @param v
-     *      The view to inflate
-     * @return
-     *      {@link BaseViewHolder} with view already inflated
+     *         The view to inflate
+     *
+     * @return {@link BaseViewHolder} with view already inflated
      */
     protected abstract BaseViewHolder<T> inflateViewHolder(View v);
 
     /**
      * Gets layout resource for the delegate's view.
      *
-     * @return
-     *      {@link LayoutRes} layout resource id
+     * @return {@link LayoutRes} layout resource id
      */
-    protected abstract @LayoutRes int getLayoutRes();
+    protected abstract
+    @LayoutRes
+    int getLayoutRes();
 }

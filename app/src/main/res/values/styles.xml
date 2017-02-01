@@ -14,7 +14,7 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
     </style>
-    
+
     <style name="ToolbarDarkTheme" parent="AppTheme">
         <item name="android:textColorPrimary">@color/colorTextIcons</item>
         <item name="android:textColorSecondary">@color/colorTextIcons</item>

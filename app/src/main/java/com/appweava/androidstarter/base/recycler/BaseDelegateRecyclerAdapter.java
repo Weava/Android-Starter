@@ -13,10 +13,6 @@ import java.util.List;
  * <p>
  * Extension of {@link BaseRecyclerAdapter} that handles recycler views with multiple different
  * view types using {@link AdapterDelegatesManager} with {@link AdapterDelegate}s.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 12/16/16
  */
 public abstract class BaseDelegateRecyclerAdapter<T> extends BaseRecyclerAdapter<T> {
 
@@ -61,7 +57,7 @@ public abstract class BaseDelegateRecyclerAdapter<T> extends BaseRecyclerAdapter
      * Adds a single {@link AdapterDelegate} to the {@link AdapterDelegatesManager}.
      *
      * @param delegate
-     *      {@link AdapterDelegate}
+     *         {@link AdapterDelegate}
      */
     public void addDelegate(AdapterDelegate<List<T>> delegate) {
         this.adapterDelegatesManager.addDelegate(delegate);
@@ -71,7 +67,7 @@ public abstract class BaseDelegateRecyclerAdapter<T> extends BaseRecyclerAdapter
      * Adds multiple {@link AdapterDelegate}s to the {@link AdapterDelegatesManager}.
      *
      * @param delegateList
-     *      {@link List} of {@link AdapterDelegate}s
+     *         {@link List} of {@link AdapterDelegate}s
      */
     public void addDelegates(List<AdapterDelegate<List<T>>> delegateList) {
         for (AdapterDelegate<List<T>> delegate : delegateList) {

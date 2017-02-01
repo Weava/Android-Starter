@@ -14,10 +14,6 @@ import timber.log.Timber;
  * MvpPresenter
  * <p>
  * Implementation {@link MvpPresenter}. Used as a simple example.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 public class MvpPresenter extends BasePresenter<MvpView> {
 

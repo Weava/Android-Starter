@@ -24,10 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * DebugApiModule
  * <p>
  * {@link Module} for API and networking related dependencies.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/20/16
  */
 @Module
 public class DebugApiModule {
@@ -78,7 +74,7 @@ public class DebugApiModule {
     @Singleton
     MvpApi provideMvpApi(Retrofit.Builder retrofit) {
         return retrofit.baseUrl("http://reddit.com/r/")
-                .build()
-                .create(MvpApi.class);
+                       .build()
+                       .create(MvpApi.class);
     }
 }

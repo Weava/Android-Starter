@@ -26,7 +26,7 @@ android {
 
         multiDexEnabled true
 
-        manifestPlaceholders = [FABRIC_KEY:FABRIC_API_KEY]
+        manifestPlaceholders = [FABRIC_KEY: FABRIC_API_KEY]
     }
 
     compileOptions {
@@ -47,8 +47,6 @@ android {
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-annotations:22.2.0'
     }
-
-    buildToolsVersion '25.0.0'
 }
 
 dependencies {
@@ -72,7 +70,7 @@ dependencies {
     compile appDependencies.adapterDelegates
 
     /* Analytics */
-    compile (appDependencies.crashlytics) {
+    compile(appDependencies.crashlytics) {
         transitive = true;
     }
 

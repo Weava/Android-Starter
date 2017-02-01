@@ -13,10 +13,6 @@ import dagger.Component;
  * AppComponent
  * <p>
  * {@link AppGraph} extension for defining release build dependency injection strategy.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/24/16
  */
 @Singleton
 @Component(
@@ -29,12 +25,13 @@ import dagger.Component;
 public interface AppComponent extends AppGraph {
 
     final class Initializer {
+
         public static AppGraph init(StarterApp app) {
             return DaggerAppComponent.builder()
-                    .releaseApplicationModule(new ReleaseApplicationModule(app))
-                    .releaseApiModule(new ReleaseApiModule())
-                    .releaseRepositoryModule(new ReleaseRepositoryModule())
-                    .build();
+                                     .releaseApplicationModule(new ReleaseApplicationModule(app))
+                                     .releaseApiModule(new ReleaseApiModule())
+                                     .releaseRepositoryModule(new ReleaseRepositoryModule())
+                                     .build();
         }
 
         private Initializer() {

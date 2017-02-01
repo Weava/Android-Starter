@@ -14,6 +14,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.schedulers.TestScheduler;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.BDDMockito.given;
@@ -26,10 +27,6 @@ import static org.mockito.Mockito.verify;
  * UseCaseTest
  * <p>
  * Class description here
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 7/9/16
  */
 public class UseCaseTest {
 
@@ -65,7 +62,7 @@ public class UseCaseTest {
     private static class UseCaseTestClass extends UseCase {
 
         public UseCaseTestClass(ExecutionThread executionThread,
-                                PostExecutionThread postExecutionThread) {
+                PostExecutionThread postExecutionThread) {
             super(executionThread, postExecutionThread);
         }
 

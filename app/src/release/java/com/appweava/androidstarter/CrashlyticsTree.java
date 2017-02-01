@@ -14,12 +14,9 @@ import timber.log.Timber;
  * <p>
  * {@link timber.log.Timber.Tree} for sending error and crash reports to crashlytics on release
  * builds.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/24/16
  */
 public class CrashlyticsTree extends Timber.Tree {
+
     private static final String CRASHLYTICS_KEY_PRIORITY = "priority";
     private static final String CRASHLYTICS_KEY_TAG = "tag";
     private static final String CRASHLYTICS_KEY_MESSAGE = "message";
@@ -29,7 +26,8 @@ public class CrashlyticsTree extends Timber.Tree {
     }
 
     @Override
-    protected void log(int priority, @Nullable String tag, @Nullable String message, @Nullable Throwable t) {
+    protected void log(int priority, @Nullable String tag, @Nullable String message,
+            @Nullable Throwable t) {
         if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO) {
             return;
         }

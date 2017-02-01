@@ -12,10 +12,6 @@ import rx.android.schedulers.AndroidSchedulers;
  * UiThread
  * <p>
  * Singleton reference to the UI thread. Implements {@link PostExecutionThread}.
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 @Singleton
 public class UiThread implements PostExecutionThread {

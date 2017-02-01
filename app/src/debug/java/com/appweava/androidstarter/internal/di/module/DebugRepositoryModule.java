@@ -18,10 +18,6 @@ import dagger.Provides;
  * DebugRepositoryModule
  * <p>
  * {@link Module} for providing repository pattern and data module dependencies
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 1/7/17
  */
 @Module
 public class DebugRepositoryModule {

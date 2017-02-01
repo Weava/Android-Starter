@@ -19,10 +19,6 @@ import dagger.Provides;
  * <p>
  * Provides mock application dependencies.
  * TODO: Properly decide what to do with dependencies
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/23/16
  */
 @Module
 public class MockApplicationModule {

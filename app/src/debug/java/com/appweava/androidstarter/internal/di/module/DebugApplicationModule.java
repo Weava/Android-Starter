@@ -19,10 +19,6 @@ import dagger.Provides;
  * DebugAppModule
  * <p>
  * {@link Module} that provides application level dependencies
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/19/16
  */
 @Module
 public class DebugApplicationModule {

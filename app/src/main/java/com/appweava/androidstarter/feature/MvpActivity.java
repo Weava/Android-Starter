@@ -13,16 +13,12 @@ import javax.inject.Inject;
  * MvpActivity
  * <p>
  * Activity pertaining to mvp feature.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 public class MvpActivity extends BaseDrawerActivity implements MvpView {
-    
+
     public static Intent getCallingIntent(Context context) {
         Intent intent = new Intent(context, MvpActivity.class);
-        return intent;    
+        return intent;
     }
 
     @Inject

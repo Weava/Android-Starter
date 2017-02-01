@@ -15,10 +15,6 @@ import java.util.List;
  * Base {@link RecyclerView} adapter containing common functionality for all RecyclerViews.
  *
  * @see BaseViewHolder
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder<T>> {
 
@@ -36,7 +32,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      * Add a single element to the recycler adapter items.
      *
      * @param element
-     *      The element to add
+     *         The element to add
      */
     public void add(T element) {
         elements.add(element);
@@ -47,7 +43,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      * Add multiple elements to the recycler adapter items.
      *
      * @param elements
-     *      The elements to add
+     *         The elements to add
      */
     public void add(List<T> elements) {
         this.elements.addAll(elements);
@@ -58,7 +54,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      * Remove a single element from the recycler adapter items.
      *
      * @param position
-     *      The position from which to remove an item
+     *         The position from which to remove an item
      */
     public void remove(int position) {
         elements.remove(position);
@@ -69,7 +65,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
      * Clear the current adapter data, then replace it with another.
      *
      * @param elements
-     *      The elements to swap in
+     *         The elements to swap in
      */
     public void swapData(List<T> elements) {
         this.elements.clear();
@@ -103,18 +99,19 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
     /**
      * Set the layout resource to be used by all ViewHolders for this adapter.
      *
-     * @return
-     *      Reference ID for the layout resource
+     * @return Reference ID for the layout resource
      */
-    protected abstract @LayoutRes int getLayoutRes();
+    protected abstract
+    @LayoutRes
+    int getLayoutRes();
 
     /**
      * Inflate the view within each view holder.
      *
      * @param v
-     *      The view to inflate
-     * @return
-     *      {@link BaseViewHolder} with view already inflated
+     *         The view to inflate
+     *
+     * @return {@link BaseViewHolder} with view already inflated
      */
     protected abstract BaseViewHolder<T> inflateViewHolder(View v);
 }

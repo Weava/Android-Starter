@@ -9,10 +9,6 @@ import android.support.test.runner.AndroidJUnitRunner;
  * <p>
  * {@link AndroidJUnitRunner} extension that allows us to use our custom test {@link Application}
  * class in out instrumentation tests.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/22/16
  */
 public class StarterAppTestRunner extends AndroidJUnitRunner {
 

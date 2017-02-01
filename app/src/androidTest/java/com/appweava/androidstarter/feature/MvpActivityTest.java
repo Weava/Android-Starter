@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -15,10 +16,6 @@ import static org.hamcrest.core.Is.is;
  * MvpActivityTest
  * <p>
  * Tests for {@link MvpActivity} class.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 7/10/16
  */
 @RunWith(AndroidJUnit4.class)
 public class MvpActivityTest {

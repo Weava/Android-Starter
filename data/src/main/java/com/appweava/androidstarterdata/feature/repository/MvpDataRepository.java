@@ -19,10 +19,6 @@ import rx.Observable;
  * MvpDataRepository
  * <p>
  * Implementation of {@link MvpRepository}.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/28/16
  */
 @Singleton
 public class MvpDataRepository implements MvpRepository {

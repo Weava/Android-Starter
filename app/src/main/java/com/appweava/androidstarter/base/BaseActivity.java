@@ -23,13 +23,9 @@ import butterknife.Unbinder;
  * <p>
  * Abstract base activity class containing common functionality for most
  * {@link android.app.Activity}s.
- *
+ * <p>
  * <p>
  * Contains simple lifecycle handling for presenters and their attached views.
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @date 6/25/16
- * @since 1.0.0
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -56,8 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Get the layout resource to be used by this activity.
      *
-     * @return
-     *      {@link LayoutRes} identifier for layout resource
+     * @return {@link LayoutRes} identifier for layout resource
      */
     @LayoutRes
     protected int getLayoutRes() {
@@ -84,8 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Get {@link StarterApp} reference.
      *
-     * @return
-     *      {@link StarterApp}
+     * @return {@link StarterApp}
      */
     public StarterApp getStarterApp() {
         return (StarterApp) getApplication();
@@ -94,8 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Retrieves app level dependency graph ({@link AppGraph}) for injecting.
      *
-     * @return
-     *      {@link AppGraph}
+     * @return {@link AppGraph}
      */
     protected AppGraph getInjector() {
         return getStarterApp().getAppComponent();
@@ -105,17 +98,17 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Set the title of the toolbar.
      *
      * @param title
-     *      The title to set for the toolbar
+     *         The title to set for the toolbar
      */
     public void setActivityTitle(@NonNull String title) {
-        if(getSupportActionBar() != null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home && isBackNav) {
+        if (item.getItemId() == android.R.id.home && isBackNav) {
             super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
@@ -136,9 +129,9 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Attaches presenter to lifecycle of activity.
      *
      * @param presenter
-     *      {@link Presenter}
+     *         {@link Presenter}
      * @param view
-     *      {@link BaseView}
+     *         {@link BaseView}
      */
     @SuppressWarnings("unchecked")
     protected void attachPresenterToLifecycle(Presenter presenter, BaseView view) {

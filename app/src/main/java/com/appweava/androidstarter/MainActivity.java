@@ -12,16 +12,12 @@ import com.appweava.androidstarter.feature.MvpActivity;
  * MainActivity
  * <p>
  * Can be whatever you want it to be. #Imagination
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/26/16
  */
 public class MainActivity extends BaseDrawerActivity {
 
     public static Intent getCallingIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
-        return intent;    
+        return intent;
     }
 
     @Override

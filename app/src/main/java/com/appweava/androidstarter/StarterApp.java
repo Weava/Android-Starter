@@ -11,10 +11,6 @@ import javax.inject.Inject;
  * StarterApp
  * <p>
  * Extends {@link Application} class for setting up all necessary dependencies throughout application.
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @date 6/25/16
- * @since 1.0.0
  */
 public class StarterApp extends Application {
 
@@ -35,8 +31,7 @@ public class StarterApp extends Application {
      * Initialize application DI component.
      * Protected visibility level for mock application overriding.
      *
-     * @return
-     *      Initialized {@link AppGraph}
+     * @return Initialized {@link AppGraph}
      */
     protected void initAppComponent() {
         appComponent = AppComponent.Initializer.init(this);
@@ -54,8 +49,7 @@ public class StarterApp extends Application {
     /**
      * Provide app component as a dependency to other components.
      *
-     * @return
-     *      {@link AppGraph} to provide for dependent components
+     * @return {@link AppGraph} to provide for dependent components
      */
     public AppGraph getAppComponent() {
         return this.appComponent;

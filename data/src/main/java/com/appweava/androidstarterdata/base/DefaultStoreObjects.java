@@ -19,12 +19,9 @@ import timber.log.Timber;
  * <p>
  * Implementation of {@link StoreObjects} that will provide the defaults for any
  * {@link com.nytimes.android.external.store.base.Store} objects.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 1/7/17
  */
 public class DefaultStoreObjects implements StoreObjects {
+
     private Gson gson;
     private File file;
 

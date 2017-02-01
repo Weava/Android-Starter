@@ -23,10 +23,6 @@ import butterknife.BindView;
  * @see BaseActivity
  * @see DrawerLayout
  * @see NavigationView
- *
- * @author <a href="mailto:aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 6/25/16
  */
 public abstract class BaseDrawerActivity extends BaseActivity {
 
@@ -46,7 +42,8 @@ public abstract class BaseDrawerActivity extends BaseActivity {
 
             // Setting the status bar to transparent color for a nice looking material drawer.
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(ContextCompat.getColor(this, android.R.color.transparent));
+                getWindow().setStatusBarColor(
+                        ContextCompat.getColor(this, android.R.color.transparent));
             }
         }
     }

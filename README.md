@@ -53,9 +53,6 @@ Before you get started on creating your own application from this starter projec
  * Modify the package name in both the project level build.gradle file and AndroidManifest.xml files in the data and app modules.
  You should also re-name the source set packages to match.
  * Change the applicationId and update all build tool and dependency versions to latest.
- * Do a find and replace for the following tag `<a href="mailto:aaron@appweava.com">Aaron Weaver</a>` with
- `<a href="mailto:<your-email>"><your-name></a>` unless you want people to e-mail me about bugs in your app.
- (You'll also want to do a find and replace for the date)
  * Remove any files you deem unnecessary (Don't need a drawer? Delete drawer related files)
  * If you wish to remove git history, simply delete the .git folder and create a new one with `git init`
  * Customize the `AppTheme` to whatever you desire, or modify the `colors.xml` file to get a new palette going.

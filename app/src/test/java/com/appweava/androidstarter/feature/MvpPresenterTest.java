@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 import rx.Subscription;
 import rx.functions.Action1;
 
+
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -19,10 +20,6 @@ import static org.mockito.Mockito.when;
  * MvpPresenterTest
  * <p>
  * Class description here
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 7/10/16
  */
 public class MvpPresenterTest {
 

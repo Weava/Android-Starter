@@ -8,10 +8,6 @@ import timber.log.Timber;
  * StarterTestApplication
  * <p>
  * {@link StarterApp} extension class that sets up our dependencies for instrumentation tests.
- *
- * @author <a href="aaron@appweava.com">Aaron Weaver</a>
- * @version 1.0.0
- * @since 11/22/16
  */
 public class StarterTestApp extends StarterApp {
 
