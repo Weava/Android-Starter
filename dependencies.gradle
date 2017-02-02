@@ -35,6 +35,8 @@ ext {
     def String ESPRESSO_VERSION = "2.2.2"
     def String RUNNER_VERSION = "0.5"
     def String TESTING_SUPPORT_LIB_VERSION = "0.1"
+    def String GROOVY_VERSION = "2.4.7"
+    def String ANDROID_SPOCK_VERSION = "1.2.1"
 
     def String LEAK_CANARY_VERSION = "1.5"
     def String TIMBER_VERSION = "4.1.2"
@@ -64,7 +66,9 @@ ext {
             testingSupportLib: "com.android.support.test:testing-support-lib:${TESTING_SUPPORT_LIB_VERSION}",
             junit            : "junit:junit:${JUNIT_VERSION}",
             assertj          : "org.assertj:assertj-core:${ASSERT_J_VERSION}",
-            daggerCompiler   : "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+            daggerCompiler   : "com.google.dagger:dagger-compiler:${DAGGER_VERSION}",
+            groovy           : "org.codehaus.groovy:groovy:${GROOVY_VERSION}:grooid",
+            spock            : "com.andrewreitz:spock-android:${ANDROID_SPOCK_VERSION}"
     ]
 
     domainDependencies = [
@@ -78,7 +82,8 @@ ext {
 
     domainTestDependencies = [
             junit  : "junit:junit:${JUNIT_VERSION}",
-            mockito: "org.mockito:mockito-core:${MOCKITO_VERSION}"
+            mockito: "org.mockito:mockito-core:${MOCKITO_VERSION}",
+            spock  : "com.andrewreitz:spock-android:${ANDROID_SPOCK_VERSION}"
     ]
 
     dataDependencies = [
@@ -100,7 +105,9 @@ ext {
     dataTestDependencies = [
             junit  : "junit:junit:${JUNIT_VERSION}",
             assertj: "org.assertj:assertj-core:${ASSERT_J_VERSION}",
-            mockito: "org.mockito:mockito-core:${MOCKITO_VERSION}"
+            mockito: "org.mockito:mockito-core:${MOCKITO_VERSION}",
+            groovy : "org.codehaus.groovy:groovy:${GROOVY_VERSION}:grooid",
+            spock  : "com.andrewreitz:spock-android:${ANDROID_SPOCK_VERSION}"
     ]
 
     devDependencies = [

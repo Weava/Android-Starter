@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'groovyx.android'
 
 android {
     defaultPublishConfig "debug"
@@ -32,6 +33,11 @@ android {
 
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/services/org.codehaus.groovy.transform.ASTTransformation'
+        exclude 'LICENSE.txt'
+    }
 }
 
 dependencies {
@@ -60,6 +66,8 @@ dependencies {
     testCompile dataTestDependencies.junit
     testCompile dataTestDependencies.assertj
     testCompile dataTestDependencies.mockito
+    testCompile dataTestDependencies.groovy
+    testCompile dataTestDependencies.spock
 
     /* Development */
     compile devDependencies.stethoOkhttp
