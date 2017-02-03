@@ -1,3 +1,8 @@
 # Make sure you copy the contents of this file (gradle.properties.dist) into gradle.properties
 # then replace the items in square brackets with their proper values
 FABRIC_API_KEY = [Fabric-key-here]
+
+RELEASE_STORE_FILE = [Release-keystore-path]
+RELEASE_KEY_ALIAS = [Release-keystore-alias]
+RELEASE_STORE_PASSWORD = [Release-keystore-password]
+RELEASE_KEY_PASSWORD = [Release-key-password]
