@@ -1,7 +1,6 @@
 package com.appweava.androidstarterdomain.feature;
 
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
+import com.appweava.androidstarterdomain.interactor.TransformerManager;
 import com.appweava.androidstarterdomain.interactor.UseCase;
 
 import javax.inject.Inject;
@@ -18,9 +17,8 @@ public class MvpUseCase extends UseCase {
     private final MvpRepository mvpRepository;
 
     @Inject
-    public MvpUseCase(ExecutionThread executionThread, PostExecutionThread postExecutionThread,
-            MvpRepository mvpRepository) {
-        super(executionThread, postExecutionThread);
+    public MvpUseCase(TransformerManager transformerManager, MvpRepository mvpRepository) {
+        super(transformerManager);
         this.mvpRepository = mvpRepository;
     }
 

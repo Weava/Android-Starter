@@ -5,9 +5,11 @@ import android.content.Context;
 import com.appweava.androidstarter.AppInitializer;
 import com.appweava.androidstarter.StarterTestApp;
 import com.appweava.androidstarter.UiThread;
+import com.appweava.androidstarter.base.TestTransformerManager;
 import com.appweava.androidstarterdata.executor.RxExecutor;
 import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
+import com.appweava.androidstarterdomain.interactor.TransformerManager;
 
 import javax.inject.Singleton;
 
@@ -51,5 +53,12 @@ public class MockApplicationModule {
     @Provides
     AppInitializer provideAppInitializer() {
         return null;
+    }
+
+    @Singleton
+    @Provides
+    TransformerManager provideTransformerManager(ExecutionThread executionThread,
+                                                 PostExecutionThread postExecutionThread) {
+        return new TestTransformerManager(executionThread, postExecutionThread);
     }
 }

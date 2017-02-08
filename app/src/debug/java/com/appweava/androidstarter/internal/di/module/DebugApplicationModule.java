@@ -6,9 +6,11 @@ import com.appweava.androidstarter.AppInitializer;
 import com.appweava.androidstarter.DebugAppInitializer;
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.UiThread;
+import com.appweava.androidstarter.base.AppTransformerManager;
 import com.appweava.androidstarterdata.executor.RxExecutor;
 import com.appweava.androidstarterdomain.executor.ExecutionThread;
 import com.appweava.androidstarterdomain.executor.PostExecutionThread;
+import com.appweava.androidstarterdomain.interactor.TransformerManager;
 
 import javax.inject.Singleton;
 
@@ -51,5 +53,12 @@ public class DebugApplicationModule {
     @Singleton
     PostExecutionThread providePostExecutionThread(UiThread uiThread) {
         return uiThread;
+    }
+
+    @Provides
+    @Singleton
+    TransformerManager provideTransformerManager(ExecutionThread executionThread,
+            PostExecutionThread postExecutionThread) {
+        return new AppTransformerManager(postExecutionThread, executionThread);
     }
 }

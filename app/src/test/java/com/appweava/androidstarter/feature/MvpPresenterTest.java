@@ -5,16 +5,13 @@ import com.appweava.androidstarterdomain.feature.MvpUseCase;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import rx.Subscription;
 import rx.functions.Action1;
 
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * MvpPresenterTest
@@ -32,7 +29,6 @@ public class MvpPresenterTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mvpPresenter = new MvpPresenter(mockMvpUseCase);
-        when(mockMvpUseCase.execute(any())).thenReturn(Mockito.mock(Subscription.class));
         mvpPresenter.attachView(mockMvpView);
     }
 

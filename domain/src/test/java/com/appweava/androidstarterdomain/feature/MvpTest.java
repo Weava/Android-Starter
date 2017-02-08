@@ -1,36 +1,30 @@
 package com.appweava.androidstarterdomain.feature;
 
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
+import com.appweava.androidstarterdomain.interactor.BaseUseCaseTest;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
 
 /**
  * MvpTest
  * <p>
  * Class description here
  */
-public class MvpTest {
+public class MvpTest extends BaseUseCaseTest {
 
     private MvpUseCase mvpUseCase;
 
-    @Mock private ExecutionThread mockExecutionThread;
-    @Mock private PostExecutionThread mockPostExecutionThread;
     @Mock private MvpRepository mockMvpRepository;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        mvpUseCase = new MvpUseCase(mockExecutionThread, mockPostExecutionThread,
-                mockMvpRepository);
+        super.setUp();
+        mvpUseCase = new MvpUseCase(transformerManager, mockMvpRepository);
     }
 
     @Test
@@ -39,7 +33,5 @@ public class MvpTest {
 
         verify(mockMvpRepository).getMvpModelList();
         verifyNoMoreInteractions(mockMvpRepository);
-        verifyZeroInteractions(mockExecutionThread);
-        verifyZeroInteractions(mockPostExecutionThread);
     }
 }

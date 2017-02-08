@@ -1,6 +1,8 @@
 package com.appweava.androidstarter;
 
 import com.appweava.androidstarter.internal.di.component.TestComponent;
+import com.appweava.androidstarter.rxespresso.LogLevel;
+import com.appweava.androidstarter.rxespresso.RxEspresso;
 
 import timber.log.Timber;
 
@@ -21,6 +23,7 @@ public class StarterTestApp extends StarterApp {
     @Override
     protected void initApp() {
         Timber.tag("Mock App").i("Initializing mock application for testing");
+        RxEspresso.setLogLevel(LogLevel.DEBUG);
         // TODO: Init test app dependencies here.
     }
 

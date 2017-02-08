@@ -1,8 +1,5 @@
 package com.appweava.androidstarterdomain.interactor;
 
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -18,12 +15,10 @@ import rx.functions.Action1;
  */
 public abstract class UseCase {
 
-    private final ExecutionThread executionThread;
-    private final PostExecutionThread postExecutionThread;
+    private final TransformerManager transformerManager;
 
-    protected UseCase(ExecutionThread executionThread, PostExecutionThread postExecutionThread) {
-        this.executionThread = executionThread;
-        this.postExecutionThread = postExecutionThread;
+    protected UseCase(TransformerManager transformerManager) {
+        this.transformerManager = transformerManager;
     }
 
     /**
@@ -86,22 +81,24 @@ public abstract class UseCase {
     public <T> Subscription execute(Action1<T> onNext, Action1<? extends Throwable> onError,
             Action0 onComplete) {
         return this.buildUseCaseObservable()
-                   .compose(applySchedulers())
+                   .compose(transformerManager.applyMainSchedulers())
                    .subscribe(onNext, onError, onComplete);
     }
 
     /**
-     * A {@link rx.Observable.Transformer} for applying subscribeOn and observeOn threads for
-     * Rx {@link Observable} when executing use case.
+     * Subscribes to the executing use case using only an {@link Subscriber}.
      *
+     * @param subscriber
+     *      {@link Subscriber}
      * @param <T>
-     *         Generic type of observable
-     *
-     * @return {@link rx.Observable.Transformer}
+     *      Type observable should return
+     * @return
+     *      {@link Subscription} of the observable
      */
-    protected <T> Observable.Transformer<T, T> applySchedulers() {
-        return observable -> observable
-                .subscribeOn(executionThread.getThread())
-                .observeOn(postExecutionThread.getScheduler());
+    @SuppressWarnings("unchecked")
+    public <T> Subscription execute(Subscriber<T> subscriber) {
+        return this.buildUseCaseObservable()
+                   .compose(transformerManager.applyMainSchedulers())
+                   .subscribe(subscriber);
     }
 }
