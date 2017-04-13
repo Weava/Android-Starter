@@ -1,5 +1,5 @@
 plugins {
-    id 'net.ltgt.apt' version '0.9'
+    id 'net.ltgt.apt' version '0.10'
 }
 
 apply plugin: 'java'
@@ -7,8 +7,10 @@ apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'idea'
 apply plugin: 'groovy'
 
-targetCompatibility = '1.8'
-sourceCompatibility = '1.8'
+apply from: "$rootDir/dependencies.gradle"
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
 
 configurations {
     provided
@@ -21,17 +23,11 @@ sourceSets {
 }
 
 dependencies {
-    def domainDependencies = rootProject.ext.domainDependencies
-    def domainTestDependencies = rootProject.ext.domainTestDependencies
+    compile "javax.annotation:jsr250-api:$javaxAnnotationsVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxVersion"
+    compile "com.google.auto.value:auto-value:$autoValueVersion"
 
-    provided domainDependencies.daggerCompiler
-    provided domainDependencies.javaxAnnotations
-    compile domainDependencies.autoValue
-    compile domainDependencies.dagger
-    compile domainDependencies.rxJava
-    apt domainDependencies.autoValue
-
-    testCompile domainTestDependencies.junit
-    testCompile domainTestDependencies.mockito
-    testCompile domainTestDependencies.spock
+    testCompile "junit:junit:$jUnitVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "com.andrewreitz:spock-android:$spockVersion"
 }

@@ -1,0 +1,10 @@
+// Make sure you copy the contents of this file (gradle.properties.dist) into gradle.properties
+// then replace the items in square brackets with their proper values
+ext.fabricApiKey = [Fabric-Api-Key-Here]
+
+// Feel free to replace these values with empty strings just to get the project working.
+// You don't need these to be filled out until release time.
+ext.releaseStoreFile = [Keystore-File-Location-Here]
+ext.releaseKeyAlias = [Keystore-Alias-Here]
+ext.releaseStorePassword = [Keystore-Password-Here]
+ext.releaseKeyPassword = [Specific-Key-Alias-Password-Here]

@@ -5,7 +5,7 @@ import com.appweava.androidstarterdomain.feature.MvpData;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * MvpApiImpl

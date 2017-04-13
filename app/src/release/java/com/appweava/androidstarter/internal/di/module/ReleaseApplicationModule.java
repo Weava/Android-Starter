@@ -5,51 +5,44 @@ import android.content.Context;
 import com.appweava.androidstarter.AppInitializer;
 import com.appweava.androidstarter.ReleaseAppInitializer;
 import com.appweava.androidstarter.StarterApp;
-import com.appweava.androidstarter.UiThread;
-import com.appweava.androidstarterdata.executor.RxExecutor;
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-
-import javax.inject.Singleton;
+import com.appweava.androidstarterdomain.interactor.ObservableSchedulerManager;
 
 import dagger.Module;
-import dagger.Provides;
+import io.reactivex.Scheduler;
 
 /**
  * ReleaseApplicationModule
  * <p>
  * {@link Module} that defines application level dependencies for release builds.
  */
-@Module
-public class ReleaseApplicationModule {
-
-    private StarterApp app;
+public class ReleaseApplicationModule extends ApplicationModule {
 
     public ReleaseApplicationModule(StarterApp app) {
-        this.app = app;
+        super(app);
     }
 
-    @Provides
-    @Singleton
+    @Override
     AppInitializer provideAppInitializer() {
         return new ReleaseAppInitializer();
     }
 
-    @Provides
-    @Singleton
+    @Override
     Context provideApplicationContext() {
         return app;
     }
 
-    @Provides
-    @Singleton
-    ExecutionThread provideThreadExecutor(RxExecutor rxExecutor) {
-        return rxExecutor;
+    @Override
+    Scheduler provideThreadExecutor() {
+        return super.provideThreadExecutor();
     }
 
-    @Provides
-    @Singleton
-    PostExecutionThread providePostExecutionThread(UiThread uiThread) {
-        return uiThread;
+    @Override
+    Scheduler providePostExecutionThread() {
+        return super.providePostExecutionThread();
+    }
+
+    @Override
+    ObservableSchedulerManager provideTransformerManager(@ExecThread Scheduler executionThread, @PostExecThread Scheduler postExecutionThread) {
+        return super.provideTransformerManager(executionThread, postExecutionThread);
     }
 }

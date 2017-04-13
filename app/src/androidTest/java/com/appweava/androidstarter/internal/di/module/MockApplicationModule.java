@@ -3,18 +3,11 @@ package com.appweava.androidstarter.internal.di.module;
 import android.content.Context;
 
 import com.appweava.androidstarter.AppInitializer;
-import com.appweava.androidstarter.StarterTestApp;
-import com.appweava.androidstarter.UiThread;
-import com.appweava.androidstarter.base.TestTransformerManager;
-import com.appweava.androidstarterdata.executor.RxExecutor;
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-import com.appweava.androidstarterdomain.interactor.TransformerManager;
+import com.appweava.androidstarter.StarterApp;
+import com.appweava.androidstarter.base.TestObservableSchedulerManager;
+import com.appweava.androidstarterdomain.interactor.ObservableSchedulerManager;
 
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
+import io.reactivex.Scheduler;
 
 /**
  * MockApplicationModule
@@ -22,43 +15,34 @@ import dagger.Provides;
  * Provides mock application dependencies.
  * TODO: Properly decide what to do with dependencies
  */
-@Module
-public class MockApplicationModule {
+public class MockApplicationModule extends ApplicationModule {
 
-    private StarterTestApp starterTestApp;
-
-    public MockApplicationModule(StarterTestApp starterTestApp) {
-        this.starterTestApp = starterTestApp;
+    public MockApplicationModule(StarterApp app) {
+        super(app);
     }
 
-    @Singleton
-    @Provides
+    @Override
     Context provideApplicationContext() {
-        return starterTestApp;
+        return app;
     }
 
-    @Singleton
-    @Provides
-    ExecutionThread provideThreadExecutor(RxExecutor rxExecutor) {
-        return rxExecutor;
-    }
-
-    @Singleton
-    @Provides
-    PostExecutionThread providePostExecutionThread(UiThread uiThread) {
-        return uiThread;
-    }
-
-    @Singleton
-    @Provides
+    @Override
     AppInitializer provideAppInitializer() {
         return null;
     }
 
-    @Singleton
-    @Provides
-    TransformerManager provideTransformerManager(ExecutionThread executionThread,
-                                                 PostExecutionThread postExecutionThread) {
-        return new TestTransformerManager(executionThread, postExecutionThread);
+    @Override
+    Scheduler provideThreadExecutor() {
+        return super.provideThreadExecutor();
+    }
+
+    @Override
+    Scheduler providePostExecutionThread() {
+        return super.providePostExecutionThread();
+    }
+
+    @Override
+    ObservableSchedulerManager provideTransformerManager(@ExecThread Scheduler executionThread, @PostExecThread Scheduler postExecutionThread) {
+        return new TestObservableSchedulerManager(executionThread, postExecutionThread);
     }
 }

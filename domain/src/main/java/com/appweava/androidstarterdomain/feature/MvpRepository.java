@@ -2,7 +2,7 @@ package com.appweava.androidstarterdomain.feature;
 
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * MvpRepository

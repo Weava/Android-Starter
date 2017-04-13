@@ -1,5 +1,6 @@
 *.iml
 .gradle
+/gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -12,3 +13,4 @@ app/src/main/res/drawable/
 data/libs/
 data/src/main/res/drawable/
 domain/libs/
+keys.gradle

@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-apply from: 'dependencies.gradle'
-
 buildscript {
+    apply from: "$rootDir/dependencies.gradle"
+
     repositories {
         jcenter()
         mavenCentral()
@@ -12,12 +12,18 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
-        classpath 'org.codehaus.groovy:groovy-android-gradle-plugin:1.1.0'
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath "com.android.tools.build:gradle:$gradleAndroidToolsVersion"
+        classpath "com.neenbedankt.gradle.plugins:android-apt:$aptVersion"
+        classpath "me.tatarka:gradle-retrolambda:$retrolambdaVersion"
+        classpath "org.codehaus.groovy:groovy-android-gradle-plugin:$groovyAndroidVersion"
+
+        /**
+         * Looking for the latest Fabric version? Check here:
+         * (https://fabric-artifacts.s3.amazonaws.com/public/io/fabric/tools/gradle/maven-metadata.xml)
+         */
+        classpath "io.fabric.tools:gradle:$fabricVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,17 +31,8 @@ buildscript {
 }
 
 allprojects {
-    ext {
-        def versionMajor = 1
-        def versionMinor = 0
-        def versionPatch = 0
-
-        androidApplicationId = 'com.appweava.androidstarter'
-        androidVersionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
-        androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
-
-        testInstrumentationRunner = "com.appweava.androidstarter.StarterAppTestRunner"
-        testApplicationId = "com.appweava.androidstarter.test"
+    repositories {
+        jcenter()
     }
 }
 

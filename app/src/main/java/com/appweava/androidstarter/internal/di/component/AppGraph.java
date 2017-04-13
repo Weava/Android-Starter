@@ -15,7 +15,6 @@ public interface AppGraph {
 
     /* Base */
     void inject(StarterApp starterApp);
-
     void inject(BaseActivity baseActivity);
 
     /* Mvp */

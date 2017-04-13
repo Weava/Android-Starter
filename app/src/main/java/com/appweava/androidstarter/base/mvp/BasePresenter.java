@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * BasePresenter
@@ -36,7 +36,7 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BasePresenter<V extends BaseView> implements Presenter<V> {
 
     private WeakReference<V> viewRef;
-    private CompositeSubscription subscriptions;
+    private CompositeDisposable disposables;
 
     @Override
     public void attachView(@NonNull V view) {
@@ -62,7 +62,7 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
      * classes if you want more than just the default implementation.
      */
     protected void onViewDetached() {
-        unsubCompositeSubscription();
+        disposeComposites();
     }
 
     /**
@@ -84,23 +84,23 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
      *
      * @return {@link CompositeSubscription}
      */
-    protected CompositeSubscription subscriptions() {
-        if (subscriptions == null) {
-            subscriptions = new CompositeSubscription();
+    protected CompositeDisposable disposables() {
+        if (disposables == null) {
+            disposables = new CompositeDisposable();
         }
 
-        return subscriptions;
+        return disposables;
     }
 
     /**
      * Unsubscribe from all current {@link rx.Subscription}s contained within the
      * {@link CompositeSubscription}.
      */
-    protected void unsubCompositeSubscription() {
-        if (subscriptions != null
-                && subscriptions.hasSubscriptions()
-                && !subscriptions.isUnsubscribed()) {
-            subscriptions.unsubscribe();
+    protected void disposeComposites() {
+        if (disposables != null
+                && disposables.size() > 0
+                && !disposables.isDisposed()) {
+            disposables.dispose();
         }
     }
 

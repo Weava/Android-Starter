@@ -1,6 +1,5 @@
 package com.appweava.androidstarterdata.feature;
 
-import com.appweava.androidstarterdata.base.StoreObjects;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdata.feature.repository.MvpDataRepository;
 import com.appweava.androidstarterdomain.feature.MvpData;
@@ -13,9 +12,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.schedulers.Schedulers;
-
+import io.reactivex.Observable;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -30,7 +27,6 @@ public class MvpRepositoryTest {
 
     private MvpDataRepository mvpDataRepository;
 
-    @Mock private StoreObjects storeObjects;
     @Mock private MvpApi mvpApi;
     @Mock private MvpData mockMvp;
 
@@ -40,7 +36,7 @@ public class MvpRepositoryTest {
         List<MvpData> mvpDataEntities = new ArrayList<>();
         mvpDataEntities.add(MvpData.builder().someField("Test").build());
         when(mvpApi.getMvpEntityList()).thenReturn(Observable.just(mvpDataEntities));
-        mvpDataRepository = new MvpDataRepository(storeObjects, mvpApi);
+        mvpDataRepository = new MvpDataRepository(mvpApi);
     }
 
     @Test
@@ -48,8 +44,6 @@ public class MvpRepositoryTest {
         List<MvpData> mvpDataEntities = new ArrayList<>();
 
         mvpDataRepository.getMvpModelList()
-                         .observeOn(Schedulers.immediate())
-                         .subscribeOn(Schedulers.immediate())
                          .subscribe(mvpDataEntities::addAll);
 
         assertThat(mvpDataEntities.size() > 0, is(true));

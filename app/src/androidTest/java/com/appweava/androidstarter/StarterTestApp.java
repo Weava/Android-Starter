@@ -1,5 +1,6 @@
 package com.appweava.androidstarter;
 
+import com.appweava.androidstarter.internal.di.component.AppComponent;
 import com.appweava.androidstarter.internal.di.component.TestComponent;
 import com.appweava.androidstarter.rxespresso.LogLevel;
 import com.appweava.androidstarter.rxespresso.RxEspresso;
@@ -13,7 +14,7 @@ import timber.log.Timber;
  */
 public class StarterTestApp extends StarterApp {
 
-    private TestComponent testComponent;
+    private AppComponent testComponent;
 
     @Override
     protected void initAppComponent() {
@@ -28,7 +29,7 @@ public class StarterTestApp extends StarterApp {
     }
 
     @Override
-    public TestComponent getAppComponent() {
+    public AppComponent getAppComponent() {
         return testComponent;
     }
 }
