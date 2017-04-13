@@ -5,60 +5,27 @@ import android.content.Context;
 import com.appweava.androidstarter.AppInitializer;
 import com.appweava.androidstarter.DebugAppInitializer;
 import com.appweava.androidstarter.StarterApp;
-import com.appweava.androidstarter.UiThread;
-import com.appweava.androidstarter.base.AppTransformerManager;
-import com.appweava.androidstarterdata.executor.RxExecutor;
-import com.appweava.androidstarterdomain.executor.ExecutionThread;
-import com.appweava.androidstarterdomain.executor.PostExecutionThread;
-import com.appweava.androidstarterdomain.interactor.TransformerManager;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
-import dagger.Provides;
 
 /**
  * DebugAppModule
  * <p>
  * {@link Module} that provides application level dependencies
  */
-@Module
-public class DebugApplicationModule {
-
-    private StarterApp app;
+public class DebugApplicationModule extends ApplicationModule {
 
     public DebugApplicationModule(StarterApp app) {
-        this.app = app;
+        super(app);
     }
 
-    @Provides
-    @Singleton
+    @Override
     AppInitializer provideAppInitializer() {
         return new DebugAppInitializer();
     }
 
-    @Provides
-    @Singleton
+    @Override
     Context provideApplicationContext() {
         return app;
-    }
-
-    @Provides
-    @Singleton
-    ExecutionThread provideThreadExecutor(RxExecutor rxExecutor) {
-        return rxExecutor;
-    }
-
-    @Provides
-    @Singleton
-    PostExecutionThread providePostExecutionThread(UiThread uiThread) {
-        return uiThread;
-    }
-
-    @Provides
-    @Singleton
-    TransformerManager provideTransformerManager(ExecutionThread executionThread,
-            PostExecutionThread postExecutionThread) {
-        return new AppTransformerManager(postExecutionThread, executionThread);
     }
 }

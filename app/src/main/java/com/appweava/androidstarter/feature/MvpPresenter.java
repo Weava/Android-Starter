@@ -2,7 +2,6 @@ package com.appweava.androidstarter.feature;
 
 import com.appweava.androidstarter.base.mvp.BasePresenter;
 import com.appweava.androidstarterdomain.feature.MvpData;
-import com.appweava.androidstarterdomain.feature.MvpUseCase;
 
 import java.util.List;
 
@@ -17,11 +16,8 @@ import timber.log.Timber;
  */
 public class MvpPresenter extends BasePresenter<MvpView> {
 
-    private MvpUseCase mvpUseCase;
-
     @Inject
-    public MvpPresenter(MvpUseCase useCase) {
-        this.mvpUseCase = useCase;
+    public MvpPresenter() {
     }
 
     @Override
@@ -31,11 +27,11 @@ public class MvpPresenter extends BasePresenter<MvpView> {
 
     @Override
     protected void onViewDetached() {
-        unsubCompositeSubscription();
+        disposeComposites();
     }
 
     void getMvpList() {
-        subscriptions().add(mvpUseCase.execute(this::onDataReady));
+        getView().doSomeOtherViewStuff();
     }
 
     private void onDataReady(List<MvpData> data) {

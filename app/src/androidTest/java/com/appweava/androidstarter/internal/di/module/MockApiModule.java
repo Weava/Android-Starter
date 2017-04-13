@@ -8,10 +8,6 @@ import com.google.gson.Gson;
 
 import java.io.File;
 
-import javax.inject.Singleton;
-
-import dagger.Module;
-import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -22,41 +18,34 @@ import retrofit2.Retrofit;
  * Mock Api dependencies provider.
  * TODO: Properly decide what to do with dependencies
  */
-@Module
-public class MockApiModule {
+public class MockApiModule extends ApiModule {
 
-    @Provides
-    @Singleton
+    @Override
     Gson provideGson() {
         return new Gson();
     }
 
-    @Provides
-    @Singleton
+    @Override
     File provideFile(Context context) {
         return context.getFilesDir();
     }
 
-    @Provides
-    @Singleton
+    @Override
     Cache provideCache(File file) {
         return new Cache(file, 1);
     }
 
-    @Provides
-    @Singleton
+    @Override
     Retrofit.Builder provideRetrofitBuilder(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder();
     }
 
-    @Provides
-    @Singleton
+    @Override
     MvpApi provideMvpApi(Retrofit.Builder retrofit) {
         return new MvpApiImpl();
     }
 
-    @Provides
-    @Singleton
+    @Override
     OkHttpClient provideOkHttpClient(Cache cache) {
         return new OkHttpClient.Builder().build();
     }

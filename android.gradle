@@ -1,0 +1,15 @@
+int versionMajor = 1
+int versionMinor = 0
+int versionPatch = 0
+
+ext.androidBuildToolsVersion = "25.0.2"
+ext.androidMinSdkVersion = 21
+ext.androidTargetSdkVersion = 25
+ext.androidCompileSdkVersion = 25
+
+ext.androidApplicationId = 'com.appweava.androidstarter'
+ext.androidVersionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch * 10
+ext.androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+
+ext.appTestInstrumentationRunner = "com.appweava.androidstarter.StarterAppTestRunner"
+ext.appTestApplicationId = "com.appweava.androidstarter.test"

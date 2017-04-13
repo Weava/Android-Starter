@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.base.drawer.BaseDrawerActivity;
-import com.appweava.androidstarter.feature.MvpActivity;
 
 /**
  * MainActivity
@@ -25,11 +24,5 @@ public class MainActivity extends BaseDrawerActivity {
         super.onCreate(savedInstanceState);
 
         getInjector().inject(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        startActivity(MvpActivity.getCallingIntent(this));
     }
 }

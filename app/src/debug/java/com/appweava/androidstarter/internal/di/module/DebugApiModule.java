@@ -10,14 +10,11 @@ import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
-import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -25,16 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * <p>
  * {@link Module} for API and networking related dependencies.
  */
-@Module
-public class DebugApiModule {
+public class DebugApiModule extends ApiModule {
 
     private static final TimeUnit TIMEOUT_TIME_UNIT = TimeUnit.MINUTES;
     private static final int TIMEOUT_TIME = 1;
-    private static final String CACHE_DIR = "app/cache";
     private static final long CACHE_SIZE = 5 * 1024 * 1024;
 
-    @Provides
-    @Singleton
+    @Override
     OkHttpClient provideOkHttpClient(Cache cache) {
         return new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
@@ -43,35 +37,30 @@ public class DebugApiModule {
                 .build();
     }
 
-    @Provides
-    @Singleton
+    @Override
     Gson provideGson() {
         return new GsonBuilder().create();
     }
 
-    @Provides
-    @Singleton
+    @Override
     File provideFile(Context context) {
         return context.getFilesDir();
     }
 
-    @Provides
-    @Singleton
-    Cache provideCache() {
-        return new Cache(new File(CACHE_DIR), CACHE_SIZE);
+    @Override
+    Cache provideCache(File file) {
+        return new Cache(file, CACHE_SIZE);
     }
 
-    @Provides
-    @Singleton
+    @Override
     Retrofit.Builder provideRetrofitBuilder(OkHttpClient okHttpClient, Gson gson) {
         return new Retrofit.Builder()
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient);
     }
 
-    @Provides
-    @Singleton
+    @Override
     MvpApi provideMvpApi(Retrofit.Builder retrofit) {
         return retrofit.baseUrl("http://reddit.com/r/")
                        .build()

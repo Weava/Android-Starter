@@ -3,20 +3,19 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'groovyx.android'
 
+apply from: "$rootDir/android.gradle"
+apply from: "$rootDir/dependencies.gradle"
+
 android {
     defaultPublishConfig "debug"
 
-    def globalConfig = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfig.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfig.getAt("androidBuildToolsVersion")
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion globalConfig.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfig.getAt("androidTargetSdkVersion")
-        versionCode globalConfig.getAt("androidVersionCode")
-
-        multiDexEnabled true
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode androidVersionCode
     }
 
     compileOptions {
@@ -37,39 +36,30 @@ android {
     packagingOptions {
         exclude 'META-INF/services/org.codehaus.groovy.transform.ASTTransformation'
         exclude 'LICENSE.txt'
+        exclude 'META-INF/rxjava.properties'
     }
 }
 
 dependencies {
-    def dataDependencies = rootProject.ext.dataDependencies
-    def dataTestDependencies = rootProject.ext.dataTestDependencies
-    def devDependencies = rootProject.ext.devDependencies
-
     compile project(':domain')
 
-    /* Release */
-    apt dataDependencies.javaPoet
-    apt dataDependencies.daggerCompiler
-    compile dataDependencies.dagger
-    compile dataDependencies.okHttp
-    compile dataDependencies.gson
-    compile dataDependencies.rxAndroid
-    compile dataDependencies.androidAnnotations
-    compile dataDependencies.retrofit
-    compile dataDependencies.retrofitRxAdapter
-    compile dataDependencies.retrofitGson
-    compile dataDependencies.store
-    compile dataDependencies.storeMiddleware
-    compile dataDependencies.storeFilesystem
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.android.support:support-annotations:$supportAnnotationsVersion"
 
-    /* Test */
-    testCompile dataTestDependencies.junit
-    testCompile dataTestDependencies.assertj
-    testCompile dataTestDependencies.mockito
-    testCompile dataTestDependencies.groovy
-    testCompile dataTestDependencies.spock
+    testCompile "junit:junit:$jUnitVersion"
+    testCompile "org.assertj:assertj-core:$assertJVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.codehaus.groovy:groovy:$groovyVersion:grooid"
+    testCompile "com.andrewreitz:spock-android:$spockVersion"
 
-    /* Development */
-    compile devDependencies.stethoOkhttp
-    compile devDependencies.timber
+    compile "com.jakewharton.timber:timber:$timberVersion"
+    compile "com.facebook.stetho:stetho:$stethoVersion"
+    compile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 }

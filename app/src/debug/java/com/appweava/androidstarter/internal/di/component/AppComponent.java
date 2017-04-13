@@ -1,9 +1,12 @@
 package com.appweava.androidstarter.internal.di.component;
 
 import com.appweava.androidstarter.StarterApp;
+import com.appweava.androidstarter.internal.di.module.ApiModule;
+import com.appweava.androidstarter.internal.di.module.ApplicationModule;
 import com.appweava.androidstarter.internal.di.module.DebugApiModule;
 import com.appweava.androidstarter.internal.di.module.DebugApplicationModule;
 import com.appweava.androidstarter.internal.di.module.DebugRepositoryModule;
+import com.appweava.androidstarter.internal.di.module.RepositoryModule;
 
 import javax.inject.Singleton;
 
@@ -17,9 +20,9 @@ import dagger.Component;
 @Singleton
 @Component(
         modules = {
-                DebugApiModule.class,
-                DebugApplicationModule.class,
-                DebugRepositoryModule.class,
+                ApiModule.class,
+                ApplicationModule.class,
+                RepositoryModule.class,
         }
 )
 public interface AppComponent extends AppGraph {
@@ -28,9 +31,9 @@ public interface AppComponent extends AppGraph {
 
         public static AppGraph init(StarterApp app) {
             return DaggerAppComponent.builder()
-                                     .debugApplicationModule(new DebugApplicationModule(app))
-                                     .debugApiModule(new DebugApiModule())
-                                     .debugRepositoryModule(new DebugRepositoryModule())
+                                     .applicationModule(new DebugApplicationModule(app))
+                                     .apiModule(new DebugApiModule())
+                                     .repositoryModule(new DebugRepositoryModule())
                                      .build();
         }
 

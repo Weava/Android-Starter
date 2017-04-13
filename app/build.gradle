@@ -2,32 +2,36 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'io.fabric'
-apply plugin: 'groovyx.android'
+
+apply from: "$rootDir/android.gradle"
+apply from: "$rootDir/dependencies.gradle"
+apply from: "$rootDir/keys.gradle"
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
 android {
-
-    def globalConfig = rootProject.extensions.getByName("ext")
-
-    compileSdkVersion globalConfig.getAt("androidCompileSdkVersion")
-    buildToolsVersion globalConfig.getAt("androidBuildToolsVersion")
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
-        applicationId globalConfig.getAt("androidApplicationId")
-        minSdkVersion globalConfig.getAt("androidMinSdkVersion")
-        targetSdkVersion globalConfig.getAt("androidTargetSdkVersion")
-        versionCode globalConfig.getAt("androidVersionCode")
-        versionName globalConfig.getAt("androidVersionName")
+        applicationId androidApplicationId
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode androidVersionCode
+        versionName androidVersionName
 
-        testInstrumentationRunner globalConfig.getAt("testInstrumentationRunner")
-        testApplicationId globalConfig.getAt("testApplicationId")
+        testInstrumentationRunner appTestInstrumentationRunner
+        testApplicationId appTestApplicationId
 
         multiDexEnabled true
 
-        manifestPlaceholders = [FABRIC_KEY: FABRIC_API_KEY]
+        manifestPlaceholders = [fabricKey: fabricApiKey]
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     compileOptions {
@@ -37,6 +41,7 @@ android {
 
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-annotations:22.2.0'
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
     }
 
     packagingOptions {
@@ -46,10 +51,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(releaseStoreFile)
+            storePassword releaseStorePassword
+            keyAlias releaseKeyAlias
+            keyPassword releaseKeyPassword
         }
     }
 
@@ -66,48 +71,44 @@ android {
 }
 
 dependencies {
-    def appDependencies = rootProject.ext.appDependencies
-    def appTestDependencies = rootProject.ext.appTestDependencies
-    def devDependencies = rootProject.ext.devDependencies
-
     compile project(':data')
-    compile project(':domain')
 
-    /* Production */
-    apt appDependencies.javaPoet
-    apt appDependencies.daggerCompiler
-    apt appDependencies.butterKnifeCompiler
-    compile appDependencies.dagger
-    compile appDependencies.butterKnife
-    compile appDependencies.recyclerView
-    compile appDependencies.designSupportLibrary
-    compile appDependencies.circleImageView
-    compile appDependencies.picasso
-    compile appDependencies.adapterDelegates
+    apt "com.google.dagger:dagger-compiler:$daggerVersion"
+    apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.jakewharton:butterknife:$butterKnifeVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    compile ("com.android.support:recyclerview-v7:$supportLibVersion") {
+        exclude group: 'com.android.support'
+    }
+    compile "com.android.support:design:$supportLibVersion"
+    compile "com.squareup.picasso:picasso:$picassoVersion"
+    compile "de.hdodenhof:circleimageview:$circleImageViewVersion"
+    compile "com.hannesdorfmann:adapterdelegates3:$adapterDelegatesVersion"
 
-    /* Analytics */
-    compile(appDependencies.crashlytics) {
+    androidTestCompile "com.neenbedankt.gradle.plugins:android-apt:$aptVersion"
+    androidTestCompile "com.google.dexmaker:dexmaker:$dexMakerVersion"
+    androidTestCompile "com.google.dexmaker:dexmaker-mockito:$dexMakerVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestCompile "com.android.support.test.espresso:espresso-idling-resource:$espressoVersion"
+    androidTestCompile "com.android.support.test:runner:$runnerVersion"
+    androidTestCompile "com.android.support.test:testing-support-lib:$testingSupportLibVersion"
+    androidTestCompile "org.codehaus.groovy:groovy:$groovyVersion:grooid"
+    androidTestCompile "com.andrewreitz:spock-android:$spockVersion"
+    androidTestApt "com.google.dagger:dagger-compiler:$daggerVersion"
+
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "junit:junit:$jUnitVersion"
+    testCompile "org.assertj:assertj-core:$assertJVersion"
+
+    debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
+    compile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+    compile "com.jakewharton.timber:timber:$timberVersion"
+    compile "com.facebook.stetho:stetho:$stethoVersion"
+    compile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    compile("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true;
     }
-    /* Test */
-    androidTestCompile appTestDependencies.mockito
-    androidTestCompile appTestDependencies.dexmaker
-    androidTestCompile appTestDependencies.dexmakerMockito
-    androidTestCompile appTestDependencies.espresso
-    androidTestCompile appTestDependencies.espressoIdlingRes
-    androidTestCompile appTestDependencies.testingSupportLib
-    androidTestCompile 'com.neenbedankt.gradle.plugins:android-apt:1.4'
-    androidTestCompile appTestDependencies.groovy
-    androidTestCompile appTestDependencies.spock
-    androidTestApt appTestDependencies.daggerCompiler
-
-    testCompile appTestDependencies.junit
-    testCompile appTestDependencies.mockito
-    testCompile appTestDependencies.assertj
-
-    /* Development */
-    debugCompile devDependencies.leakCanary
-    compile devDependencies.timber
-    compile devDependencies.stetho
-    compile devDependencies.stethoOkhttp
 }

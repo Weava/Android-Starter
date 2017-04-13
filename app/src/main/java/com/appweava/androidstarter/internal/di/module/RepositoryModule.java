@@ -4,15 +4,16 @@ import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdata.feature.repository.MvpDataRepository;
 import com.appweava.androidstarterdomain.feature.MvpRepository;
 
-/**
- * MockRepositoryModule
- * <p>
- * Mock repository dependencies provider.
- * TODO: Properly decide what to do with dependencies
- */
-public class MockRepositoryModule extends RepositoryModule {
+import javax.inject.Singleton;
 
-    @Override
+import dagger.Module;
+import dagger.Provides;
+
+@Module
+public class RepositoryModule {
+
+    @Provides
+    @Singleton
     MvpRepository provideMvpRepository(MvpApi mvpApi) {
         return new MvpDataRepository(mvpApi);
     }
