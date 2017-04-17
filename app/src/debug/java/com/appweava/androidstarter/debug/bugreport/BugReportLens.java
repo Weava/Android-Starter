@@ -73,8 +73,19 @@ public class BugReportLens extends Lens implements BugReportDialog.ReportListene
 
         ShareCompat.IntentBuilder intent = ShareCompat.IntentBuilder.from(context)
                 .setType("message/rfc822")
-                // TODO: .addEmailTo("u2020-bugs@blackhole.io")
                 .setSubject(report.title);
+
+        if (BuildConfig.EMAIL_TO_ADDRESSES.length > 0) {
+            intent.addEmailTo(BuildConfig.EMAIL_TO_ADDRESSES);
+        }
+
+        if (BuildConfig.EMAIL_CC_ADDRESSES.length > 0) {
+            intent.addEmailCc(BuildConfig.EMAIL_CC_ADDRESSES);
+        }
+
+        if (BuildConfig.EMAIL_BCC_ADDRESSES.length > 0) {
+            intent.addEmailBcc(BuildConfig.EMAIL_BCC_ADDRESSES);
+        }
 
         StringBuilder body = new StringBuilder();
         if (!Strings.isBlank(report.description)) {

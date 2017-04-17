@@ -6,6 +6,7 @@ apply plugin: 'io.fabric'
 apply from: "$rootDir/android.gradle"
 apply from: "$rootDir/dependencies.gradle"
 apply from: "$rootDir/keys.gradle"
+apply from: "$rootDir/bugs.gradle"
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -29,6 +30,10 @@ android {
 
         buildConfigField 'String', 'GIT_SHA', "\"${gitSha()}\""
         buildConfigField 'long', 'GIT_TIMESTAMP', "${gitTimestamp()}L"
+
+        buildConfigField 'String[]', 'EMAIL_TO_ADDRESSES', buildConfigArray(emailBugsTo)
+        buildConfigField 'String[]', 'EMAIL_CC_ADDRESSES', buildConfigArray(emailBugsCC)
+        buildConfigField 'String[]', 'EMAIL_BCC_ADDRESSES', buildConfigArray(emailBugsBCC)
 
         manifestPlaceholders = [fabricKey: fabricApiKey]
     }
@@ -71,6 +76,22 @@ android {
             testCoverageEnabled true
         }
     }
+}
+
+def buildConfigArray(String[] items) {
+    StringBuilder builder = new StringBuilder();
+    builder.append("{")
+
+    items.eachWithIndex { itemString, index ->
+        builder.append("\"${itemString}\"")
+
+        if (index < items.length - 1) {
+            builder.append(",")
+        }
+    }
+
+    builder.append("}")
+    return builder.toString()
 }
 
 dependencies {

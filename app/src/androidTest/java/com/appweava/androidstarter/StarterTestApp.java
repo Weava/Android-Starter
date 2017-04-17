@@ -5,6 +5,7 @@ import com.appweava.androidstarter.internal.di.component.AppComponent;
 import com.appweava.androidstarter.internal.di.component.TestComponent;
 import com.appweava.androidstarter.rxespresso.LogLevel;
 import com.appweava.androidstarter.rxespresso.RxEspresso;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import timber.log.Timber;
 
@@ -28,6 +29,6 @@ public class StarterTestApp extends StarterApp {
     protected void initApp() {
         Timber.tag("Mock App").i("Initializing mock application for testing");
         RxEspresso.setLogLevel(LogLevel.DEBUG);
-        // TODO: Init test app dependencies here.
+        AndroidThreeTen.init(this);
     }
 }
