@@ -6,7 +6,7 @@ apply plugin: 'io.fabric'
 apply from: "$rootDir/android.gradle"
 apply from: "$rootDir/dependencies.gradle"
 apply from: "$rootDir/keys.gradle"
-apply from: "$rootDir/bugs.gradle"
+apply from: "$rootDir/bugreporting.gradle"
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
