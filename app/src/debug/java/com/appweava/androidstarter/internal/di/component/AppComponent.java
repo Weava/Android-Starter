@@ -1,5 +1,6 @@
 package com.appweava.androidstarter.internal.di.component;
 
+import com.appweava.androidstarter.DebugAppInitializer;
 import com.appweava.androidstarter.internal.di.module.DebugActionsModule;
 import com.appweava.androidstarter.internal.di.module.DebugTestPrepModule;
 import com.appweava.androidstarter.StarterApp;
@@ -39,6 +40,7 @@ import dagger.Component;
 public interface AppComponent extends AppGraph {
 
     void inject(DebugView debugView);
+    void inject(DebugAppInitializer debugAppInitializer);
 
     final class Initializer {
 

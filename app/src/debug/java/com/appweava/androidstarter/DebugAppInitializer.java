@@ -1,8 +1,12 @@
 package com.appweava.androidstarter;
 
+import com.appweava.androidstarter.debug.LumberYard;
+import com.appweava.androidstarter.internal.di.Injector;
 import com.facebook.stetho.Stetho;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.squareup.leakcanary.LeakCanary;
+
+import javax.inject.Inject;
 
 import timber.log.Timber;
 
@@ -13,11 +17,23 @@ import timber.log.Timber;
  */
 public class DebugAppInitializer extends AppInitializer {
 
+    @Inject LumberYard lumberYard;
+
+    public DebugAppInitializer() {
+        Injector.getInstance().getAppGraph().inject(this);
+    }
+
     @Override
     protected void initAppDependencies(StarterApp app) {
         Timber.plant(new Timber.DebugTree());
+
         Stetho.initializeWithDefaults(app);
+
         LeakCanary.install(app);
+
         AndroidThreeTen.init(app);
+
+        lumberYard.cleanUp();
+        Timber.plant(lumberYard.tree());
     }
 }

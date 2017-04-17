@@ -128,7 +128,7 @@ public class DebugViewContainer implements ViewContainer {
             @Override public void onActivitySaveInstanceState(Activity activity, Bundle bundle) {}
         });
 
-        riseAndShine(activity);
+        //riseAndShine(activity);
         return viewHolder.content;
     }
 

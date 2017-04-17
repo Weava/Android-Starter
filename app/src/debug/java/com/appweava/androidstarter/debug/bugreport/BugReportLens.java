@@ -1,13 +1,14 @@
 package com.appweava.androidstarter.debug.bugreport;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ShareCompat;
+import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.appweava.androidstarter.BuildConfig;
+import com.appweava.androidstarter.R;
 import com.appweava.androidstarter.debug.Intents;
 import com.appweava.androidstarter.debug.LumberYard;
 import com.fernandocejas.arrow.strings.Strings;
@@ -92,12 +93,12 @@ public class BugReportLens extends Lens implements BugReportDialog.ReportListene
             body.append("{panel:title=Description}\n").append(report.description).append("\n{panel}\n\n");
         }
 
-        body.append("{panel:title=App}\n");
+        body.append(context.getString(R.string.app_name)).append("\n\n");
         body.append("Version: ").append(BuildConfig.VERSION_NAME).append('\n');
         body.append("Version code: ").append(BuildConfig.VERSION_CODE).append('\n');
-        body.append("{panel}\n\n");
+        body.append("\n\n");
 
-        body.append("{panel:title=Device}\n");
+        body.append("Device\n\n");
         body.append("Make: ").append(Build.MANUFACTURER).append('\n');
         body.append("Model: ").append(Build.MODEL).append('\n');
         body.append("Resolution: ")
@@ -117,10 +118,10 @@ public class BugReportLens extends Lens implements BugReportDialog.ReportListene
         intent.setText(body.toString());
 
         if (screenshot != null && report.includeScreenshot) {
-            intent.addStream(Uri.fromFile(screenshot));
+            intent.addStream(FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", screenshot));
         }
         if (logs != null) {
-            intent.addStream(Uri.fromFile(logs));
+            intent.addStream(FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", logs));
         }
 
         Intents.maybeStartActivity(context, intent.getIntent());

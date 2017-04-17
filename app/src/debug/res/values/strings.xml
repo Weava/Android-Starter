@@ -32,8 +32,8 @@
 
     <!-- Build Info Dev Drawer -->
     <string name="dev_build_info_title">Build Information</string>
-    <string name="dev_build_info_name">Name</string>
-    <string name="dev_build_info_code">Code</string>
+    <string name="dev_build_info_name">Version Name</string>
+    <string name="dev_build_info_code">Version Code</string>
     <string name="dev_build_info_sha">SHA</string>
     <string name="dev_build_info_date">Date</string>
 

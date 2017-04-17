@@ -1,7 +1,7 @@
 // The items contained in this file pertain to in-app bug reporting
 
 ext.emailBugsTo = [
-        "notARealEmail@gmail.io"
+        "aaron@appweava.com"
 ].toArray() as String[]
 
 ext.emailBugsCC = [].toArray() as String[]
