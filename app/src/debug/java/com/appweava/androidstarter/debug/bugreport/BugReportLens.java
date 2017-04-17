@@ -98,7 +98,7 @@ public class BugReportLens extends Lens implements BugReportDialog.ReportListene
         body.append("Version code: ").append(BuildConfig.VERSION_CODE).append('\n');
         body.append("\n\n");
 
-        body.append("Device\n\n");
+        body.append("Device Information\n\n");
         body.append("Make: ").append(Build.MANUFACTURER).append('\n');
         body.append("Model: ").append(Build.MODEL).append('\n');
         body.append("Resolution: ")
@@ -113,7 +113,6 @@ public class BugReportLens extends Lens implements BugReportDialog.ReportListene
                 .append(")\n");
         body.append("Release: ").append(Build.VERSION.RELEASE).append('\n');
         body.append("API: ").append(Build.VERSION.SDK_INT).append('\n');
-        body.append("{panel}");
 
         intent.setText(body.toString());
 
