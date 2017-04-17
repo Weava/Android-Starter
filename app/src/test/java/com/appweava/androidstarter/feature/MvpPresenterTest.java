@@ -1,10 +1,13 @@
 package com.appweava.androidstarter.feature;
 
+import com.appweava.androidstarterdomain.feature.MvpInteractor;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -16,12 +19,13 @@ public class MvpPresenterTest {
 
     private MvpPresenter mvpPresenter;
 
-    @Mock private MvpView mockMvpView;
+    @Mock private MvpContract.View mockMvpView;
+    @Mock private MvpInteractor mvpInteractor;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mvpPresenter = new MvpPresenter();
+        mvpPresenter = new MvpPresenter(mvpInteractor);
         mvpPresenter.attachView(mockMvpView);
     }
 
@@ -29,6 +33,6 @@ public class MvpPresenterTest {
     public void testGetMvpList() {
         mvpPresenter.getMvpList();
 
-        verify(mockMvpView).doSomeOtherViewStuff();
+        verify(mockMvpView).setMvpListForView(any());
     }
 }

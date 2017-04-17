@@ -27,6 +27,9 @@ android {
 
         multiDexEnabled true
 
+        buildConfigField 'String', 'GIT_SHA', "\"${gitSha()}\""
+        buildConfigField 'long', 'GIT_TIMESTAMP', "${gitTimestamp()}L"
+
         manifestPlaceholders = [fabricKey: fabricApiKey]
     }
 
@@ -79,13 +82,14 @@ dependencies {
     compile "com.jakewharton:butterknife:$butterKnifeVersion"
     compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
     compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
-    compile ("com.android.support:recyclerview-v7:$supportLibVersion") {
-        exclude group: 'com.android.support'
-    }
+    compile "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibVersion"
     compile "com.android.support:design:$supportLibVersion"
     compile "com.squareup.picasso:picasso:$picassoVersion"
+    compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$picassoDownloaderVersion"
     compile "de.hdodenhof:circleimageview:$circleImageViewVersion"
     compile "com.hannesdorfmann:adapterdelegates3:$adapterDelegatesVersion"
+    compile "com.f2prateek.rx.preferences2:rx-preferences:$rxPrefsVersion"
 
     androidTestCompile "com.neenbedankt.gradle.plugins:android-apt:$aptVersion"
     androidTestCompile "com.google.dexmaker:dexmaker:$dexMakerVersion"
@@ -103,10 +107,15 @@ dependencies {
     testCompile "org.assertj:assertj-core:$assertJVersion"
 
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
-    compile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
+    debugCompile "com.mattprecious.telescope:telescope:$telescopeVersion"
+    debugCompile "com.jakewharton.madge:madge:$madgeVersion"
+    debugCompile "com.jakewharton.scalpel:scalpel:$scalpelVersion"
+    debugCompile "com.jakewharton:process-phoenix:$processPhoenixVersion"
+    releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
     compile "com.jakewharton.timber:timber:$timberVersion"
     compile "com.facebook.stetho:stetho:$stethoVersion"
     compile "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    compile "com.fernandocejas:arrow:$arrowVersion"
 
     compile("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true;

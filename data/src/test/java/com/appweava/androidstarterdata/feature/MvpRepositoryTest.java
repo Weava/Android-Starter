@@ -3,6 +3,7 @@ package com.appweava.androidstarterdata.feature;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdata.feature.repository.MvpDataRepository;
 import com.appweava.androidstarterdomain.feature.MvpData;
+import com.appweava.androidstarterdomain.interactor.ObservableSchedulerManager;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,7 @@ public class MvpRepositoryTest {
 
     @Mock private MvpApi mvpApi;
     @Mock private MvpData mockMvp;
+    @Mock private ObservableSchedulerManager observableSchedulerManager;
 
     @Before
     public void setUp() {
@@ -36,7 +38,7 @@ public class MvpRepositoryTest {
         List<MvpData> mvpDataEntities = new ArrayList<>();
         mvpDataEntities.add(MvpData.builder().someField("Test").build());
         when(mvpApi.getMvpEntityList()).thenReturn(Observable.just(mvpDataEntities));
-        mvpDataRepository = new MvpDataRepository(mvpApi);
+        mvpDataRepository = new MvpDataRepository(mvpApi, observableSchedulerManager);
     }
 
     @Test

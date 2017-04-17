@@ -8,16 +8,6 @@ package com.appweava.androidstarter;
 public abstract class AppInitializer {
 
     /**
-     * Initializes the application.
-     *
-     * @param app
-     *         {@link StarterApp}
-     */
-    public void init(StarterApp app) {
-        initAppDependencies(app);
-    }
-
-    /**
      * Initializes application dependencies.
      *
      * @param app

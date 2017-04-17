@@ -2,7 +2,6 @@ package com.appweava.androidstarter.internal.di.component;
 
 import com.appweava.androidstarter.MainActivity;
 import com.appweava.androidstarter.StarterApp;
-import com.appweava.androidstarter.base.BaseActivity;
 import com.appweava.androidstarter.feature.MvpActivity;
 
 /**
@@ -15,7 +14,6 @@ public interface AppGraph {
 
     /* Base */
     void inject(StarterApp starterApp);
-    void inject(BaseActivity baseActivity);
 
     /* Mvp */
     void inject(MvpActivity mvpActivity);

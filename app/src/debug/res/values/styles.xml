@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DebugDrawer.HeaderText" parent="None">
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginStart">@dimen/grid_default_unit</item>
+        <item name="android:background">@drawable/drawer_header_bg</item>
+    </style>
+
+    <style name="DebugDrawer.RowWidget" parent="None">
+        <item name="android:minHeight">26dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="DebugDrawer.RowTitle" parent="DebugDrawer.RowWidget">
+        <item name="android:layout_marginEnd">@dimen/grid_default_2x_scale</item>
+        <item name="android:layout_marginStart">@dimen/grid_default_2x_scale</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DebugDrawer.RowValue" parent="DebugDrawer.RowWidget">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ExternalIntent.Header" parent="None">
+        <item name="android:paddingBottom">@dimen/grid_default_unit</item>
+        <item name="android:paddingLeft">@dimen/grid_default_2x_scale</item>
+        <item name="android:paddingRight">@dimen/grid_default_2x_scale</item>
+        <item name="android:paddingTop">@dimen/grid_default_2x_scale</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="ExternalIntent.Body" parent="None">
+        <item name="android:paddingLeft">@dimen/grid_default_4x_scale</item>
+        <item name="android:paddingRight">@dimen/grid_default_4x_scale</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

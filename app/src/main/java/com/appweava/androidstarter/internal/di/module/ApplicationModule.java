@@ -1,11 +1,14 @@
 package com.appweava.androidstarter.internal.di.module;
 
+import android.app.Application;
 import android.content.Context;
+import android.preference.PreferenceManager;
 
 import com.appweava.androidstarter.AppInitializer;
 import com.appweava.androidstarter.StarterApp;
 import com.appweava.androidstarter.base.AppObservableSchedulerManager;
 import com.appweava.androidstarterdomain.interactor.ObservableSchedulerManager;
+import com.f2prateek.rx.preferences2.RxSharedPreferences;
 
 import javax.inject.Qualifier;
 import javax.inject.Singleton;
@@ -43,6 +46,12 @@ public class ApplicationModule {
         return app;
     }
 
+    @Provides
+    @Singleton
+    Application provideApplication() {
+        return app;
+    }
+
     @ExecThread
     @Provides
     @Singleton
@@ -62,5 +71,11 @@ public class ApplicationModule {
     ObservableSchedulerManager provideTransformerManager(@ExecThread Scheduler executionThread,
                                                          @PostExecThread Scheduler postExecutionThread) {
         return new AppObservableSchedulerManager(postExecutionThread, executionThread);
+    }
+
+    @Provides
+    @Singleton
+    RxSharedPreferences provideRxSharedPreferences(Context context) {
+        return RxSharedPreferences.create(PreferenceManager.getDefaultSharedPreferences(context));
     }
 }

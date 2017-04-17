@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="debug_drawer_welcome">Debug settings are available in this drawer.</string>
+    <string name="dev_settings_subheader">Development Settings</string>
+    <string name="dev_contextual_actions">Contextual Actions</string>
+
+    <!-- Network Dev Drawer -->
+    <string name="dev_network">Network</string>
+    <string name="dev_network_endpoint">Endpoint</string>
+    <string name="dev_network_delay">Delay</string>
+    <string name="dev_network_variance">Variance</string>
+    <string name="dev_network_error">Error</string>
+    <string name="dev_network_logging">Logging</string>
+
+    <!-- Mock Behavior Dev Drawer -->
+    <string name="dev_mock_behavior">Mock Behavior</string>
+    <string name="dev_mock_capture_intents">Capture Intents</string>
+    <string name="dev_mock_repositories">Repositories</string>
+
+    <!-- User Interface Dev Drawer -->
+    <string name="dev_ui_title">User Interface</string>
+    <string name="dev_ui_animations">Animations</string>
+    <string name="dev_ui_pixel_grid">Pixel Grid</string>
+    <string name="dev_ui_pixel_scale">Pixel Scale</string>
+    <string name="dev_ui_scalpel">Scalpel</string>
+    <string name="dev_ui_wireframe">Wireframe</string>
+
+    <!-- Logs Dev Drawer -->
+    <string name="dev_logs_title">Logs</string>
+    <string name="dev_logs_show_logs">Show Logs</string>
+    <string name="dev_logs_show_leaks">Leak Analysis</string>
+
+    <!-- Build Info Dev Drawer -->
+    <string name="dev_build_info_title">Build Information</string>
+    <string name="dev_build_info_name">Name</string>
+    <string name="dev_build_info_code">Code</string>
+    <string name="dev_build_info_sha">SHA</string>
+    <string name="dev_build_info_date">Date</string>
+
+    <!-- Device Info Dev Drawer -->
+    <string name="dev_device_info_title">Device Information</string>
+    <string name="dev_device_info_make">Make</string>
+    <string name="dev_device_info_model">Model</string>
+    <string name="dev_device_info_resolution">Resolution</string>
+    <string name="dev_device_info_density">Density</string>
+    <string name="dev_device_info_release">Release</string>
+    <string name="dev_device_info_api">API</string>
+
+    <!-- Picasso Dev Drawer -->
+    <string name="dev_picasso_title">Picasso</string>
+    <string name="dev_picasso_indicators">Indicators</string>
+    <string name="dev_picasso_cache">Cache</string>
+    <string name="dev_picasso_hits">Hits</string>
+    <string name="dev_picasso_misses">Misses</string>
+    <string name="dev_picasso_decoded">Decoded</string>
+    <string name="dev_picasso_total">Total</string>
+    <string name="dev_picasso_average">Average</string>
+    <string name="dev_picasso_transformed">Transformed</string>
+
+    <!-- OkHttp Cache Dev Drawer -->
+    <string name="dev_okhttp_cache_title">OkHttp Cache</string>
+    <string name="dev_okhttp_cache_max_size">Max Size</string>
+    <string name="dev_okhttp_cache_write_errors">Write Errors</string>
+    <string name="dev_okhttp_request_count">Request Count</string>
+    <string name="dev_okhttp_network_count">Network Count</string>
+    <string name="dev_okhttp_hit_count">Hit Count</string>
+
+    <!-- Bug Report -->
+    <string name="dev_bug_report_title">What\'s the problem?</string>
+    <string name="dev_bug_report_description">Additional details</string>
+    <string name="dev_bug_report_screenshot">Include screenshot?</string>
+    <string name="dev_bug_report_logs">Include logs?</string>
+
+    <string name="no_intent_handler">
+        There are no applications available to handle this action.
+    </string>
+    <string name="debug_drawer_network_endpoint_description">
+        Enter the URL of the server to which you want to connect.\n\ne.g., https://bob-loblaw.local/1.0/
+    </string>
+</resources>

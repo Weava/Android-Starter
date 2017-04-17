@@ -17,7 +17,7 @@ public interface TestComponent extends AppGraph {
         public static AppComponent init(StarterTestApp app) {
             return DaggerAppComponent.builder()
                                       .applicationModule(new MockApplicationModule(app))
-                                      .apiModule(new MockApiModule())
+                                      .debugApiModule(new MockApiModule())
                                       .repositoryModule(new MockRepositoryModule())
                                       .build();
         }

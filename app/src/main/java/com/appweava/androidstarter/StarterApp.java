@@ -2,6 +2,7 @@ package com.appweava.androidstarter;
 
 import android.app.Application;
 
+import com.appweava.androidstarter.internal.di.Injector;
 import com.appweava.androidstarter.internal.di.component.AppComponent;
 import com.appweava.androidstarter.internal.di.component.AppGraph;
 
@@ -16,7 +17,7 @@ public class StarterApp extends Application {
 
     @Inject AppInitializer appInitializer;
 
-    private AppGraph appComponent;
+    private AppComponent appComponent;
 
     @Override
     public void onCreate() {
@@ -35,6 +36,7 @@ public class StarterApp extends Application {
      */
     protected void initAppComponent() {
         appComponent = AppComponent.Initializer.init(this);
+        Injector.init(appComponent);
         appComponent.inject(this);
     }
 
@@ -44,14 +46,5 @@ public class StarterApp extends Application {
      */
     protected void initApp() {
         appInitializer.initAppDependencies(this);
-    }
-
-    /**
-     * Provide app component as a dependency to other components.
-     *
-     * @return {@link AppGraph} to provide for dependent components
-     */
-    public AppGraph getAppComponent() {
-        return this.appComponent;
     }
 }

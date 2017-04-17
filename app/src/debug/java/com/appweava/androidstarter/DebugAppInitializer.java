@@ -1,6 +1,7 @@
 package com.appweava.androidstarter;
 
 import com.facebook.stetho.Stetho;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.squareup.leakcanary.LeakCanary;
 
 import timber.log.Timber;
@@ -17,5 +18,6 @@ public class DebugAppInitializer extends AppInitializer {
         Timber.plant(new Timber.DebugTree());
         Stetho.initializeWithDefaults(app);
         LeakCanary.install(app);
+        AndroidThreeTen.init(app);
     }
 }

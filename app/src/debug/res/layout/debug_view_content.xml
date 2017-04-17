@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:columnCount="2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/grid_default_2x_scale">
+
+    <LinearLayout
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/grid_default_unit"
+            android:layout_marginEnd="@dimen/grid_default_unit"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:layout_height="?actionBarSize"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dev_settings_subheader"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/debug_icon_size_full"
+            android:layout_height="@dimen/debug_icon_size_full"
+            android:src="@mipmap/ic_launcher"/>
+
+    </LinearLayout>
+
+    <!-- Contextual Actions -->
+
+    <TextView
+        android:id="@+id/debug_contextual_title"
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_contextual_actions"
+        android:visibility="gone"
+        style="@style/DebugDrawer.HeaderText"
+        />
+
+    <LinearLayout
+        android:id="@+id/debug_contextual_list"
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:visibility="gone"
+        android:orientation="vertical"
+        />
+
+    <!-- Network Actions -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_network"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_network_endpoint"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        android:gravity="center_vertical">
+
+        <Spinner
+            android:id="@+id/debug_network_endpoint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/debug_network_endpoint_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/grid_default_half_scale"
+            android:src="@drawable/debug_ic_edit"
+            android:background="?android:attr/actionBarItemBackground"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_network_delay"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Spinner
+        android:id="@+id/debug_network_delay"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_network_variance"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Spinner
+        android:id="@+id/debug_network_variance"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_network_error"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Spinner
+        android:id="@+id/debug_network_error"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"/>
+
+    <!--<TextView-->
+        <!--android:layout_gravity="start|center_vertical"-->
+        <!--android:text="@string/dev_network_logging"-->
+        <!--style="@style/DebugDrawer.RowTitle"/>-->
+
+    <!--<Spinner-->
+        <!--android:id="@+id/debug_network_logging"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_gravity="start|center_vertical|fill_horizontal"/>-->
+
+    <!-- Mock Behavior -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_mock_behavior"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_mock_capture_intents"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Switch
+        android:id="@+id/debug_capture_intents"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget"/>
+
+    <!-- User Interface -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_ui_title"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_ui_animations"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Spinner
+        android:id="@+id/debug_ui_animation_speed"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_ui_pixel_grid"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Switch
+        android:id="@+id/debug_ui_pixel_grid"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_ui_pixel_scale"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Switch
+        android:id="@+id/debug_ui_pixel_ratio"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_ui_scalpel"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Switch
+        android:id="@+id/debug_ui_scalpel"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_ui_wireframe"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <Switch
+        android:id="@+id/debug_ui_scalpel_wireframe"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget"/>
+
+    <!-- Logging -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_logs_title"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <Button
+        android:id="@+id/debug_logs_show"
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_logs_show_logs"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        android:layout_marginStart="@dimen/grid_default_unit"
+        android:layout_marginEnd="@dimen/grid_default_unit"/>
+
+    <Button
+        android:id="@+id/debug_leaks_show"
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_logs_show_leaks"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        android:layout_marginStart="@dimen/grid_default_unit"
+        android:layout_marginEnd="@dimen/grid_default_unit"/>
+
+    <!-- Build Information -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_build_info_title"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_build_info_name"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <TextView
+        android:id="@+id/debug_build_name"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_build_info_code"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <TextView
+        android:id="@+id/debug_build_code"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_build_info_sha"
+        style="@style/DebugDrawer.RowTitle"/>
+
+    <TextView
+        android:id="@+id/debug_build_sha"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_build_info_date"
+        style="@style/DebugDrawer.RowTitle"/>
+    
+    <TextView 
+        android:id="@+id/debug_build_date"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue"/>
+    
+    <!-- Device Information -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_device_info_title"
+        style="@style/DebugDrawer.HeaderText"/>
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_make"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_make"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_model"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_model"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_resolution"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_resolution"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_density"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_density"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_release"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_release"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_device_info_api"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_device_api"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <!-- Picasso -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_picasso_title"
+        style="@style/DebugDrawer.HeaderText" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_indicators"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <Switch
+        android:id="@+id/debug_picasso_indicators"
+        android:layout_gravity="start|center_vertical"
+        style="@style/DebugDrawer.RowWidget" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_cache"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_cache_size"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_hits"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_cache_hit"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_misses"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_cache_miss"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_decoded"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_decoded"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_total"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_decoded_total"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_average"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_decoded_avg"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_transformed"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_transformed"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_total"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_transformed_total"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_picasso_average"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_picasso_transformed_avg"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <!-- OkHttp Cache -->
+
+    <TextView
+        android:layout_columnSpan="2"
+        android:layout_width="0dp"
+        android:layout_gravity="start|fill_horizontal"
+        android:text="@string/dev_okhttp_cache_title"
+        style="@style/DebugDrawer.HeaderText" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_okhttp_cache_max_size"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_okhttp_cache_max_size"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_okhttp_cache_write_errors"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_okhttp_cache_write_error"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_okhttp_request_count"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_okhttp_cache_request_count"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_okhttp_network_count"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_okhttp_cache_network_count"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+    <TextView
+        android:layout_gravity="start|center_vertical"
+        android:text="@string/dev_okhttp_hit_count"
+        style="@style/DebugDrawer.RowTitle" />
+
+    <TextView
+        android:id="@+id/debug_okhttp_cache_hit_count"
+        android:layout_width="0dp"
+        android:layout_gravity="start|center_vertical|fill_horizontal"
+        style="@style/DebugDrawer.RowValue" />
+
+</GridLayout>

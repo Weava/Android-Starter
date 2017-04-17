@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * BasePresenter
  * <p>
- * Base {@link Presenter} implementation. Contains all functions that most presenters in the
+ * Base {@link PresenterInterface} implementation. Contains all functions that most presenters in the
  * application may need. Uses view interfaces (interfaces extending {@link BaseView}) to interact
  * with the view.
  * <p>
@@ -30,10 +30,10 @@ import io.reactivex.disposables.CompositeDisposable;
  * means detaching occurs during onDestroy (in Activitys), onViewDestroyed (in Fragments), or
  * when destroying a custom view.
  *
- * @see Presenter
+ * @see PresenterInterface
  * @see BaseView
  */
-public abstract class BasePresenter<V extends BaseView> implements Presenter<V> {
+public abstract class BasePresenter<V> implements PresenterInterface<V> {
 
     private WeakReference<V> viewRef;
     private CompositeDisposable disposables;
@@ -79,10 +79,10 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
     }
 
     /**
-     * Retrieve the {@link CompositeSubscription} to manage lifecycle of Rx calls within
+     * Retrieve the {@link CompositeDisposable} to manage lifecycle of Rx calls within
      * presenter.
      *
-     * @return {@link CompositeSubscription}
+     * @return {@link CompositeDisposable}
      */
     protected CompositeDisposable disposables() {
         if (disposables == null) {
@@ -93,8 +93,8 @@ public abstract class BasePresenter<V extends BaseView> implements Presenter<V> 
     }
 
     /**
-     * Unsubscribe from all current {@link rx.Subscription}s contained within the
-     * {@link CompositeSubscription}.
+     * Unsubscribe from all current {@link io.reactivex.disposables.Disposable}s contained within the
+     * {@link CompositeDisposable}.
      */
     protected void disposeComposites() {
         if (disposables != null

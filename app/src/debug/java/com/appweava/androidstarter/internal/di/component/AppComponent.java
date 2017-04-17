@@ -1,12 +1,17 @@
 package com.appweava.androidstarter.internal.di.component;
 
+import com.appweava.androidstarter.internal.di.module.DebugActionsModule;
+import com.appweava.androidstarter.internal.di.module.DebugTestPrepModule;
 import com.appweava.androidstarter.StarterApp;
-import com.appweava.androidstarter.internal.di.module.ApiModule;
 import com.appweava.androidstarter.internal.di.module.ApplicationModule;
 import com.appweava.androidstarter.internal.di.module.DebugApiModule;
 import com.appweava.androidstarter.internal.di.module.DebugApplicationModule;
-import com.appweava.androidstarter.internal.di.module.DebugRepositoryModule;
+import com.appweava.androidstarter.internal.di.module.DebugDataModule;
+import com.appweava.androidstarter.internal.di.module.DebugUiModule;
+import com.appweava.androidstarter.internal.di.module.InteractorModule;
+import com.appweava.androidstarter.internal.di.module.PresenterModule;
 import com.appweava.androidstarter.internal.di.module.RepositoryModule;
+import com.appweava.androidstarter.ui.DebugView;
 
 import javax.inject.Singleton;
 
@@ -20,20 +25,26 @@ import dagger.Component;
 @Singleton
 @Component(
         modules = {
-                ApiModule.class,
                 ApplicationModule.class,
                 RepositoryModule.class,
+                PresenterModule.class,
+                InteractorModule.class,
+                DebugUiModule.class,
+                DebugDataModule.class,
+                DebugApiModule.class,
+                DebugTestPrepModule.class,
+                DebugActionsModule.class
         }
 )
 public interface AppComponent extends AppGraph {
 
+    void inject(DebugView debugView);
+
     final class Initializer {
 
-        public static AppGraph init(StarterApp app) {
+        public static AppComponent init(StarterApp app) {
             return DaggerAppComponent.builder()
                                      .applicationModule(new DebugApplicationModule(app))
-                                     .apiModule(new DebugApiModule())
-                                     .repositoryModule(new DebugRepositoryModule())
                                      .build();
         }
 

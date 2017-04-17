@@ -2,32 +2,32 @@ package com.appweava.androidstarter.internal.di.module;
 
 import android.content.Context;
 
+import com.appweava.androidstarterdata.ApiEndpoints;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.squareup.moshi.Moshi;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
+import dagger.Provides;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 
-/**
- * ReleaseApiModule
- * <p>
- * {@link Module} defining API and network dependencies for release builds.
- */
-public class ReleaseApiModule extends ApiModule {
+@Module
+public class ReleaseApiModule {
 
     private static final TimeUnit TIMEOUT_TIME_UNIT = TimeUnit.MINUTES;
     private static final int TIMEOUT_TIME = 1;
     private static final long CACHE_SIZE = 5 * 1024 * 1024;
 
-    @Override
+    @Singleton
+    @Provides
     OkHttpClient provideOkHttpClient(Cache cache) {
         return new OkHttpClient.Builder()
                 .connectTimeout(TIMEOUT_TIME, TIMEOUT_TIME_UNIT)
@@ -35,35 +35,39 @@ public class ReleaseApiModule extends ApiModule {
                 .build();
     }
 
-    @Override
-    Gson provideGson() {
-        return new GsonBuilder().create();
+    @Singleton
+    @Provides
+    Moshi provideMoshi() {
+        return new Moshi.Builder()
+                .build();
     }
 
-    @Override
+    @Singleton
+    @Provides
     File provideFile(Context context) {
         return context.getFilesDir();
     }
 
-    @Override
+    @Singleton
+    @Provides
     Cache provideCache(File file) {
         return new Cache(file, CACHE_SIZE);
     }
-    
-    @Override
-    Retrofit.Builder provideRetrofitBuilder(OkHttpClient okHttpClient, Gson gson) {
+
+    @Singleton
+    @Provides
+    Retrofit provideRetrofitBuilder(OkHttpClient okHttpClient, Moshi moshi) {
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient);
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
+                .client(okHttpClient)
+                .baseUrl(ApiEndpoints.PRODUCTION.url)
+                .build();
     }
 
-    @Override
-    MvpApi provideMvpApi(Retrofit.Builder retrofit) {
-        return retrofit.baseUrl("http://reddit.com/r/")
-                       .build()
-                       .create(MvpApi.class);
+    @Singleton
+    @Provides
+    MvpApi provideMvpApi(Retrofit retrofit) {
+        return retrofit.create(MvpApi.class);
     }
-
-
 }

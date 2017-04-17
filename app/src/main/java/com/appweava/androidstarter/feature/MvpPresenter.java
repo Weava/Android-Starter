@@ -1,28 +1,28 @@
 package com.appweava.androidstarter.feature;
 
 import com.appweava.androidstarter.base.mvp.BasePresenter;
-import com.appweava.androidstarterdomain.feature.MvpData;
-
-import java.util.List;
-
-import javax.inject.Inject;
+import com.appweava.androidstarterdomain.feature.MvpInteractor;
 
 import timber.log.Timber;
+
+import static com.appweava.androidstarter.feature.MvpContract.View.State.LOADING;
 
 /**
  * MvpPresenter
  * <p>
  * Implementation {@link MvpPresenter}. Used as a simple example.
  */
-public class MvpPresenter extends BasePresenter<MvpView> {
+public class MvpPresenter extends BasePresenter<MvpContract.View> implements MvpContract.Presenter {
 
-    @Inject
-    public MvpPresenter() {
+    private MvpInteractor interactor;
+
+    public MvpPresenter(MvpInteractor mvpInteractor) {
+        this.interactor = mvpInteractor;
     }
 
     @Override
     protected void onViewAttached() {
-        // Perform any necessary calls when the view gets attached here.
+        getView().setState(LOADING);
     }
 
     @Override
@@ -30,13 +30,14 @@ public class MvpPresenter extends BasePresenter<MvpView> {
         disposeComposites();
     }
 
-    void getMvpList() {
-        getView().doSomeOtherViewStuff();
-    }
-
-    private void onDataReady(List<MvpData> data) {
-        for (MvpData mvpModel : data) {
-            Timber.tag("Mvp Activity").i("Model: %s", mvpModel.someField());
-        }
+    @Override
+    public void getMvpList() {
+        disposables().add(
+            interactor.getMvpList()
+                    .subscribe(
+                            mvpList -> getView().setMvpListForView(mvpList),
+                            throwable -> Timber.d(throwable, "Baed")
+                    )
+        );
     }
 }

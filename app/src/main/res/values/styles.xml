@@ -1,7 +1,10 @@
 <resources>
+    <style name="None">
+
+    </style>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Design.NoActionBar">
+    <style name="Theme.StarterApp" parent="Theme.Design.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,11 +16,6 @@
         <item name="android:windowBackground">@color/colorWindowBackground</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
-    </style>
-
-    <style name="ToolbarDarkTheme" parent="AppTheme">
-        <item name="android:textColorPrimary">@color/colorTextIcons</item>
-        <item name="android:textColorSecondary">@color/colorTextIcons</item>
     </style>
 
 </resources>

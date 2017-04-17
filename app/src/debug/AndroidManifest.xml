@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Used for sharing logs and Spoon. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <!-- Used for instrumentation tests. -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application>
+
+        <activity
+            android:name="com.appweava.androidstarter.ui.DebugActivity"
+            android:label="U+2020 Dev Settings"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.StarterApp"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/leak_canary_icon">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.appweava.androidstarter.ui.ExternalIntentActivity"
+            android:theme="@style/Theme.StarterApp">
+
+            <intent-filter>
+                <action android:name="com.jakewharton.u2020.intent.EXTERNAL_INTENT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
+            android:enabled="false"
+            android:label="@string/leak_canary_display_activity_label"
+            android:taskAffinity="com.squareup.leakcanary"
+            android:theme="@style/leak_canary_LeakCanary.Base">
+
+            <intent-filter tools:node="removeAll"/>
+
+        </activity>
+
+    </application>
+</manifest>
