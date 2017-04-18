@@ -73,6 +73,7 @@ issues.
 * ~~The `feature` package should have a good example of how to design your application flow within each module.~~
 * ~~Testing examples would be setup for each unit within the `feature` and `user` packages. This would establish a small
   guide on how to write unit tests throughout your own application.~~
+* Add an actual example app for the feature packages
 * Create a more descriptive readme that would have a more in-depth discussion on how this app is structured.
 * Comments. Comments. Comments.
 
