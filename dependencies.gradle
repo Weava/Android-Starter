@@ -24,6 +24,7 @@ ext.threeTenVersion = "1.3.3"
 ext.threeTenAbpVersion = "1.0.5"
 ext.rxBindingVersion = "2.0.0"
 ext.processPhoenixVersion = "2.0.0"
+ext.moshiAutoValuePluginVersion = "0.4.3"
 
 /**
  * Test Dependencies

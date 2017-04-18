@@ -29,5 +29,6 @@ public class MainActivity extends Activity {
         Injector.getInstance().getAppGraph().inject(this);
 
         startActivity(MvpActivity.getCallingIntent(this));
+        finish();
     }
 }

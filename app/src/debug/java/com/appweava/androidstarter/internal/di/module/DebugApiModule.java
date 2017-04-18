@@ -9,6 +9,7 @@ import com.appweava.androidstarter.internal.di.qualifier.NetworkFailurePercent;
 import com.appweava.androidstarter.internal.di.qualifier.NetworkVariancePercent;
 import com.appweava.androidstarterdata.feature.net.MvpApi;
 import com.appweava.androidstarterdata.feature.net.MvpApiImpl;
+import com.appweava.androidstarterdomain.MoshiAdapterFactory;
 import com.f2prateek.rx.preferences2.Preference;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.squareup.moshi.Moshi;
@@ -68,6 +69,7 @@ public class DebugApiModule {
     @Provides
     Moshi provideMoshi() {
         return new Moshi.Builder()
+                .add(MoshiAdapterFactory.create())
                 .build();
     }
 
