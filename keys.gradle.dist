@@ -1,4 +1,4 @@
-// Make sure you copy the contents of this file (gradle.properties.dist) into gradle.properties
+// Make sure you copy the contents of this file (gradle.properties.dist) into keys.gradle
 // then replace the items in square brackets with their proper values
 ext.fabricApiKey = [Fabric-Api-Key-Here]
 
