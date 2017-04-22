@@ -96,7 +96,8 @@
             android:id="@+id/debug_network_endpoint_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_default_half_scale"
+            android:layout_marginStart="@dimen/grid_default_unit"
+            android:layout_marginEnd="@dimen/grid_default_unit"
             android:src="@drawable/debug_ic_edit"
             android:background="?android:attr/actionBarItemBackground"
             android:visibility="gone"
@@ -105,6 +106,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/debug_network_delay_label"
         android:layout_gravity="start|center_vertical"
         android:text="@string/dev_network_delay"
         style="@style/DebugDrawer.RowTitle"/>
@@ -115,6 +117,7 @@
         android:layout_gravity="start|center_vertical|fill_horizontal"/>
 
     <TextView
+        android:id="@+id/debug_network_variance_label"
         android:layout_gravity="start|center_vertical"
         android:text="@string/dev_network_variance"
         style="@style/DebugDrawer.RowTitle"/>
@@ -125,6 +128,7 @@
         android:layout_gravity="start|center_vertical|fill_horizontal"/>
 
     <TextView
+        android:id="@+id/debug_network_error_label"
         android:layout_gravity="start|center_vertical"
         android:text="@string/dev_network_error"
         style="@style/DebugDrawer.RowTitle"/>

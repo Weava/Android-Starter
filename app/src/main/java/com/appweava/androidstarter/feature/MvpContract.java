@@ -1,20 +1,22 @@
 package com.appweava.androidstarter.feature;
 
-import com.appweava.androidstarter.base.mvp.PresenterInterface;
+import com.appweava.androidstarter.base.mvp.BasePresenter;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.List;
 
 public interface MvpContract {
 
-    interface Presenter extends PresenterInterface<View> {
+    abstract class Presenter extends BasePresenter<View> {
+
         /**
          * Retrieve a list of {@link com.appweava.androidstarterdomain.feature.MvpData}.
          */
-        void getMvpList();
+        abstract void getMvpList();
     }
 
     interface View {
+
         /**
          * Enum containing different states for the view.
          */
@@ -29,7 +31,7 @@ public interface MvpContract {
         void setMvpListForView(List<MvpData> mvpDataList);
 
         /**
-         * Set the view's state.
+         * Set the view's {@link State}.
          *
          * @param state {@link State}
          */

@@ -26,7 +26,7 @@
 
     </com.mattprecious.telescope.TelescopeLayout>
 
-    <com.appweava.androidstarter.ui.NonConsumingScrimInsetsFrameLayout
+    <com.appweava.androidstarter.debugdrawer.ui.NonConsumingScrimInsetsFrameLayout
         android:layout_width="290dp"
         android:layout_height="match_parent"
         android:layout_gravity="end"
@@ -41,6 +41,6 @@
             android:fitsSystemWindows="true"
             android:clipToPadding="false"/>
 
-    </com.appweava.androidstarter.ui.NonConsumingScrimInsetsFrameLayout>
+    </com.appweava.androidstarter.debugdrawer.ui.NonConsumingScrimInsetsFrameLayout>
 
 </android.support.v4.widget.DrawerLayout>

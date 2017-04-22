@@ -1,7 +1,7 @@
 package com.appweava.androidstarter;
 
-import com.appweava.androidstarter.debug.LumberYard;
-import com.appweava.androidstarter.internal.di.Injector;
+import com.appweava.androidstarter.debugdrawer.LumberYard;
+import com.appweava.androidstarter.dependencyinjection.Injector;
 import com.facebook.stetho.Stetho;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.squareup.leakcanary.LeakCanary;

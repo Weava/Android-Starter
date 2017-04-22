@@ -10,7 +10,7 @@ import android.widget.Toolbar;
 
 import com.appweava.androidstarter.R;
 import com.appweava.androidstarter.base.ui.ViewContainer;
-import com.appweava.androidstarter.internal.di.Injector;
+import com.appweava.androidstarter.dependencyinjection.Injector;
 import com.appweava.androidstarterdomain.feature.MvpData;
 
 import java.util.List;

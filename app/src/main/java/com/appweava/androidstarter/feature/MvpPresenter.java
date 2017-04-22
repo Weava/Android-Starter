@@ -1,6 +1,5 @@
 package com.appweava.androidstarter.feature;
 
-import com.appweava.androidstarter.base.mvp.BasePresenter;
 import com.appweava.androidstarterdomain.feature.MvpInteractor;
 
 import timber.log.Timber;
@@ -12,7 +11,7 @@ import static com.appweava.androidstarter.feature.MvpContract.View.State.LOADING
  * <p>
  * Implementation {@link MvpPresenter}. Used as a simple example.
  */
-public class MvpPresenter extends BasePresenter<MvpContract.View> implements MvpContract.Presenter {
+public class MvpPresenter extends MvpContract.Presenter {
 
     private MvpInteractor interactor;
 

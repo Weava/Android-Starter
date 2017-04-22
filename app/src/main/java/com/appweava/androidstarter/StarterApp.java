@@ -2,9 +2,9 @@ package com.appweava.androidstarter;
 
 import android.app.Application;
 
-import com.appweava.androidstarter.internal.di.Injector;
-import com.appweava.androidstarter.internal.di.component.AppComponent;
-import com.appweava.androidstarter.internal.di.component.AppGraph;
+import com.appweava.androidstarter.dependencyinjection.Injector;
+import com.appweava.androidstarter.dependencyinjection.component.AppComponent;
+import com.appweava.androidstarter.dependencyinjection.component.AppGraph;
 
 import javax.inject.Inject;
 

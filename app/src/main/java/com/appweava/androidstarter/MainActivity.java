@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.appweava.androidstarter.feature.MvpActivity;
-import com.appweava.androidstarter.internal.di.Injector;
+import com.appweava.androidstarter.dependencyinjection.Injector;
 
 /**
  * MainActivity

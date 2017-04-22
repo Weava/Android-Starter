@@ -31,7 +31,6 @@ import io.reactivex.disposables.CompositeDisposable;
  * when destroying a custom view.
  *
  * @see PresenterInterface
- * @see BaseView
  */
 public abstract class BasePresenter<V> implements PresenterInterface<V> {
 
@@ -41,6 +40,7 @@ public abstract class BasePresenter<V> implements PresenterInterface<V> {
     @Override
     public void attachView(@NonNull V view) {
         viewRef = new WeakReference<>(view);
+
         onViewAttached();
     }
 
@@ -48,6 +48,7 @@ public abstract class BasePresenter<V> implements PresenterInterface<V> {
     public void detachView() {
         viewRef.clear();
         viewRef = null;
+
         onViewDetached();
     }
 
@@ -66,9 +67,9 @@ public abstract class BasePresenter<V> implements PresenterInterface<V> {
     }
 
     /**
-     * Retrieve the {@link BaseView} extended view item to perform operations on.
+     * Retrieve the view item to perform operations on.
      *
-     * @return {@link BaseView} extended item
+     * @return V view item
      */
     protected V getView() {
         if (isViewAttached()) {
@@ -85,7 +86,7 @@ public abstract class BasePresenter<V> implements PresenterInterface<V> {
      * @return {@link CompositeDisposable}
      */
     protected CompositeDisposable disposables() {
-        if (disposables == null) {
+        if (disposables == null || disposables.isDisposed()) {
             disposables = new CompositeDisposable();
         }
 
@@ -93,7 +94,7 @@ public abstract class BasePresenter<V> implements PresenterInterface<V> {
     }
 
     /**
-     * Unsubscribe from all current {@link io.reactivex.disposables.Disposable}s contained within the
+     * Dispose of all current {@link io.reactivex.disposables.Disposable}s contained within the
      * {@link CompositeDisposable}.
      */
     protected void disposeComposites() {
