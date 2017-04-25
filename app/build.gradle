@@ -78,7 +78,7 @@ android {
     }
 }
 
-def buildConfigArray(String[] items) {
+def static buildConfigArray(String[] items) {
     StringBuilder builder = new StringBuilder();
     builder.append("{")
 
@@ -95,10 +95,12 @@ def buildConfigArray(String[] items) {
 }
 
 dependencies {
-    compile project(':data')
-
     apt "com.google.dagger:dagger-compiler:$daggerVersion"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    apt "com.google.auto.value:auto-value:$autoValueVersion"
+    apt "com.ryanharter.auto.value:auto-value-moshi:$moshiAutoValuePluginVersion"
+    provided "com.google.auto.value:auto-value:$autoValueVersion"
+    provided "com.ryanharter.auto.value:auto-value-moshi:$moshiAutoValuePluginVersion"
     compile "com.google.dagger:dagger:$daggerVersion"
     compile "com.jakewharton:butterknife:$butterKnifeVersion"
     compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
@@ -107,10 +109,22 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$supportLibVersion"
     compile "com.android.support:design:$supportLibVersion"
     compile "com.squareup.picasso:picasso:$picassoVersion"
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
     compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$picassoDownloaderVersion"
     compile "de.hdodenhof:circleimageview:$circleImageViewVersion"
     compile "com.hannesdorfmann:adapterdelegates3:$adapterDelegatesVersion"
     compile "com.f2prateek.rx.preferences2:rx-preferences:$rxPrefsVersion"
+    compile "com.jakewharton.threetenabp:threetenabp:$threeTenAbpVersion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    compile "com.android.support:support-annotations:$supportAnnotationsVersion"
+    compile "com.squareup.moshi:moshi:$moshiVersion"
+    debugCompile "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
+    debugCompile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    debugCompile "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+
 
     androidTestCompile "com.neenbedankt.gradle.plugins:android-apt:$aptVersion"
     androidTestCompile "com.google.dexmaker:dexmaker:$dexMakerVersion"
@@ -126,6 +140,8 @@ dependencies {
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "junit:junit:$jUnitVersion"
     testCompile "org.assertj:assertj-core:$assertJVersion"
+    testCompile "org.codehaus.groovy:groovy:$groovyVersion:grooid"
+    testCompile "com.andrewreitz:spock-android:$spockVersion"
 
     debugCompile "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
     debugCompile "com.mattprecious.telescope:telescope:$telescopeVersion"

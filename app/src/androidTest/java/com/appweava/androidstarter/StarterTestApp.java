@@ -1,8 +1,9 @@
 package com.appweava.androidstarter;
 
-import com.appweava.androidstarter.dependencyinjection.Injector;
-import com.appweava.androidstarter.dependencyinjection.component.AppComponent;
-import com.appweava.androidstarter.dependencyinjection.component.TestComponent;
+
+import com.appweava.androidstarter.presentation.dependencyinjection.Injector;
+import com.appweava.androidstarter.presentation.dependencyinjection.component.AppComponent;
+import com.appweava.androidstarter.presentation.dependencyinjection.component.TestComponent;
 import com.appweava.androidstarter.rxespresso.LogLevel;
 import com.appweava.androidstarter.rxespresso.RxEspresso;
 import com.jakewharton.threetenabp.AndroidThreeTen;

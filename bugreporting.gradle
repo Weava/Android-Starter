@@ -1,9 +1,15 @@
-// The items contained in this file pertain to in-app bug reporting
+/**
+ * The items contained in this file pertain to in-app bug reporting.
+ * Put any email addresses you wish to receive bug reports in the respective String arrays below.
+ */
 
+/** Array containing email addresses for the TO field */
 ext.emailBugsTo = [
         "aaron@appweava.com"
 ].toArray() as String[]
 
+/** Array containing email addresses for the CC field */
 ext.emailBugsCC = [].toArray() as String[]
 
+/** Array containing email addresses for the BCC field */
 ext.emailBugsBCC = [].toArray() as String[]
