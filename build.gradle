@@ -56,6 +56,16 @@ def gitTimestamp() {
     return p.text.trim()
 }
 
+def gitTotalCommits() {
+    def p = 'git rev-list --all --count'.execute([], rootDir)
+    p.waitFor()
+    if (p.exitValue() != 0) {
+        throw new RuntimeException(p.errorStream.text)
+    }
+
+    return p.text.trim()
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
