@@ -1,3 +1,5 @@
+# This is quite outdated at this point, Keeping for legacy / historical purposes
+
 # Android-Starter
 A simple starter project for Android that should clear up all the annoying boiler plate necessary for starting a new Android project.
 Inspired heavily by [Fernando Cejas's Clean Architecture](https://github.com/android10/Android-CleanArchitecture).
